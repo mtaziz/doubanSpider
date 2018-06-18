@@ -14,9 +14,10 @@ from scrapy.shell import inspect_response
 
 class DoubanMoviesSpider(scrapy.Spider):
     name = "doubanmovies"
-    allowed_domains = ['movie.douban.com']
+    allowed_domains = ['douban.com']
     cookie = transCookie("ue=1430657824@qq.com; ll=118282; bid=2ZAH2S2KiAo; ps=y; dbcl2=99678180:+xbhZwQ2hI4; push_noty_num=0; push_doumail_num=0; ap=1; _pk_id.100001.4cf6=6dca2b2485769e55.1528894519.1.1528894519.1528894519.; __utma=30149280.2077450901.1528894521.1528894521.1528894521.1; __utmz=30149280.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=223695111.468546197.1528894521.1528894521.1528894521.1; __utmz=223695111.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _vwo_uuid_v2=D0ABF7CE98FAAEFC16F17EB5D02FA904C|40d80dd9cb7725af334383e36649c6ae; ck=72gG").stringToDict()
-    global aa 
+
+    global aa
     aa = 1
 
     def start_requests(self):
@@ -24,11 +25,12 @@ class DoubanMoviesSpider(scrapy.Spider):
         self.logger.info('start_requests %s ', url)
         self.logger.info(
             '-----------------------------------------------------------------------------')
+        # meta={'cookiejar':1}表示开启cookie记录，首次请求时写在Request()里
         yield scrapy.Request(url, self.parse, cookies=self.cookie, meta={'cookiejar': 1})
 
     def parse(self, response):
         self.logger.info('start crawl MovieDetialItem %s', response.url)
-
+        # inspect_response(response, self)
         movieItem = MovieDetialItem()
         movieItem['movieid'] = response.url  # 从url中取出movieid
         movieItem['director'] = '/'.join(response.xpath(
@@ -81,7 +83,6 @@ class DoubanMoviesSpider(scrapy.Spider):
         for i in range(0, 10):
             movieItem['also_like_' + str(i + 1) + '_name'] = also_like_names[i]
             movieItem['also_like_' + str(i + 1) + '_url'] = also_like_urls[i]
-            # print('also_like_'+str(i + 1) + '_url')
         view_people = response.xpath(
             '//div[contains(@class, "subject-others-interests-ft")]/a/text()').extract()
         movieItem['viewed_num'] = view_people[0]  # test
@@ -91,8 +92,6 @@ class DoubanMoviesSpider(scrapy.Spider):
         movieItem['film_critics_url'] = response.url + '/reviews'  # 影评
         movieItem['doulists_url'] = response.url + '/doulists'  # 豆列
 
-        # inspect_response(response, self)
-
         # cookie
         if response.xpath('//span[contains(@class, "collection_date")]').extract_first():
             movieItem['view_date'] = response.xpath(
@@ -101,41 +100,34 @@ class DoubanMoviesSpider(scrapy.Spider):
                 '//input[contains(@id, "n_rating")]/@value').extract_first()
             movieItem['my_tags'] = response.xpath(
                 '//input[contains(@id, "n_rating")]/following::text()[4]').extract_first()
-
-        # # 如果是从豆列过来的
-        # if 'fromDoulist' in response.meta:
-        #     doulistMovieDetialItem = response.meta['doulistMovieDetialItem']
-        #     movieItem['doulists_url'] = doulistMovieDetialItem['doulists_url']
-        #     movieItem['comment'] = doulistMovieDetialItem['comment']
-        #     movieItem['add_date'] = doulistMovieDetialItem['add_date']
-
         yield movieItem
 
         # meta={'cookiejar': response.meta['cookiejar']}
         # request.meta['movieid'] = response.url
 
-        essayCollectRequest = scrapy.Request(movieItem['essay_collect_url'], callback=self.parseComments,
+        # essayCollectRequest = scrapy.Request(movieItem['essay_collect_url'], callback=self.parseComments,
+        #                                      errback=self.errback)
+        # filmCriticsRequest = scrapy.Request(movieItem['film_critics_url'], callback=self.parseReviews,
+        #                                     errback=self.errback)
+
+        # essayCollectRequest.meta['movieid'] = response.url
+        # filmCriticsRequest.meta['movieid'] = response.url
+
+        # yield essayCollectRequest
+        # yield filmCriticsRequest
+
+        # 不是从豆列中过来的,就说明是"我看"中的电影,只爬取 我看-豆列-电影这几层
+        if 'fromDoulist' not in response.meta:
+            # doulistsRequest = scrapy.Request(movieItem['doulists_url'], callback=self.parseDoulists,
+            #                                  errback=self.errback)
+            doulistsRequest = scrapy.Request(movieItem['doulists_url'], meta={'cookiejar':response.meta['cookiejar']},callback=self.parseDoulists,
                                              errback=self.errback)
-    #     filmCriticsRequest = scrapy.Request(movieItem['film_critics_url'], callback=self.parseReviews,
-    #                                         errback=self.errback)
+            doulistsRequest.meta['movieid'] = response.url
+            yield doulistsRequest
 
-        essayCollectRequest.meta['movieid'] = response.url
-    #     filmCriticsRequest.meta['movieid'] = response.url
-
-        yield essayCollectRequest
-    #     yield filmCriticsRequest
-
-    #     # 不是从豆列中过来的,就说明是"我看"中的电影,只爬取 我看-豆列-电影这几层
-    #     if not in response.meta:
-    #         doulistsRequest = scrapy.Request(movieItem['doulists_url'], callback=self.parseDoulists,
-    #                                          errback=self.errback)
-    #         doulistsRequest.meta['movieid'] = response.url
-    #         yield doulistsRequest
-    
     # 短评
     def parseComments(self, response):
         movieid = response.meta['movieid']
-        # inspect_response(response, self)
         users = response.xpath(
             '//div[contains(@class, "comment-item")]/div/a/@title').extract()
         user_urls = response.xpath(
@@ -149,7 +141,7 @@ class DoubanMoviesSpider(scrapy.Spider):
 
         # 有些没有给出评分的
         comment_rates = response.xpath('//span[@class="comment-info"]')
-        
+
         for i in range(0, len(users)):
             comment = MovieEssayItem()
             comment['movieid'] = movieid
@@ -158,113 +150,151 @@ class DoubanMoviesSpider(scrapy.Spider):
             comment['vote_num'] = vote_nums[i]
             comment['comment_time'] = comment_times[i]
             comment['comment'] = comments[i].strip()
-            crs = comment_rates[i].xpath('./span[contains(@class, allstar)]/@title').extract()
-            if len(crs)==2:
+            crs = comment_rates[i].xpath(
+                './span[contains(@class, allstar)]/@title').extract()
+            if len(crs) == 2:
                 comment['comment_rate'] = crs[0]
             yield comment
-        global aa
-        aa = aa+1
-        if aa >20 :
-            inspect_response(response, self)
-        nextPageURL = response.xpath('//a[@class="next"]/@href').extract_first()
+
+        nextPageURL = response.xpath(
+            '//a[@class="next"]/@href').extract_first()
         if nextPageURL:
             commentRequest = scrapy.Request(response.urljoin(nextPageURL), callback=self.parseComments,
                                             errback=self.errback)
             commentRequest.meta['movieid'] = movieid
             yield commentRequest
 
-    # # 影评
-    # def parseReviews(self, response):
-    #     movieid = response.meta['movieid']
-    #     # 当前页面影评URL
-    #     reviewsURLs = response.xpath()
-    #     for url in reviewsURLs:
-    #         request = scrapy.Request(url, callback=self.parseReviewDetail,
-    #                                  errback=self.errback)
-    #         request.meta['movieid'] = movieid
-    #         yield request
+    # 影评
+    def parseReviews(self, response):
+        movieid = response.meta['movieid']
+        # 当前页面影评URL
+        reviewsid = response.xpath(
+            '//div[@class="review-short"]/@data-rid').extract()
+        for rid in reviewsid:
+            request = scrapy.Request("https://movie.douban.com/review/" + rid, callback=self.parseReviewDetail,
+                                     errback=self.errback)
+            request.meta['movieid'] = movieid
+            yield request
 
-    #     nextPageURL = response.xpath()  # 影评下一页
-    #     if nextPageURL is not None:
-    #         reviewRequest = scrapy.Request(nextPageURL, callback=self.parseReviews,
-    #                                        errback=self.errback)
-    #         reviewRequest.meta['movieid'] = movieid
-    #         yield reviewRequest
+        # global aa
+        # aa = aa+1
+        # if aa < 3:
+        # 影评下一页
+        nextPage = response.xpath(
+            '//span[@class="next"]/a/@href').extract_first()  
+        if nextPage:
+            self.logger.info('nextPage:%s', nextPage)
+            reviewRequest = scrapy.Request(response.urljoin(nextPage), callback=self.parseReviews,
+                                           errback=self.errback)
+            reviewRequest.meta['movieid'] = movieid
+            yield reviewRequest
 
-    # # 文件储存files/
-    # def parseReviewDetail(self, response):
-    #     movieid = response.meta['movieid']
-    #     filmCriticsItem = FilmCriticsItem()
-    #     filmCriticsItem['film_critics_url'] = response.url
-    #     # filmCriticsItem['film_critics'] = movieid 这个存文件吧
-    #     filmCriticsItem['user_name'] = movieid
-    #     filmCriticsItem['user_url'] = movieid
-    #     filmCriticsItem['comment_rate'] = movieid
-    #     filmCriticsItem['comment_time'] = movieid
-    #     filmCriticsItem['useless_num'] = movieid
-    #     filmCriticsItem['useful_num'] = movieid
-    #     filmCriticsItem['like_num'] = movieid
-    #     filmCriticsItem['like_num'] = movieid
-    #     filmCriticsItem['reply_num'] = movieid
+    # 文件储存files
+    def parseReviewDetail(self, response):
+        movieid = response.meta['movieid']
+        filmCriticsItem = FilmCriticsItem()
+        filmCriticsItem['movieid'] = movieid
+        filmCriticsItem['film_critics_url'] = response.url
+        filmCriticsItem['title'] = response.xpath(
+            '//span[@property="v:summary"]/text()').extract_first()
+        filmCriticsItem['review'] = ''.join(response.xpath(
+            '//div[@property="v:description"]/text()').extract()).strip()
+        filmCriticsItem['user_name'] = response.xpath(
+            '//span[@property="v:reviewer"]/text()').extract_first()
+        filmCriticsItem['user_url'] = response.xpath(
+            '//header[@class="main-hd"]/a/@href').extract_first()
+        filmCriticsItem['comment_rate'] = response.xpath(
+            '//span[@property="v:rating"]/text()').extract_first()
+        filmCriticsItem['comment_time'] = response.xpath(
+            '//span[@property="v:dtreviewed"]/text()').extract_first()
+        filmCriticsItem['useless_num'] = response.xpath(
+            '//button[contains(@class, useless_count)]/text()').extract()[1].strip()
+        filmCriticsItem['useful_num'] = response.xpath(
+            '//button[contains(@class, useful_count)]/text()').extract_first().strip()
+        # filmCriticsItem['like_num'] =
+        # response.xpath('//span[@class="LikeButton-count"]/text()').extract_first()
+        filmCriticsItem['recommend_num'] = response.xpath(
+            '//span[@class="rec"]/a/text()').extract_first().strip()
+        yield filmCriticsItem
 
-    # # 豆列
-    # def parseDoulists(self, response):
-    #     movieid = response.meta['movieid']
-    #     # 获取当前页上所有豆列url
-    #     # 豆列太多,就不爬取其他页面的豆列了,只找当前列
-    #     douListUrls = response.xpath()
+    # 豆列
+    def parseDoulists(self, response):
+        movieid = response.meta['movieid']
+        # 豆列太多,就不爬取其他页面的豆列了,只找当前列
+        douListUrls = response.xpath('//li[@class="pl2"]/a/@href').extract()
 
-    #     # 只找当前页的豆列就好了
-    #     for url in douListUrls:
-    #         request = scrapy.Request(url, callback=self.parseDoulistDetail,
-    #                                  errback=self.errback)
-    #         request.meta['movieid'] = movieid
-    #         yield request
+        # 只找当前页的豆列就好了
+        for url in douListUrls:
+            requestDoulistDetail = scrapy.Request(url, meta={'cookiejar':response.meta['cookiejar']},callback=self.parseDoulistDetail,
+                                     errback=self.errback)
+            requestDoulistDetail.meta['movieid'] = movieid
+            yield requestDoulistDetail
+        # requestDoulistDetail = scrapy.Request(douListUrls[0], callback=self.parseDoulistDetail,
+        #                                       errback=self.errback)
+        # requestDoulistDetail.meta['movieid'] = movieid
+        yield requestDoulistDetail
 
-    # def parseDoulistDetail(self, response):
-    #     movieid = response.meta['movieid']
-    #     doulistItem = DoulistItem()
-    #     doulistItem['movieid'] = movieid
-    #     doulistItem['doulist_url'] = movieid
-    #     doulistItem['doulist_name'] = movieid
-    #     doulistItem['doulist_intr'] = movieid
-    #     doulistItem['user_name'] = movieid
-    #     doulistItem['user_url'] = movieid
-    #     doulistItem['collect_num'] = movieid
-    #     doulistItem['recommend_num'] = movieid
-    #     doulistItem['doulist_cratedDate'] = movieid
-    #     doulistItem['doulist_updatedDate'] = movieid
-    #     doulistItem['viewed_num'] = movieid
-    #     doulistItem['not_viewed_num'] = movieid
-    #     yield doulistItem
+    def parseDoulistDetail(self, response):
+        movieid = response.meta['movieid']
+        inspect_response(response, self)
+        if 'fromDoulist' not in response.meta:
+            doulistItem = DoulistItem()
+            doulistItem['movieid'] = movieid
+            doulistItem['doulist_url'] = response.url
+            doulistItem['doulist_name'] = response.xpath(
+                '//div[@id="content"]/h1/text()').extract_first()
+            doulistItem['doulist_intr'] = ''.join(response.xpath(
+                '//div[@class="doulist-about"]/text()').extract()).strip()
+            doulistItem['user_name'] = response.xpath(
+                '//div[@class="meta"]/a/text()').extract_first().strip()
+            doulistItem['user_url'] = response.xpath(
+                '//div[@class="meta"]/a/@href').extract_first()
+            doulistItem['collect_num'] = response.xpath(
+                '//a[@class="doulist-followers-link"]/text()').extract_first()
+            doulistItem['recommend_num'] = response.xpath(
+                '//span[@class="rec-num"]/text()').extract_first()
+            time = response.xpath(
+                '//span[@class="time"]/text()').extract_first().strip().split('\n            \xa0\xa0')
+            doulistItem['doulist_cratedDate'] = time[0]
+            doulistItem['doulist_updatedDate'] = time[1]
+            num = response.xpath(
+                '//div[@class="doulist-filter"]/a/span/text()').extract()
+            # 只有登录了才有显示，否则出错
+            # doulistItem['viewed_num'] = num[1]
+            # doulistItem['not_viewed_num'] = num[2]
+            yield doulistItem
 
-    #     # 这里读取出当前页所有电影信息,只取豆列上显示的
-    #     # for 循环
-    #         doulistMovieDetailItem = DoulistMovieDetailItem()
-    #         doulistMovieDetailItem['movieid'] = movieid
-    #         doulistMovieDetialItem =
-    #         doulistMovieDetialItem['doulists_url'] =
-    #         doulistMovieDetialItem['comment'] =
-    #         doulistMovieDetialItem['add_date'] =
-    #         yield doulistMovieDetailItem
+        movie_urls = response.xpath('//div[@class="title"]/a/@href').extract()
+        movie_names = response.xpath(
+            '//div[@class="title"]/a/text()').extract()
 
-    #     # 进详情页
-    #     movieURLList = response.xpath()
-    #     for url in movieURLList:
-    #         doulistMovieRequest = scrapy.Request(url, callback=self.parseMovieDetial,
-    #                                              errback=self.errback)
-    #         doulistMovieRequest.meta['fromDoulist'] = true
-    #         yield doulistMovieRequest
+        # 这里读取出当前页所有电影信息,只取豆列上显示的
+        for i in range(0, len(movie_urls)):
+            doulistMovieDetailItem = DoulistMovieDetailItem()
+            doulistMovieDetailItem['movieid'] = movie_urls[i]
+            doulistMovieDetailItem['movie_name'] = movie_names[i]
+            doulistMovieDetailItem['doulist_url'] = response.url
+            yield doulistMovieDetailItem
 
-    #     nextPageURL = response.xpath()  # 豆列下一页
-    #     if nextPageURL is not None:
-    #         doulistRequest = scrapy.Request(nextPageURL, callback=self.parseDoulistDetail,
-    #                                         errback=self.errback)
-    #         doulistRequest.meta['movieid'] = movieid
-    #         yield reviewRequest
+        # 进详情页
+        for url in movie_urls:
+            doulistMovieRequest = scrapy.Request(url, callback=self.parseMovieDetial,
+                                                 errback=self.errback)
+            doulistMovieRequest.meta['fromDoulist'] = '1'
+            yield doulistMovieRequest
+
+        if nextPageURL:
+            doulistRequest = scrapy.Request(nextPageURL, callback=self.parseDoulistDetail,
+                                            errback=self.errback)
+            doulistRequest.meta['fromDoulist'] = '1'
+            doulistRequest.meta['movieid'] = movieid
+            yield doulistRequest
 
     def errback(self, failure):
         self.logger.error(repr(failure))
         self.logger.error('detail info  : %s ', failure.value)
 
         # return self.parse(response) #retry
+
+# todo
+# HttpError: Ignoring non-200 response>
