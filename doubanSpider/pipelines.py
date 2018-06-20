@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from scrapy.shell import inspect_response
 from scrapy.exporters import JsonItemExporter
+from doubanSpider.items import *
 import os
 import scrapy
 # Define your item pipelines here
@@ -20,18 +21,24 @@ class cleanItemPipeline(object):
     def process_item(self, item, spider):
         for (key, value) in item.items():
             item[key] = value.strip()
+            if not value.strip():
+                    self.logger.error('item value is none!  %s ', item)
         return item
 
 
 class reviewtToFilePipeline(object):
 
+    def __init__(self):
+        self.separateLine = '-----------====------------'
+
     def process_item(self, item, spider):
-        base_dir = os.getcwd()
-        print("===========================================================")
-        print("base_dir : %s ", base_dir)
-        filePath = '../../file/reviews/'+item['movieid']
-        with open(filePath, 'a+') as f:
-             f.write('dd '+ item['movieid'])
+        if isinstance(item, FilmCriticsItem):
+            base_dir = os.getcwd()
+            filePath = '../../file/reviews/' + item['movieid']
+            with open(filePath, 'a') as f:
+                f.write(item['film_critics_url'] + ':::')
+                f.write(item['review'] + '\n')
+                f.write(self.separateLine + '\n')
         return item
 
 # class MySQLStorePipeline(object):

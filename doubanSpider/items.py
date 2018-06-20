@@ -4,7 +4,7 @@ import scrapy
 
 class MovieBase(scrapy.Item):
     movieid = scrapy.Field()  # 这是豆瓣的movieid
-    movie_url = scrapy.Field()  # 这是豆瓣的movieid
+    movie_url = scrapy.Field()
     movie_name = scrapy.Field()
 
 
@@ -71,8 +71,6 @@ class MovieEssayItem(MovieBase):
 
 # 影评,默认将影评内容存储在文件中
 # 以film_critics_url:::内容的形式储存
-
-
 class FilmCriticsItem(MovieBase):
     film_critics_url = scrapy.Field()
     title = scrapy.Field()
@@ -88,8 +86,6 @@ class FilmCriticsItem(MovieBase):
     recommend_num = scrapy.Field()
 
 # 豆列
-
-
 class DoulistItem(MovieBase):
     doulist_url = scrapy.Field()  # 当前豆列url
     doulist_name = scrapy.Field()
@@ -104,9 +100,7 @@ class DoulistItem(MovieBase):
     not_viewed_num = scrapy.Field()
 
 # 豆列单项
-
-
 class DoulistMovieDetailItem(MovieBase):
     doulist_url = scrapy.Field()
     comment = scrapy.Field()
-    add_date = scrapy.Field()
+

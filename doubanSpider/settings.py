@@ -27,7 +27,7 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 4
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -41,8 +41,9 @@ DOWNLOAD_DELAY = 3
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Language': 'en',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+    'Accept-Language': 'en-US,en;q=0.5',
+    # 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0',
     'Connection': 'keep-alive',  # 保持链接状态
 }
 
@@ -96,3 +97,11 @@ ITEM_PIPELINES = {
 # IMAGES_STORE = '/media/feng/资源/bigdata/doubanSpider/file'
 # IMAGES_MIN_HEIGHT = 100
 # IMAGES_MIN_WIDTH = 100
+
+# 日志默认开启,有默认设置
+# LOG_ENABLED = True
+# LOG_ENCODING = 'utf-8'
+# LOG_LEVEL = 'INFO'
+# # 用于设置日志配置文件，将程序运行的信息，保存在指定的文件中
+# LOG_STDOUT = False
+# LOG_FILE = 'doubanspider.log'

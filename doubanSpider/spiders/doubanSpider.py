@@ -3,6 +3,7 @@ from doubanSpider.transCookie import *
 from doubanSpider.items import *
 from scrapy.conf import settings
 from scrapy.shell import inspect_response
+from  doubanSpider.logConfig import *
 import re
 
 # Scrapy定向爬虫教程(五)——保持登陆状态 : https://blog.csdn.net/qq_30242609/article/details/52822190
@@ -11,27 +12,25 @@ import re
 # 文件图片储存 https://www.xncoding.com/2016/03/20/scrapy-08.html
 
 # 登录https://blog.csdn.net/qq_41020281/article/details/79437455
-# https://www.cnblogs.com/jinxiao-pu/p/6670672.html tesseract
-
 
 class DoubanMoviesSpider(scrapy.Spider):
     name = "doubanmovies"
     allowed_domains = ['douban.com']
     cookie = transCookie("ue=1430657824@qq.com; ll=118282; bid=2ZAH2S2KiAo; ps=y; dbcl2=99678180:+xbhZwQ2hI4; push_noty_num=0; push_doumail_num=0; ap=1; _pk_id.100001.4cf6=6dca2b2485769e55.1528894519.1.1528894519.1528894519.; __utma=30149280.2077450901.1528894521.1528894521.1528894521.1; __utmz=30149280.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=223695111.468546197.1528894521.1528894521.1528894521.1; __utmz=223695111.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _vwo_uuid_v2=D0ABF7CE98FAAEFC16F17EB5D02FA904C|40d80dd9cb7725af334383e36649c6ae; ck=72gG").stringToDict()
-
+    
     global aa
     aa = 1
-
     def start_requests(self):
-        url = 'https://movie.douban.com/subject/5308265/'
-        self.logger.info('start_requests %s ', url)
-        self.logger.info(
+        self.mylogger = MyLogger().getlog()
+        url = 'https://movie.douban.com/subject/26416062/'
+        self.mylogger.info('start_requests %s ', url)
+        self.mylogger.info(
             '-----------------------------------------------------------------------------')
         # meta={'cookiejar':1}表示开启cookie记录，首次请求时写在Request()里
         yield scrapy.Request(url, self.parseMovieDetial, cookies=self.cookie)
 
     def parseMovieDetial(self, response):
-        self.logger.info('start crawl MovieDetialItem %s', response.url)
+        self.mylogger.info('start crawl MovieDetialItem %s', response.url)
         # inspect_response(response, self)
         movieItem = MovieDetialItem()
         movieItem['movieid'] =self.getMovieid(response.url)  # 从url中取出movieid
@@ -101,7 +100,6 @@ class DoubanMoviesSpider(scrapy.Spider):
                 '//input[contains(@id, "n_rating")]/@value').extract_first()
             movieItem['my_tags'] = response.xpath(
                 '//input[contains(@id, "n_rating")]/following::text()[4]').extract_first()
-        print(movieItem)
         yield movieItem
         # inspect_response(response, self)
         essayCollectRequest = scrapy.Request(movieItem['essay_collect_url'],  cookies=self.cookie,callback=self.parseComments,
@@ -165,19 +163,17 @@ class DoubanMoviesSpider(scrapy.Spider):
     def parseReviews(self, response):
         movieid = response.meta['movieid']
         # 当前页面影评URL
-        reviewsid = response.xpath(
-            '//div[@class="review-short"]/@data-rid').extract()
+        reviewsid = response.xpath('//div[@class="review-short"]/@data-rid').extract()
         for rid in reviewsid:
-            request = scrapy.Request("https://movie.douban.com/review/" + rid,  cookies=self.cookie, callback=self.parseReviewDetail,
+            request = scrapy.Request("https://movie.douban.com/review/" + rid+"/",  cookies=self.cookie, callback=self.parseReviewDetail,
                                      errback=self.errback)
             request.meta['movieid'] = movieid
             yield request
-
-        nextPage = response.xpath(
-            '//span[@class="next"]/a/@href').extract_first()
+        # inspect_response(response, self)
+        nextPage = response.xpath( '//span[@class="next"]/a/@href').extract_first()
         if nextPage:
-            self.logger.info('nextPage:%s', nextPage)
-            reviewRequest = scrapy.Request(response.urljoin(nextPage),  cookies=self.cookie, callback=self.parseReviews,
+            self.mylogger.info('nextPage:%s', nextPage)
+            reviewRequest = scrapy.Request(response.urljoin(nextPage),  cookies=self.cookie, callback=self.parseReviews,meta={'dont_redirect': True},
                                            errback=self.errback)
             reviewRequest.meta['movieid'] = movieid
             yield reviewRequest
@@ -185,13 +181,13 @@ class DoubanMoviesSpider(scrapy.Spider):
     # 文件储存files
     def parseReviewDetail(self, response):
         movieid = response.meta['movieid']
+        # inspect_response(response, self)
         filmCriticsItem = FilmCriticsItem()
         filmCriticsItem['movieid'] = movieid
         filmCriticsItem['film_critics_url'] = response.url
         filmCriticsItem['title'] = response.xpath(
             '//span[@property="v:summary"]/text()').extract_first()
-        filmCriticsItem['review'] = ''.join(response.xpath(
-            '//div[@property="v:description"]/text()').extract()).strip()
+        filmCriticsItem['review'] = ''.join(response.xpath('//div[@property="v:description"]//text()').extract()).strip()
         filmCriticsItem['user_name'] = response.xpath(
             '//span[@property="v:reviewer"]/text()').extract_first()
         filmCriticsItem['user_url'] = response.xpath(
@@ -283,8 +279,8 @@ class DoubanMoviesSpider(scrapy.Spider):
             yield doulistRequest
 
     def errback(self, failure):
-        self.logger.error(repr(failure))
-        self.logger.error('detail info  : %s ', failure.value)
+        self.mylogger.error(repr(failure))
+        self.mylogger.error('detail info  : %s ', failure.value)
 
         # return self.parse(response) #retry
 
