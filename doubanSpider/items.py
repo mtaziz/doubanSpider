@@ -82,8 +82,10 @@ class FilmCriticsItem(MovieBase):
     comment_time = scrapy.Field()
     useless_num = scrapy.Field()
     useful_num = scrapy.Field()
-    like_num = scrapy.Field()
+    # like_num = scrapy.Field()
     reply_num = scrapy.Field()
+    review = scrapy.Field()
+    recommend_num = scrapy.Field()
 
 # 豆列
 
