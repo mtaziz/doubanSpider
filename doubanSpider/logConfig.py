@@ -2,6 +2,7 @@ import logging
 
 
 class MyLogger(object):
+    logger = ''
 
     def __init__(self):
         # 配置日志信息
@@ -14,17 +15,18 @@ class MyLogger(object):
         console = logging.StreamHandler()
         console.setLevel(logging.INFO)
         # 设置日志打印格式
-        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s')
+        formatter = logging.Formatter(
+            '%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s')
         console.setFormatter(formatter)
         # 将定义好的console日志handler添加到root logger
-        logging.getLogger('').addHandler(console)
+        logging.getLogger('console').addHandler(console)
 
         errorlog = logging.FileHandler("error.log")
         errorlog.setLevel(logging.ERROR)
         errorlog.setFormatter(formatter)
-        logging.getLogger('').addHandler(errorlog)
+        logging.getLogger('errorlog').addHandler(errorlog)
 
-        self.logger = logging.getLogger('doubanLog')
+        MyLogger.logger = logging.getLogger('doubanLog')
 
     def getlog(self):
-        return self.logger
+        return MyLogger.logger

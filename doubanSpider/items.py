@@ -59,8 +59,12 @@ class MovieDetialItem(MovieBase):
     my_rate = scrapy.Field()
     my_tags = scrapy.Field()
     tags = scrapy.Field()
+    image_url = scrapy.Field()
+    official_site = scrapy.Field()
 
 # 短评
+
+
 class MovieEssayItem(MovieBase):
     user_name = scrapy.Field()
     user_url = scrapy.Field()
@@ -71,6 +75,8 @@ class MovieEssayItem(MovieBase):
 
 # 影评,默认将影评内容存储在文件中
 # 以film_critics_url:::内容的形式储存
+
+
 class FilmCriticsItem(MovieBase):
     film_critics_url = scrapy.Field()
     title = scrapy.Field()
@@ -80,12 +86,14 @@ class FilmCriticsItem(MovieBase):
     comment_time = scrapy.Field()
     useless_num = scrapy.Field()
     useful_num = scrapy.Field()
-    # like_num = scrapy.Field()
+    like_num = scrapy.Field()
     reply_num = scrapy.Field()
     review = scrapy.Field()
     recommend_num = scrapy.Field()
 
 # 豆列
+
+
 class DoulistItem(MovieBase):
     doulist_url = scrapy.Field()  # 当前豆列url
     doulist_name = scrapy.Field()
@@ -100,7 +108,8 @@ class DoulistItem(MovieBase):
     not_viewed_num = scrapy.Field()
 
 # 豆列单项
+
+
 class DoulistMovieDetailItem(MovieBase):
     doulist_url = scrapy.Field()
     comment = scrapy.Field()
-

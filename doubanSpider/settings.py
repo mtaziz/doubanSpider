@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'doubanSpider.spiders'
 #USER_AGENT = 'doubanSpider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -68,8 +68,10 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'doubanSpider.pipelines.cleanItemPipeline': 300,
+   'doubanSpider.pipelines.cleanItemPipeline': 100,
+   'doubanSpider.pipelines.MovieImagePipeline': 310,
    'doubanSpider.pipelines.reviewtToFilePipeline': 350,
+   'doubanSpider.pipelines.MySQLStorePipeline':400,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -94,9 +96,10 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 # RETRY_TIMES  = 4
-# IMAGES_STORE = '/media/feng/资源/bigdata/doubanSpider/file'
-# IMAGES_MIN_HEIGHT = 100
-# IMAGES_MIN_WIDTH = 100
+IMAGES_STORE = '/media/feng/资源/bigdata/doubanSpider/file/images/'
+IMAGES_MIN_HEIGHT = 100
+IMAGES_MIN_WIDTH = 100
+IMAGES_EXPIRES = 90                                   # 过期天数
 
 # 日志默认开启,有默认设置
 # LOG_ENABLED = True
@@ -105,3 +108,10 @@ ITEM_PIPELINES = {
 # # 用于设置日志配置文件，将程序运行的信息，保存在指定的文件中
 # LOG_STDOUT = False
 # LOG_FILE = 'doubanspider.log'
+
+MYSQL_HOST = 'localhost'
+MYSQL_PORT = 3306
+MYSQL_USER = 'root'
+MYSQL_PASSWD = 'feng'
+MYSQL_DBNAME = 'bigdata'
+
