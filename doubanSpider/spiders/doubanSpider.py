@@ -17,7 +17,7 @@ import re
 class DoubanMoviesSpider(scrapy.Spider):
     name = "doubanmovies"
     allowed_domains = ['douban.com']
-    cookie = transCookie("ue=1430657824@qq.com; ll=118282; bid=2ZAH2S2KiAo; ps=y; dbcl2=99678180:+xbhZwQ2hI4; push_noty_num=0; push_doumail_num=0; ap=1; _pk_id.100001.4cf6=6dca2b2485769e55.1528894519.1.1528894519.1528894519.; __utma=30149280.2077450901.1528894521.1528894521.1528894521.1; __utmz=30149280.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=223695111.468546197.1528894521.1528894521.1528894521.1; __utmz=223695111.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _vwo_uuid_v2=D0ABF7CE98FAAEFC16F17EB5D02FA904C|40d80dd9cb7725af334383e36649c6ae; ck=72gG").stringToDict()
+    cookie = transCookie("ue=1430657824@qq.com; ll=118282; bid=2ZAH2S2KiAo; ps=y; dbcl2=99678180:l0Yr6NG2OzU; push_noty_num=0; push_doumail_num=0; ap=1; _pk_id.100001.4cf6=6dca2b2485769e55.1528894519.1.1528894519.1528894519.; __utma=30149280.2077450901.1528894521.1528894521.1528894521.1; __utmz=30149280.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=223695111.468546197.1528894521.1528894521.1528894521.1; __utmz=223695111.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _vwo_uuid_v2=D0ABF7CE98FAAEFC16F17EB5D02FA904C|40d80dd9cb7725af334383e36649c6ae; ck=9TzV").stringToDict()
 
     global aa
     aa = 1
@@ -80,17 +80,17 @@ class DoubanMoviesSpider(scrapy.Spider):
         movieItem['storyline'] = response.xpath(
             '//span[contains(@property, "v:summary")]/text()').extract_first().strip()
 
-        also_like_names = response.xpath(
-            '(//div[contains(@class, "recommendations-bd")]/dl/dt/a)/@href').extract()
         also_like_urls = response.xpath(
+            '(//div[contains(@class, "recommendations-bd")]/dl/dt/a)/@href').extract()
+        also_like_names = response.xpath(
             '(//div[contains(@class, "recommendations-bd")]/dl/dt/a)//img/@alt').extract()
         for i in range(0, 10):
             movieItem['also_like_' + str(i + 1) + '_name'] = also_like_names[i]
             movieItem['also_like_' + str(i + 1) + '_url'] = also_like_urls[i]
         view_people = response.xpath(
             '//div[contains(@class, "subject-others-interests-ft")]/a/text()').extract()
-        movieItem['viewed_num'] = view_people[0]  # test
-        movieItem['want_to_view_num'] = view_people[1]
+        movieItem['viewed_num'] = view_people[0][0:view_people[0].find('人看过')]
+        movieItem['want_to_view_num'] = view_people[1][0:view_people[1].find('人想看')]
         movieItem['image_url'] = response.xpath(
             '//img[(@rel = "v:image")]/@src').extract_first()
 
