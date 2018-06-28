@@ -1,0 +1,494 @@
+2018-06-28 22:54:03 [scrapy.utils.log] INFO: Scrapy 1.3.3 started (bot: doubanSpider)
+2018-06-28 22:54:03 [scrapy.utils.log] INFO: Overridden settings: {'SPIDER_MODULES': ['doubanSpider.spiders'], 'BOT_NAME': 'doubanSpider', 'NEWSPIDER_MODULE': 'doubanSpider.spiders', 'LOG_FILE': 'doubanspider.log', 'DOWNLOAD_DELAY': 4}
+2018-06-28 22:54:03 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2018-06-28 22:54:03 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-06-28 22:54:03 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'doubanSpider.middlewares.ProcessAllExceptionMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-06-28 22:54:03 [scrapy.middleware] INFO: Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.MovieImagePipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline',
+ 'doubanSpider.pipelines.MySQLStorePipeline']
+2018-06-28 22:54:03 [scrapy.core.engine] INFO: Spider opened
+2018-06-28 22:54:03 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-06-28 22:54:03 [scrapy.extensions.telnet] DEBUG: Telnet console listening on 127.0.0.1:6025
+2018-06-28 22:54:03 [doubanLog] INFO: start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-28 22:54:04 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-28 22:54:04 [doubanLog] INFO: start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-28 22:54:04 [scrapy.pipelines.files] DEBUG: File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-28 22:54:04 [doubanLog] INFO: INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '120829', '8.7%', '36.6%','47.1%', '6.7%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '128286', '30635', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-28 22:54:04 [doubanLog] ERROR: (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 22:54:04 [scrapy.core.scraper] DEBUG: Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '120829',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.7%',
+ 'star_3': '47.1%',
+ 'star_4': '36.6%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '128286',
+ 'want_to_view_num': '30635',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-28 22:54:09 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://movie.douban.com/subject/26416062//comments?sort=time&status=F> (referer: https://movie.douban.com/subject/26416062/)
+2018-06-28 23:03:51 [scrapy.utils.log] INFO: Scrapy 1.3.3 started (bot: doubanSpider)
+2018-06-28 23:03:51 [scrapy.utils.log] INFO: Overridden settings: {'BOT_NAME': 'doubanSpider', 'SPIDER_MODULES': ['doubanSpider.spiders'], 'DOWNLOAD_DELAY': 4, 'NEWSPIDER_MODULE': 'doubanSpider.spiders', 'LOG_FILE': 'doubanspider.log'}
+2018-06-28 23:03:51 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole']
+2018-06-28 23:03:51 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-06-28 23:03:51 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'doubanSpider.middlewares.ProcessAllExceptionMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-06-28 23:03:51 [scrapy.middleware] INFO: Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.MovieImagePipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline',
+ 'doubanSpider.pipelines.MySQLStorePipeline']
+2018-06-28 23:03:51 [scrapy.core.engine] INFO: Spider opened
+2018-06-28 23:03:51 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-06-28 23:03:51 [scrapy.extensions.telnet] DEBUG: Telnet console listening on 127.0.0.1:6026
+2018-06-28 23:03:51 [doubanLog] INFO: start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-28 23:03:52 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-28 23:03:52 [doubanLog] INFO: start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-28 23:03:52 [scrapy.pipelines.files] DEBUG: File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-28 23:03:52 [scrapy.core.scraper] ERROR: Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 120, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:03:52 [doubanLog] INFO: INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '120869', '8.7%', '36.6%','47.1%', '6.7%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '128326', '30634', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-28 23:03:52 [doubanLog] ERROR: (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:03:52 [scrapy.core.scraper] DEBUG: Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '120869',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.7%',
+ 'star_3': '47.1%',
+ 'star_4': '36.6%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '128326',
+ 'want_to_view_num': '30634',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-28 23:03:52 [scrapy.core.engine] INFO: Closing spider (finished)
+2018-06-28 23:03:52 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 711,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 27548,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 28, 15, 3, 52, 475309),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 4,
+ 'log_count/ERROR': 2,
+ 'log_count/INFO': 10,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/Exception': 1,
+ 'start_time': datetime.datetime(2018, 6, 28, 15, 3, 51, 504425)}
+2018-06-28 23:03:52 [scrapy.core.engine] INFO: Spider closed (finished)
+2018-06-28 23:27:55 [scrapy.utils.log] INFO: Scrapy 1.3.3 started (bot: doubanSpider)
+2018-06-28 23:27:55 [scrapy.utils.log] INFO: Overridden settings: {'LOG_FILE': 'doubanspider.log', 'SPIDER_MODULES': ['doubanSpider.spiders'], 'DOWNLOAD_DELAY': 4, 'NEWSPIDER_MODULE': 'doubanSpider.spiders', 'BOT_NAME': 'doubanSpider'}
+2018-06-28 23:27:55 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole']
+2018-06-28 23:27:55 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-06-28 23:27:55 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'doubanSpider.middlewares.ProcessAllExceptionMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-06-28 23:27:55 [scrapy.middleware] INFO: Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.MovieImagePipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline',
+ 'doubanSpider.pipelines.MySQLStorePipeline']
+2018-06-28 23:27:55 [scrapy.core.engine] INFO: Spider opened
+2018-06-28 23:27:55 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-06-28 23:27:55 [scrapy.extensions.telnet] DEBUG: Telnet console listening on 127.0.0.1:6023
+2018-06-28 23:27:55 [errorlog] INFO: start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-28 23:27:55 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-28 23:27:55 [errorlog] INFO: start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-28 23:27:55 [scrapy.pipelines.files] DEBUG: File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-28 23:27:55 [scrapy.core.scraper] ERROR: Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:27:56 [errorlog] INFO: INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '120923', '8.7%', '36.6%','47.1%', '6.7%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '128387', '30634', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-28 23:27:56 [errorlog] ERROR: (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:27:56 [scrapy.core.scraper] DEBUG: Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '120923',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.7%',
+ 'star_3': '47.1%',
+ 'star_4': '36.6%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '128387',
+ 'want_to_view_num': '30634',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-28 23:27:56 [scrapy.core.engine] INFO: Closing spider (finished)
+2018-06-28 23:27:56 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 711,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 27572,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 28, 15, 27, 56, 28020),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 4,
+ 'log_count/ERROR': 2,
+ 'log_count/INFO': 10,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/Exception': 1,
+ 'start_time': datetime.datetime(2018, 6, 28, 15, 27, 55, 74624)}
+2018-06-28 23:27:56 [scrapy.core.engine] INFO: Spider closed (finished)
+2018-06-28 23:28:08 [scrapy.utils.log] INFO: Scrapy 1.3.3 started (bot: doubanSpider)
+2018-06-28 23:28:08 [scrapy.utils.log] INFO: Overridden settings: {'BOT_NAME': 'doubanSpider', 'LOG_FILE': 'doubanspider.log', 'DOWNLOAD_DELAY': 4, 'NEWSPIDER_MODULE': 'doubanSpider.spiders', 'SPIDER_MODULES': ['doubanSpider.spiders']}
+2018-06-28 23:28:08 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2018-06-28 23:28:08 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-06-28 23:28:08 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'doubanSpider.middlewares.ProcessAllExceptionMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-06-28 23:28:08 [scrapy.middleware] INFO: Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.MovieImagePipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline',
+ 'doubanSpider.pipelines.MySQLStorePipeline']
+2018-06-28 23:28:08 [scrapy.core.engine] INFO: Spider opened
+2018-06-28 23:28:08 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-06-28 23:28:08 [scrapy.extensions.telnet] DEBUG: Telnet console listening on 127.0.0.1:6023
+2018-06-28 23:28:08 [errorlog] INFO: start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-28 23:28:08 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-28 23:28:08 [errorlog] INFO: start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-28 23:28:08 [scrapy.pipelines.files] DEBUG: File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-28 23:28:08 [scrapy.core.scraper] ERROR: Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:28:09 [errorlog] INFO: INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '120923', '8.7%', '36.6%','47.1%', '6.7%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '128387', '30634', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-28 23:28:09 [errorlog] ERROR: (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:28:09 [scrapy.core.scraper] DEBUG: Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '120923',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.7%',
+ 'star_3': '47.1%',
+ 'star_4': '36.6%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '128387',
+ 'want_to_view_num': '30634',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-28 23:28:09 [scrapy.core.engine] INFO: Closing spider (finished)
+2018-06-28 23:28:09 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 711,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 27572,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 28, 15, 28, 9, 102729),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 4,
+ 'log_count/ERROR': 2,
+ 'log_count/INFO': 10,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/Exception': 1,
+ 'start_time': datetime.datetime(2018, 6, 28, 15, 28, 8, 142981)}
+2018-06-28 23:28:09 [scrapy.core.engine] INFO: Spider closed (finished)

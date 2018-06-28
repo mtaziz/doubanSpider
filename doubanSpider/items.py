@@ -4,11 +4,10 @@ import scrapy
 
 class MovieBase(scrapy.Item):
     movieid = scrapy.Field()  # 这是豆瓣的movieid
-    movie_url = scrapy.Field()
-    movie_name = scrapy.Field()
-
 
 class MovieDetialItem(MovieBase):
+    movie_url = scrapy.Field()
+    movie_name = scrapy.Field()
     director = scrapy.Field()
     writers = scrapy.Field()
     stars = scrapy.Field()
@@ -87,7 +86,7 @@ class FilmCriticsItem(MovieBase):
     useless_num = scrapy.Field()
     useful_num = scrapy.Field()
     like_num = scrapy.Field()
-    reply_num = scrapy.Field()
+    # reply_num = scrapy.Field()
     review = scrapy.Field()
     recommend_num = scrapy.Field()
 
@@ -112,4 +111,3 @@ class DoulistItem(MovieBase):
 
 class DoulistMovieDetailItem(MovieBase):
     doulist_url = scrapy.Field()
-    comment = scrapy.Field()

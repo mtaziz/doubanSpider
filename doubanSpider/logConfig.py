@@ -5,12 +5,12 @@ class MyLogger(object):
     logger = ''
 
     def __init__(self):
-        # 设置日志打印格式
-        formatter = logging.Formatter(
-            '%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s')
+        # # 设置日志打印格式
+        # formatter = logging.Formatter(
+        #     '%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s')
         # 配置日志信息
         logging.basicConfig(level=logging.DEBUG,
-                            format=formatter,
+                            format='%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s',
                             datefmt='%m-%d %H:%M',
                             filename='spider.log',
                             filemode='a')
@@ -18,18 +18,26 @@ class MyLogger(object):
         console = logging.StreamHandler()
         console.setLevel(logging.INFO)
         # 设置日志打印格式
-        # formatter = logging.Formatter(
-        #     '%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s')
+        formatter = logging.Formatter(
+            '%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s')
         console.setFormatter(formatter)
         # 将定义好的console日志handler添加到root logger
-        logging.getLogger('console').addHandler(console)
+        logging.getLogger('').addHandler(console)
 
         errorlog = logging.FileHandler("error.log")
         errorlog.setLevel(logging.ERROR)
         errorlog.setFormatter(formatter)
-        logging.getLogger('errorlog').addHandler(errorlog)
+        logging.getLogger('').addHandler(errorlog)
 
-        MyLogger.logger = logging.getLogger('doubanLog')
+        debuglog = logging.FileHandler("spider.log")
+        debuglog.setLevel(logging.DEBUG)
+        debuglog.setFormatter(formatter)
+        logging.getLogger('').addHandler(debuglog)
+
+        MyLogger.logger = logging.getLogger('errorlog')
+        logging.debug("==============debug=====================")
+        logging.info("==============info=====================")
+        logging.error("===============error==================")
 
     def getlog(self):
         return MyLogger.logger

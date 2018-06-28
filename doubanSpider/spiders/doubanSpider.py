@@ -4,6 +4,7 @@ from doubanSpider.items import *
 from scrapy.conf import settings
 from scrapy.shell import inspect_response
 from doubanSpider.logConfig import *
+import scrapy.exceptions as exception
 import re
 
 # Scrapy定向爬虫教程(五)——保持登陆状态 : https://blog.csdn.net/qq_30242609/article/details/52822190
@@ -17,7 +18,7 @@ import re
 class DoubanMoviesSpider(scrapy.Spider):
     name = "doubanmovies"
     allowed_domains = ['douban.com']
-    cookie = transCookie("ue=1430657824@qq.com; ll=118282; bid=2ZAH2S2KiAo; ps=y; dbcl2=99678180:l0Yr6NG2OzU; push_noty_num=0; push_doumail_num=0; ap=1; _pk_id.100001.4cf6=6dca2b2485769e55.1528894519.1.1528894519.1528894519.; __utma=30149280.2077450901.1528894521.1528894521.1528894521.1; __utmz=30149280.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=223695111.468546197.1528894521.1528894521.1528894521.1; __utmz=223695111.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _vwo_uuid_v2=D0ABF7CE98FAAEFC16F17EB5D02FA904C|40d80dd9cb7725af334383e36649c6ae; ck=9TzV").stringToDict()
+    cookie = transCookie("ue=1430657824@qq.com; ll=118282; bid=2ZAH2S2KiAo; ps=y; dbcl2=99678180:dGbcwkkQWHo; push_noty_num=0; push_doumail_num=0; ap=1; _pk_id.100001.4cf6=6dca2b2485769e55.1528894519.1.1528894519.1528894519.; __utma=30149280.2077450901.1528894521.1528894521.1528894521.1; __utmz=30149280.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=223695111.468546197.1528894521.1528894521.1528894521.1; __utmz=223695111.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _vwo_uuid_v2=D0ABF7CE98FAAEFC16F17EB5D02FA904C|40d80dd9cb7725af334383e36649c6ae; ck=pGhf").stringToDict()
 
     global aa
     aa = 1
@@ -33,7 +34,7 @@ class DoubanMoviesSpider(scrapy.Spider):
         self.mylogger.info('start crawl MovieDetialItem %s', response.url)
         # inspect_response(response, self)
         movieItem = MovieDetialItem()
-        movieItem['official_site'] ='official_site' #feng??
+        movieItem['official_site'] = response.xpath('//a[@rel="nofollow"]/text()').extract_first()
         movieItem['movieid'] = self.getMovieid(response.url)  # 从url中取出movieid
         movieItem['movie_url'] = response.url  
         movieItem['movie_name'] = response.xpath('//span[@property="v:itemreviewed"]/text()').extract_first()
@@ -107,15 +108,17 @@ class DoubanMoviesSpider(scrapy.Spider):
             movieItem['my_tags'] = response.xpath(
                 '//input[contains(@id, "n_rating")]/following::text()[4]').extract_first()
         yield movieItem
-        # inspect_response(response, self)
-        essayCollectRequest = scrapy.Request(movieItem['essay_collect_url'],  cookies=self.cookie, callback=self.parseComments,
+        # inspect_response(response, self) 
+        essayCollectRequest = scrapy.Request('https://movie.douban.com/subject/26416062//comments?sort=time&status=F',  cookies=self.cookie, callback=self.parseComments,
                                              errback=self.errback)
+        # essayCollectRequest = scrapy.Request(movieItem['essay_collect_url'],  cookies=self.cookie, callback=self.parseComments,
+        #                                      errback=self.errback)
         filmCriticsRequest = scrapy.Request(movieItem['film_critics_url'],  cookies=self.cookie, callback=self.parseReviews,
                                             errback=self.errback)
 
         essayCollectRequest.meta['movieid'] = movieItem['movieid']
         filmCriticsRequest.meta['movieid'] = movieItem['movieid']
-
+        raise exception('SDFASDFA')
         # yield essayCollectRequest
         # yield filmCriticsRequest
 
@@ -129,12 +132,10 @@ class DoubanMoviesSpider(scrapy.Spider):
     # 短评
     def parseComments(self, response):
         movieid = response.meta['movieid']
-        users = response.xpath(
-            '//div[contains(@class, "comment-item")]/div/a/@title').extract()
-        user_urls = response.xpath(
-            '//div[contains(@class, "comment-item")]/div/a/@href').extract()
-        vote_nums = response.xpath(
-            '//span[contains(@class, "votes")]/text()').extract()
+        inspect_response(response, self)
+        users = response.xpath('//div[contains(@class, "comment-item")]/div/a/@title').extract()
+        user_urls = response.xpath('//span[@class="comment-info"]/a/@href').extract()
+        vote_nums = response.xpath('//span[contains(@class, "votes")]/text()').extract()
         comment_times = response.xpath(
             '//span[contains(@class, "comment-time ")]/text()').extract()
         comments = response.xpath('//div[@class="comment"]/p/text()').extract()
@@ -142,7 +143,6 @@ class DoubanMoviesSpider(scrapy.Spider):
 
         # 有些没有给出评分的
         comment_rates = response.xpath('//span[@class="comment-info"]')
-
         for i in range(0, len(users)):
             comment = MovieEssayItem()
             comment['movieid'] = movieid
@@ -151,10 +151,8 @@ class DoubanMoviesSpider(scrapy.Spider):
             comment['vote_num'] = vote_nums[i]
             comment['comment_time'] = comment_times[i]
             comment['comment'] = comments[i].strip()
-            crs = comment_rates[i].xpath(
-                './span[contains(@class, allstar)]/@title').extract()
-            if len(crs) == 2:
-                comment['comment_rate'] = crs[0]
+            crs = comment_rates[i].xpath('./span[contains(@class, allstar)]/@title').extract()
+            comment['comment_rate'] = crs[0] if len(crs) == 2 else 0
             yield comment
 
         nextPageURL = response.xpath(
@@ -177,8 +175,7 @@ class DoubanMoviesSpider(scrapy.Spider):
             request.meta['movieid'] = movieid
             yield request
         # inspect_response(response, self)
-        nextPage = response.xpath(
-            '//span[@class="next"]/a/@href').extract_first()
+        nextPage = response.xpath('//span[@class="next"]/a/@href').extract_first()
         if nextPage:
             self.mylogger.info('nextPage:%s', nextPage)
             reviewRequest = scrapy.Request(response.urljoin(nextPage),  cookies=self.cookie, callback=self.parseReviews, meta={'dont_redirect': True},
@@ -201,18 +198,17 @@ class DoubanMoviesSpider(scrapy.Spider):
             '//span[@property="v:reviewer"]/text()').extract_first()
         filmCriticsItem['user_url'] = response.xpath(
             '//header[@class="main-hd"]/a/@href').extract_first()
-        filmCriticsItem['comment_rate'] = response.xpath(
-            '//span[@property="v:rating"]/text()').extract_first()
+        filmCriticsItem['comment_rate'] = response.xpath('//span[@property="v:rating"]/text()').extract_first()
         filmCriticsItem['comment_time'] = response.xpath(
             '//span[@property="v:dtreviewed"]/text()').extract_first()
-        filmCriticsItem['useless_num'] = response.xpath(
-            '//button[contains(@class, useless_count)]/text()').extract()[1].strip()
-        filmCriticsItem['useful_num'] = response.xpath(
-            '//button[contains(@class, useful_count)]/text()').extract_first().strip()
+        useless_num = response.xpath('//button[contains(@class, useless_count)]/text()').extract()[1].strip()
+        useful_num = response.xpath('//button[contains(@class, useful_count)]/text()').extract_first().strip()
+        recommend_num = response.xpath('//span[@class="rec"]/a/text()').extract_first().strip()
+        filmCriticsItem['useless_num'] = self.getNum(useless_num, " ")
+        filmCriticsItem['useful_num'] = self.getNum(useful_num, " ")
+        filmCriticsItem['recommend_num'] = self.getNum(recommend_num, " ")
         # filmCriticsItem['like_num'] =
         # response.xpath('//span[@class="LikeButton-count"]/text()').extract_first()
-        filmCriticsItem['recommend_num'] = response.xpath(
-            '//span[@class="rec"]/a/text()').extract_first().strip()
         yield filmCriticsItem
 
     # 豆列
@@ -230,34 +226,38 @@ class DoubanMoviesSpider(scrapy.Spider):
 
     def parseDoulistDetail(self, response):
         movieid = response.meta['movieid']
-        # inspect_response(response, self)
+        
         if 'fromDoulist' not in response.meta:
+            # inspect_response(response, self)
             doulistItem = DoulistItem()
             doulistItem['movieid'] = movieid
             doulistItem['doulist_url'] = response.url
             doulistItem['doulist_name'] = response.xpath(
                 '//div[@id="content"]/h1/text()').extract_first()
-            doulistItem['doulist_intr'] = ''.join(response.xpath(
-                '//div[@class="doulist-about"]/text()').extract()).strip()
+            doulistItem['doulist_intr'] = ''.join(response.xpath('//div[@class="doulist-about"]/text()').extract()).strip()
             doulistItem['user_name'] = response.xpath(
                 '//div[@class="meta"]/a/text()').extract_first().strip()
             doulistItem['user_url'] = response.xpath(
                 '//div[@class="meta"]/a/@href').extract_first()
             doulistItem['collect_num'] = response.xpath(
                 '//a[@class="doulist-followers-link"]/text()').extract_first()
-            doulistItem['recommend_num'] = response.xpath(
-                '//span[@class="rec-num"]/text()').extract_first()
-            time = response.xpath(
-                '//span[@class="time"]/text()').extract_first().strip().split('\n            \xa0\xa0')
-            doulistItem['doulist_cratedDate'] = time[0]
-            doulistItem['doulist_updatedDate'] = time[1]
-            num = response.xpath(
-                '//div[@class="doulist-filter"]/a/span/text()').extract()
+            time = response.xpath('//span[@class="time"]/text()').extract_first().strip().split('\n            \xa0\xa0')
+            doulistItem['doulist_cratedDate'] = time[0][0:-2]
+            doulistItem['doulist_updatedDate'] = time[1][0:-2]
+            recommend_num = response.xpath('//span[@class="rec-num"]/text()').extract_first()
+            doulistItem['recommend_num'] = recommend_num[0:-1] if  recommend_num else 0
+            num = response.xpath('//div[@class="doulist-filter"]/a/span/text()').extract()
             # 只有登录了才有显示，否则出错
-            if len(num) == 3:
-                doulistItem['viewed_num'] = num[1]
-                doulistItem['not_viewed_num'] = num[2]
+            if len(num) >= 3:
+                doulistItem['viewed_num'] = num[1][1:-1]
+                doulistItem['not_viewed_num'] = num[2][1:-1]
+            else:
+                doulistItem['viewed_num'] = 0
+                doulistItem['not_viewed_num'] = 0
+
             yield doulistItem
+
+        # inspect_response(response, self)
 
         movie_urls = response.xpath('//div[@class="title"]/a/@href').extract()
         movie_names = response.xpath(
@@ -267,7 +267,6 @@ class DoubanMoviesSpider(scrapy.Spider):
         for i in range(0, len(movie_urls)):
             doulistMovieDetailItem = DoulistMovieDetailItem()
             doulistMovieDetailItem['movieid'] = self.getMovieid(movie_urls[i])
-            doulistMovieDetailItem['movie_name'] = movie_names[i]
             doulistMovieDetailItem['doulist_url'] = response.url
             yield doulistMovieDetailItem
 
@@ -295,6 +294,13 @@ class DoubanMoviesSpider(scrapy.Spider):
 
     def getMovieid(self, url):
         return re.findall(r"(?<=/subject/)\d+(?=/)", url).pop()
+
+    def  getNum(self, strv, seperate):
+        num  = 0
+        if len(strv) > 3:
+            num = strv[strv.find(" ")+1:len(strv)]
+        return num
+
 
 # todo
 # HttpError: Ignoring non-200 response>

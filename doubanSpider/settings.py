@@ -51,13 +51,14 @@ DEFAULT_REQUEST_HEADERS = {
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
 #    'doubanSpider.middlewares.DoubanspiderSpiderMiddleware': 543,
-#}
+#    'doubanSpider.middlewares.ProcessAllExceptionMiddleware': 544,
+# }
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'doubanSpider.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   'doubanSpider.middlewares.ProcessAllExceptionMiddleware2': 543,
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -102,11 +103,11 @@ IMAGES_MIN_WIDTH = 100
 IMAGES_EXPIRES = 90                                   # 过期天数
 
 # 日志默认开启,有默认设置
-# LOG_ENABLED = True
+LOG_ENABLED = True
 # LOG_ENCODING = 'utf-8'
-# LOG_LEVEL = 'INFO'
+# LOG_LEVEL = 'DEBUG'
 # # 用于设置日志配置文件，将程序运行的信息，保存在指定的文件中
-# LOG_STDOUT = False
+# LOG_STDOUT = True
 # LOG_FILE = 'doubanspider.log'
 
 MYSQL_HOST = 'localhost'

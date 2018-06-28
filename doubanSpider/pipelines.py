@@ -17,7 +17,7 @@ from scrapy.http import Request
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-logger = MyLogger().getlog()
+# logging = Mylogging().getlog()
 
 
 class DoubanspiderPipeline(object):
@@ -30,10 +30,11 @@ class cleanItemPipeline(object):
 
     def process_item(self, item, spider):
         for (key, value) in item.items():
-            if not value.strip():
-                logger.error('item value is none!  %s ', item)
-            else :
-                item[key] = value.strip()
+            if isinstance(value,str) : 
+                if not value.strip():
+                    logging.error('item value is none!  %s ', item)
+                else :
+                    item[key] = value.strip()
         return item
 
 
@@ -55,25 +56,25 @@ class reviewtToFilePipeline(object):
 class MySQLStorePipeline(object):
 
     insertFilmMovieDetailSql =  """INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s')"""      
-    
-    insertDoulistSql = '''INSERT INTO doulist (movieid,movie_url,movie_name,doulist_url,doulist_name,doulist_intr,user_name,
+
+    insertDoulistSql = '''INSERT INTO doulist (movieid,doulist_url,doulist_name,doulist_intr,user_name,
                             user_url,collect_num,recommend_num,viewed_num,not_viewed_num,doulist_cratedDate,
                             doulist_updatedDate)
-                        VALUES ('%s', '%s', '%s', '%s', '%s','%s' ,'%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')'''
+                        VALUES ('%s', '%s', '%s', '%s', '%s','%s' ,'%s', '%s', '%s', '%s', '%s', '%s')'''
 
-    insertDoulistMovieDetailSql = """INSERT INTO doulist_movie_detail (movieid,movie_url,movie_name,
-                                        doulist_url,comment)
-                                    VALUES ('%s', '%s', '%s', '%s', '%s')"""
+    insertDoulistMovieDetailSql = """INSERT INTO doulist_movie_detail (movieid,
+                                        doulist_url)
+                                    VALUES ('%s', '%s')"""
 
-    insertFilmCriticsSql = '''INSERT INTO film_critics (movieid,movie_url,movie_name,film_critics_url, title,
+    insertFilmCriticsSql = '''INSERT INTO film_critics (movieid,film_critics_url, title,
                                     user_name,user_url,comment_rate,comment_time,useless_num,
-                                    useful_num,reply_num,recommend_num)
-                                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s')'''   
+                                    useful_num,recommend_num)
+                                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s')'''   
 
 
-    insertMovieEssaySql = '''INSERT INTO movie_essay (movieid,movie_url,movie_name,user_name, user_url,
+    insertMovieEssaySql = '''INSERT INTO movie_essay (movieid,user_name, user_url,
                                     comment,comment_rate,comment_time)
-                                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')'''                                   
+                                VALUES ('%s', '%s', '%s', '%s', '%s', '%s')'''                                   
 
 
     def __init__(self):
@@ -102,34 +103,33 @@ class MySQLStorePipeline(object):
                 item["essay_collect_url"],item["film_critics_url"],item["doulists_url"],item["viewed_num"],item["want_to_view_num"],item["image_url"])
         elif isinstance(item, MovieEssayItem):
             sql = MySQLStorePipeline.insertMovieEssaySql 
-            values = (item['movieid'],item['movie_url'],item['movie_name'],item['user_name'],
+            values = (item['movieid'],item['user_name'],
                     item['user_url'],item['comment'],item['comment_rate'],item['comment_time'])
         elif isinstance(item, DoulistItem):
             sql = MySQLStorePipeline.insertDoulistSql
-            values = (item['movieid'], item['movie_url'],item['movie_name'],
+            values = (item['movieid'], 
                     item['doulist_url'],item['doulist_name'],item['doulist_intr'],item['user_name'],
                     item['user_url'],item['collect_num'],item['recommend_num'],
                     item['viewed_num'],item['not_viewed_num'],item['doulist_cratedDate'],
                     item['doulist_updatedDate'])      
         elif isinstance(item, DoulistMovieDetailItem):
             sql = MySQLStorePipeline.insertDoulistMovieDetailSql
-            values =(item['movieid'],item['movie_url'],item['movie_name'],
-                    item['doulist_url'],item['comment'])
+            values =(item['movieid'],item['doulist_url'])
         elif isinstance(item, FilmCriticsItem):
             sql = MySQLStorePipeline.insertFilmCriticsSql
-            values = (item['movieid'],item['movie_url'],item['movie_name'],
+            values = (item['movieid'],
                     item['film_critics_url'],item['title'],item['user_name'],item['user_url'],
                     item['comment_rate'],item['comment_time'],item['useless_num'],
-                    item['useful_num'],item['reply_num'],item['recommend_num'])
+                    item['useful_num'],item['recommend_num'])
         else:
-            logger.error("没有对应上item! : "+str(item)) 
+            logging.error("没有对应上item! : "+str(item)) 
             return 
         try:        
-            logger.info(sql % values)
+            logging.info(sql % values)
             self.cursor.execute(sql % values)
             self.conn.commit()
         except Exception as e:
-            logger.error(e)
+            logging.error(e)
         return item
 
     def close_spider(self, spider):
