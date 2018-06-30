@@ -1,0 +1,2201 @@
+06-21 00:07 doubanLog    DEBUG    debugdebugdebugdebugdebugdebugdebugdebugdebugdebug.
+06-21 00:07 doubanLog    INFO     infoinfoinfoinfoinfoinfo.
+06-21 00:07 doubanLog    WARNING  Jwarning.
+06-21 00:07 doubanLog    ERROR    errorerrorerrorerrorerrorerror.
+06-21 00:07 scrapy.utils.log INFO     Scrapy 1.3.3 started (bot: doubanSpider)
+06-21 00:07 scrapy.utils.log INFO     Overridden settings: {'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['doubanSpider.spiders'], 'NEWSPIDER_MODULE': 'doubanSpider.spiders', 'DOWNLOAD_DELAY': 4, 'BOT_NAME': 'doubanSpider'}
+06-21 00:07 scrapy.middleware INFO     Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+06-21 00:07 scrapy.middleware INFO     Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+06-21 00:07 scrapy.middleware INFO     Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+06-21 00:07 scrapy.middleware INFO     Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline']
+06-21 00:07 scrapy.core.engine INFO     Spider opened
+06-21 00:07 scrapy.extensions.logstats INFO     Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+06-21 00:07 scrapy.extensions.telnet DEBUG    Telnet console listening on 127.0.0.1:6054
+06-21 00:07 doubanmovies INFO     start_requests https://movie.douban.com/subject/26416062/ 
+06-21 00:07 doubanmovies INFO     -----------------------------------------------------------------------------
+06-21 00:07 scrapy.core.engine DEBUG    Crawled (200) <GET https://movie.douban.com/robots.txt> (referer: None)
+06-21 00:07 scrapy.core.engine DEBUG    Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+06-21 00:07 doubanmovies INFO     start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+06-21 00:07 scrapy.core.scraper DEBUG    Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': 'https://movie.douban.com/subject/26213252/?from=subject-page',
+ 'also_like_10_url': '惊奇队长',
+ 'also_like_1_name': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_1_url': '蚁人2：黄蜂女现身',
+ 'also_like_2_name': 'https://movie.douban.com/subject/26336252/?from=subject-page',
+ 'also_like_2_url': '碟中谍6：全面瓦解',
+ 'also_like_3_name': 'https://movie.douban.com/subject/26667010/?from=subject-page',
+ 'also_like_3_url': 'X战警：黑凤凰',
+ 'also_like_4_name': 'https://movie.douban.com/subject/26931786/?from=subject-page',
+ 'also_like_4_url': '蜘蛛侠：英雄归来2',
+ 'also_like_5_name': 'https://movie.douban.com/subject/3168101/?from=subject-page',
+ 'also_like_5_url': '毒液：致命守护者',
+ 'also_like_6_name': 'https://movie.douban.com/subject/4221462/?from=subject-page',
+ 'also_like_6_url': '牵引城市',
+ 'also_like_7_name': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_7_url': '头号玩家',
+ 'also_like_8_name': 'https://movie.douban.com/subject/26873582/?from=subject-page',
+ 'also_like_8_url': '侏罗纪世界3',
+ 'also_like_9_name': 'https://movie.douban.com/subject/26266893/?from=subject-page',
+ 'also_like_9_url': '流浪地球',
+ 'comparison_1': '61% 科幻片',
+ 'comparison_2': '51% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '7.0',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'language': '英语',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'rate_num': '84541',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '1.0%',
+ 'star_2': '6.1%',
+ 'star_3': '44.1%',
+ 'star_4': '38.4%',
+ 'star_5': '10.4%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '89541人看过',
+ 'want_to_view_num': '30830人想看',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+06-21 00:07 scrapy.core.engine INFO     Closing spider (finished)
+06-21 00:07 scrapy.statscollectors INFO     Dumping Scrapy stats:
+{'downloader/request_bytes': 1014,
+ 'downloader/request_count': 2,
+ 'downloader/request_method_count/GET': 2,
+ 'downloader/response_bytes': 27881,
+ 'downloader/response_count': 2,
+ 'downloader/response_status_count/200': 2,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 20, 16, 7, 13, 273352),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 4,
+ 'log_count/INFO': 10,
+ 'response_received_count': 2,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2018, 6, 20, 16, 7, 7, 71721)}
+06-21 00:07 scrapy.core.engine INFO     Spider closed (finished)
+06-21 00:10 doubanLog    DEBUG    debugdebugdebugdebugdebugdebugdebugdebugdebugdebug.
+06-21 00:10 doubanLog    INFO     infoinfoinfoinfoinfoinfo.
+06-21 00:10 doubanLog    WARNING  Jwarning.
+06-21 00:10 doubanLog    ERROR    errorerrorerrorerrorerrorerror.
+06-21 00:10 scrapy.utils.log INFO     Scrapy 1.3.3 started (bot: doubanSpider)
+06-21 00:10 scrapy.utils.log INFO     Overridden settings: {'SPIDER_MODULES': ['doubanSpider.spiders'], 'NEWSPIDER_MODULE': 'doubanSpider.spiders', 'BOT_NAME': 'doubanSpider', 'ROBOTSTXT_OBEY': True, 'DOWNLOAD_DELAY': 4}
+06-21 00:10 scrapy.middleware INFO     Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+06-21 00:10 scrapy.middleware INFO     Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+06-21 00:10 scrapy.middleware INFO     Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+06-21 00:10 scrapy.middleware INFO     Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline']
+06-21 00:10 scrapy.core.engine INFO     Spider opened
+06-21 00:10 scrapy.extensions.logstats INFO     Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+06-21 00:10 scrapy.extensions.telnet DEBUG    Telnet console listening on 127.0.0.1:6054
+06-21 00:10 doubanmovies INFO     start_requests https://movie.douban.com/subject/26416062/ 
+06-21 00:10 doubanmovies INFO     -----------------------------------------------------------------------------
+06-21 00:10 scrapy.core.engine DEBUG    Crawled (200) <GET https://movie.douban.com/robots.txt> (referer: None)
+06-21 00:10 scrapy.core.engine DEBUG    Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+06-21 00:10 doubanmovies INFO     start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+06-21 00:10 scrapy.core.scraper DEBUG    Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': 'https://movie.douban.com/subject/26213252/?from=subject-page',
+ 'also_like_10_url': '惊奇队长',
+ 'also_like_1_name': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_1_url': '蚁人2：黄蜂女现身',
+ 'also_like_2_name': 'https://movie.douban.com/subject/26336252/?from=subject-page',
+ 'also_like_2_url': '碟中谍6：全面瓦解',
+ 'also_like_3_name': 'https://movie.douban.com/subject/26667010/?from=subject-page',
+ 'also_like_3_url': 'X战警：黑凤凰',
+ 'also_like_4_name': 'https://movie.douban.com/subject/26931786/?from=subject-page',
+ 'also_like_4_url': '蜘蛛侠：英雄归来2',
+ 'also_like_5_name': 'https://movie.douban.com/subject/3168101/?from=subject-page',
+ 'also_like_5_url': '毒液：致命守护者',
+ 'also_like_6_name': 'https://movie.douban.com/subject/4221462/?from=subject-page',
+ 'also_like_6_url': '牵引城市',
+ 'also_like_7_name': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_7_url': '头号玩家',
+ 'also_like_8_name': 'https://movie.douban.com/subject/26873582/?from=subject-page',
+ 'also_like_8_url': '侏罗纪世界3',
+ 'also_like_9_name': 'https://movie.douban.com/subject/26266893/?from=subject-page',
+ 'also_like_9_url': '流浪地球',
+ 'comparison_1': '61% 科幻片',
+ 'comparison_2': '51% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '7.0',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'language': '英语',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'rate_num': '84562',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '1.0%',
+ 'star_2': '6.1%',
+ 'star_3': '44.1%',
+ 'star_4': '38.4%',
+ 'star_5': '10.4%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '89564人看过',
+ 'want_to_view_num': '30829人想看',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+06-21 00:10 scrapy.core.engine INFO     Closing spider (finished)
+06-21 00:10 scrapy.statscollectors INFO     Dumping Scrapy stats:
+{'downloader/request_bytes': 1014,
+ 'downloader/request_count': 2,
+ 'downloader/request_method_count/GET': 2,
+ 'downloader/response_bytes': 27853,
+ 'downloader/response_count': 2,
+ 'downloader/response_status_count/200': 2,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 20, 16, 10, 14, 188837),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 4,
+ 'log_count/INFO': 10,
+ 'response_received_count': 2,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2018, 6, 20, 16, 10, 7, 578841)}
+06-21 00:10 scrapy.core.engine INFO     Spider closed (finished)
+2018-06-29 00:43:00,139 - DEBUG - logConfig.py-__init__[line:38] - ==============debug=====================
+2018-06-29 00:43:00,139 - INFO - logConfig.py-__init__[line:39] - ==============info=====================
+2018-06-29 00:43:00,139 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,148 - INFO - middleware.py-from_settings[line:53] - Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'doubanSpider.middlewares.ProcessAllExceptionMiddleware2',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-06-29 00:43:00,150 - INFO - middleware.py-from_settings[line:53] - Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-06-29 00:43:00,161 - DEBUG - logConfig.py-__init__[line:38] - ==============debug=====================
+2018-06-29 00:43:00,161 - DEBUG - logConfig.py-__init__[line:38] - ==============debug=====================
+2018-06-29 00:43:00,161 - INFO - logConfig.py-__init__[line:39] - ==============info=====================
+2018-06-29 00:43:00,161 - INFO - logConfig.py-__init__[line:39] - ==============info=====================
+2018-06-29 00:43:00,162 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,162 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,170 - INFO - middleware.py-from_settings[line:53] - Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.MovieImagePipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline',
+ 'doubanSpider.pipelines.MySQLStorePipeline']
+2018-06-29 00:43:00,170 - INFO - middleware.py-from_settings[line:53] - Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.MovieImagePipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline',
+ 'doubanSpider.pipelines.MySQLStorePipeline']
+2018-06-29 00:43:00,170 - INFO - engine.py-open_spider[line:258] - Spider opened
+2018-06-29 00:43:00,170 - INFO - engine.py-open_spider[line:258] - Spider opened
+2018-06-29 00:43:00,175 - INFO - logstats.py-log[line:48] - Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-06-29 00:43:00,175 - INFO - logstats.py-log[line:48] - Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-06-29 00:43:00,177 - DEBUG - telnet.py-start_listening[line:60] - Telnet console listening on 127.0.0.1:6023
+2018-06-29 00:43:00,177 - DEBUG - telnet.py-start_listening[line:60] - Telnet console listening on 127.0.0.1:6023
+2018-06-29 00:43:00,181 - DEBUG - logConfig.py-__init__[line:38] - ==============debug=====================
+2018-06-29 00:43:00,181 - DEBUG - logConfig.py-__init__[line:38] - ==============debug=====================
+2018-06-29 00:43:00,181 - DEBUG - logConfig.py-__init__[line:38] - ==============debug=====================
+2018-06-29 00:43:00,181 - INFO - logConfig.py-__init__[line:39] - ==============info=====================
+2018-06-29 00:43:00,181 - INFO - logConfig.py-__init__[line:39] - ==============info=====================
+2018-06-29 00:43:00,181 - INFO - logConfig.py-__init__[line:39] - ==============info=====================
+2018-06-29 00:43:00,181 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,181 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,181 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,182 - INFO - doubanSpider.py-start_requests[line:29] - start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-29 00:43:00,182 - INFO - doubanSpider.py-start_requests[line:29] - start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-29 00:43:00,182 - INFO - doubanSpider.py-start_requests[line:29] - start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-29 00:43:00,934 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-29 00:43:00,934 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-29 00:43:00,934 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-29 00:43:01,039 - INFO - doubanSpider.py-parseMovieDetial[line:34] - start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-29 00:43:01,039 - INFO - doubanSpider.py-parseMovieDetial[line:34] - start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-29 00:43:01,039 - INFO - doubanSpider.py-parseMovieDetial[line:34] - start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-29 00:43:01,059 - DEBUG - files.py-_onsuccess[line:292] - File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-29 00:43:01,059 - DEBUG - files.py-_onsuccess[line:292] - File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-29 00:43:01,059 - DEBUG - files.py-_onsuccess[line:292] - File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-29 00:43:01,060 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:43:01,060 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:43:01,060 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:43:01,161 - INFO - pipelines.py-process_item[line:128] - INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '121133', '8.7%', '36.6%','47.1%', '6.7%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '128611', '30636', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-29 00:43:01,161 - INFO - pipelines.py-process_item[line:128] - INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '121133', '8.7%', '36.6%','47.1%', '6.7%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '128611', '30636', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-29 00:43:01,161 - INFO - pipelines.py-process_item[line:128] - INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '121133', '8.7%', '36.6%','47.1%', '6.7%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '128611', '30636', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-29 00:43:01,164 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:43:01,164 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:43:01,164 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:43:01,165 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '121133',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.7%',
+ 'star_3': '47.1%',
+ 'star_4': '36.6%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '128611',
+ 'want_to_view_num': '30636',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-29 00:43:01,165 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '121133',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.7%',
+ 'star_3': '47.1%',
+ 'star_4': '36.6%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '128611',
+ 'want_to_view_num': '30636',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-29 00:43:01,165 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '121133',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.7%',
+ 'star_3': '47.1%',
+ 'star_4': '36.6%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '128611',
+ 'want_to_view_num': '30636',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-29 00:43:01,183 - INFO - engine.py-close_spider[line:297] - Closing spider (finished)
+2018-06-29 00:43:01,183 - INFO - engine.py-close_spider[line:297] - Closing spider (finished)
+2018-06-29 00:43:01,183 - INFO - engine.py-close_spider[line:297] - Closing spider (finished)
+2018-06-29 00:43:01,185 - INFO - statscollectors.py-close_spider[line:47] - Dumping Scrapy stats:
+{'downloader/request_bytes': 711,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 27269,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 28, 16, 43, 1, 185243),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 7,
+ 'log_count/ERROR': 5,
+ 'log_count/INFO': 13,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/TypeError': 1,
+ 'start_time': datetime.datetime(2018, 6, 28, 16, 43, 0, 175854)}
+2018-06-29 00:43:01,185 - INFO - statscollectors.py-close_spider[line:47] - Dumping Scrapy stats:
+{'downloader/request_bytes': 711,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 27269,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 28, 16, 43, 1, 185243),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 7,
+ 'log_count/ERROR': 5,
+ 'log_count/INFO': 13,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/TypeError': 1,
+ 'start_time': datetime.datetime(2018, 6, 28, 16, 43, 0, 175854)}
+2018-06-29 00:43:01,185 - INFO - statscollectors.py-close_spider[line:47] - Dumping Scrapy stats:
+{'downloader/request_bytes': 711,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 27269,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 28, 16, 43, 1, 185243),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 7,
+ 'log_count/ERROR': 5,
+ 'log_count/INFO': 13,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/TypeError': 1,
+ 'start_time': datetime.datetime(2018, 6, 28, 16, 43, 0, 175854)}
+2018-06-29 00:43:01,187 - INFO - engine.py-<lambda>[line:328] - Spider closed (finished)
+2018-06-29 00:43:01,187 - INFO - engine.py-<lambda>[line:328] - Spider closed (finished)
+2018-06-29 00:43:01,187 - INFO - engine.py-<lambda>[line:328] - Spider closed (finished)
+2018-06-29 00:50:09,049 - DEBUG - logConfig.py-__init__[line:38] - ==============debug=====================
+2018-06-29 00:50:09,049 - INFO - logConfig.py-__init__[line:39] - ==============info=====================
+2018-06-29 00:50:09,050 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:50:09,050 - INFO - doubanSpider.py-start_requests[line:29] - start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-29 00:50:09,753 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-29 00:50:09,857 - INFO - doubanSpider.py-parseMovieDetial[line:34] - start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-29 00:50:09,877 - DEBUG - files.py-_onsuccess[line:292] - File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-29 00:50:09,878 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:50:09,978 - INFO - pipelines.py-process_item[line:128] - INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '121148', '8.7%', '36.6%','47.1%', '6.7%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '128630', '30637', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-29 00:50:09,980 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:50:09,981 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '121148',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.7%',
+ 'star_3': '47.1%',
+ 'star_4': '36.6%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '128630',
+ 'want_to_view_num': '30637',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-29 00:50:09,988 - INFO - engine.py-close_spider[line:297] - Closing spider (finished)
+2018-06-29 00:50:09,991 - INFO - statscollectors.py-close_spider[line:47] - Dumping Scrapy stats:
+{'downloader/request_bytes': 711,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 27690,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 28, 16, 50, 9, 989833),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 5,
+ 'log_count/ERROR': 3,
+ 'log_count/INFO': 11,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/TypeError': 1,
+ 'start_time': datetime.datetime(2018, 6, 28, 16, 50, 9, 45179)}
+2018-06-29 00:50:09,992 - INFO - engine.py-<lambda>[line:328] - Spider closed (finished)
+2018-06-30 17:07:16,953 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-30 17:07:16,977 - INFO - log.py-log_scrapy_info[line:128] - Scrapy 1.3.3 started (bot: doubanSpider)
+2018-06-30 17:07:16,978 - INFO - log.py-log_scrapy_info[line:131] - Overridden settings: {'DOWNLOAD_DELAY': 4, 'BOT_NAME': 'doubanSpider', 'NEWSPIDER_MODULE': 'doubanSpider.spiders', 'SPIDER_MODULES': ['doubanSpider.spiders']}
+2018-06-30 17:07:17,132 - INFO - middleware.py-from_settings[line:53] - Enabled extensions:
+['scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.corestats.CoreStats']
+2018-06-30 17:07:17,364 - INFO - middleware.py-from_settings[line:53] - Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'doubanSpider.middlewares.ProcessAllExceptionMiddleware2',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-06-30 17:07:17,367 - INFO - middleware.py-from_settings[line:53] - Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-06-30 17:07:17,673 - INFO - middleware.py-from_settings[line:53] - Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.MovieImagePipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline',
+ 'doubanSpider.pipelines.MySQLStorePipeline']
+2018-06-30 17:07:17,674 - INFO - engine.py-open_spider[line:258] - Spider opened
+2018-06-30 17:07:17,738 - INFO - logstats.py-log[line:48] - Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-06-30 17:07:17,740 - DEBUG - telnet.py-start_listening[line:60] - Telnet console listening on 127.0.0.1:6023
+2018-06-30 17:07:17,771 - INFO - doubanSpider.py-start_requests[line:29] - start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-30 17:07:18,546 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-30 17:07:18,650 - INFO - doubanSpider.py-parseMovieDetial[line:34] - start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-30 17:07:18,720 - DEBUG - files.py-_onsuccess[line:292] - File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-30 17:07:18,721 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-30 17:07:18,821 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '125147', '8.7%', '36.3%','47.3%', '6.8%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '132879', '30777', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-30 17:07:18,823 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-30 17:07:18,824 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '125147',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.8%',
+ 'star_3': '47.3%',
+ 'star_4': '36.3%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '132879',
+ 'want_to_view_num': '30777',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-30 17:07:18,833 - INFO - engine.py-close_spider[line:297] - Closing spider (finished)
+2018-06-30 17:07:18,835 - INFO - statscollectors.py-close_spider[line:47] - Dumping Scrapy stats:
+{'downloader/request_bytes': 711,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 27759,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 30, 9, 7, 18, 834407),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 4,
+ 'log_count/ERROR': 2,
+ 'log_count/INFO': 10,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/TypeError': 1,
+ 'start_time': datetime.datetime(2018, 6, 30, 9, 7, 17, 739229)}
+2018-06-30 17:07:18,836 - INFO - engine.py-<lambda>[line:328] - Spider closed (finished)
+2018-06-30 17:08:50,947 - INFO - log.py-log_scrapy_info[line:128] - Scrapy 1.3.3 started (bot: doubanSpider)
+2018-06-30 17:08:50,947 - INFO - log.py-log_scrapy_info[line:131] - Overridden settings: {'SPIDER_MODULES': ['doubanSpider.spiders'], 'NEWSPIDER_MODULE': 'doubanSpider.spiders', 'BOT_NAME': 'doubanSpider', 'DOWNLOAD_DELAY': 4}
+2018-06-30 17:08:50,968 - INFO - middleware.py-from_settings[line:53] - Enabled extensions:
+['scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.corestats.CoreStats']
+2018-06-30 17:08:50,995 - INFO - middleware.py-from_settings[line:53] - Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'doubanSpider.middlewares.ProcessAllExceptionMiddleware2',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-06-30 17:08:50,997 - INFO - middleware.py-from_settings[line:53] - Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-06-30 17:08:51,014 - INFO - middleware.py-from_settings[line:53] - Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.MovieImagePipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline',
+ 'doubanSpider.pipelines.MySQLStorePipeline']
+2018-06-30 17:08:51,014 - INFO - engine.py-open_spider[line:258] - Spider opened
+2018-06-30 17:08:51,017 - INFO - logstats.py-log[line:48] - Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-06-30 17:08:51,018 - DEBUG - telnet.py-start_listening[line:60] - Telnet console listening on 127.0.0.1:6023
+2018-06-30 17:08:51,021 - INFO - doubanSpider.py-start_requests[line:29] - start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-30 17:08:51,744 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-30 17:08:51,848 - INFO - doubanSpider.py-parseMovieDetial[line:34] - start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-30 17:08:51,873 - DEBUG - files.py-_onsuccess[line:292] - File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-30 17:08:51,874 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-30 17:08:51,975 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '125150', '8.7%', '36.3%','47.3%', '6.8%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '132881', '30777', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-30 17:08:51,976 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-30 17:08:51,977 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '125150',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.8%',
+ 'star_3': '47.3%',
+ 'star_4': '36.3%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '132881',
+ 'want_to_view_num': '30777',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-30 17:08:51,986 - INFO - engine.py-close_spider[line:297] - Closing spider (finished)
+2018-06-30 17:08:51,988 - INFO - statscollectors.py-close_spider[line:47] - Dumping Scrapy stats:
+{'downloader/request_bytes': 711,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 27288,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 30, 9, 8, 51, 987771),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 4,
+ 'log_count/ERROR': 2,
+ 'log_count/INFO': 10,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/TypeError': 1,
+ 'start_time': datetime.datetime(2018, 6, 30, 9, 8, 51, 18038)}
+2018-06-30 17:08:51,989 - INFO - engine.py-<lambda>[line:328] - Spider closed (finished)
+2018-06-30 17:16:08,506 - INFO - log.py-log_scrapy_info[line:128] - Scrapy 1.3.3 started (bot: doubanSpider)
+2018-06-30 17:16:08,507 - INFO - log.py-log_scrapy_info[line:131] - Overridden settings: {'DOWNLOAD_DELAY': 4, 'NEWSPIDER_MODULE': 'doubanSpider.spiders', 'BOT_NAME': 'doubanSpider', 'SPIDER_MODULES': ['doubanSpider.spiders']}
+2018-06-30 17:16:08,531 - INFO - middleware.py-from_settings[line:53] - Enabled extensions:
+['scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.logstats.LogStats']
+2018-06-30 17:16:08,555 - INFO - middleware.py-from_settings[line:53] - Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'doubanSpider.middlewares.ProcessAllExceptionMiddleware2',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-06-30 17:16:08,557 - INFO - middleware.py-from_settings[line:53] - Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-06-30 17:16:08,574 - INFO - middleware.py-from_settings[line:53] - Enabled item pipelines:
+['doubanSpider.pipelines.cleanItemPipeline',
+ 'doubanSpider.pipelines.MovieImagePipeline',
+ 'doubanSpider.pipelines.reviewtToFilePipeline',
+ 'doubanSpider.pipelines.MySQLStorePipeline']
+2018-06-30 17:16:08,575 - INFO - engine.py-open_spider[line:258] - Spider opened
+2018-06-30 17:16:08,581 - INFO - logstats.py-log[line:48] - Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-06-30 17:16:08,583 - DEBUG - telnet.py-start_listening[line:60] - Telnet console listening on 127.0.0.1:6023
+2018-06-30 17:16:08,589 - INFO - doubanSpider.py-start_requests[line:28] - start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-30 17:16:09,284 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062/> (referer: None)
+2018-06-30 17:16:09,389 - INFO - doubanSpider.py-parseMovieDetial[line:33] - start crawl MovieDetialItem https://movie.douban.com/subject/26416062/
+2018-06-30 17:16:09,410 - DEBUG - files.py-_onsuccess[line:292] - File (uptodate): Downloaded image from <GET https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg> referred in <None>
+2018-06-30 17:16:09,511 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('26416062', 'https://movie.douban.com/subject/26416062/', '侏罗纪世界2 Jurassic World: Fallen Kingdom', '胡安·安东尼奥·巴亚纳', '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿', '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德', '动作/科幻/冒险', '美国 / 西班牙','www.jurassicworld.com', '英语','2018-06-15(中国大陆)/2018-06-22(美国)', '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2', '128分钟', 'http://www.imdb.com/title/tt4881806', '6.9', '125173', '8.7%', '36.3%','47.3%', '6.8%', '0.9%', '58% 科幻片', '48% 冒险片', '2018-06-16', '3', '标签:恐龙', '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作', '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。','侏罗纪世界', 'https://movie.douban.com/subject/10440138/?from=subject-page','头号玩家', 'https://movie.douban.com/subject/4920389/?from=subject-page', '复仇者联盟3：无限战争', 'https://movie.douban.com/subject/24773958/?from=subject-page', '狂暴巨兽', 'https://movie.douban.com/subject/26430636/?from=subject-page', '蚁人2：黄蜂女现身', 'https://movie.douban.com/subject/26636712/?from=subject-page','游侠索罗：星球大战外传', 'https://movie.douban.com/subject/25900947/?from=subject-page','X战警：天启', 'https://movie.douban.com/subject/25786060/?from=subject-page', '美国队长3', 'https://movie.douban.com/subject/25820460/?from=subject-page', '星际迷航3：超越星辰', 'https://movie.douban.com/subject/22939161/?from=subject-page', '火星救援', 'https://movie.douban.com/subject/25864085/?from=subject-page','https://movie.douban.com/subject/26416062//comments', 'https://movie.douban.com/subject/26416062//reviews','https://movie.douban.com/subject/26416062//doulists', '132906', '30779', 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg')
+2018-06-30 17:16:09,513 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-30 17:16:09,514 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062/>
+{'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': '侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / 侏罗纪世界2：堕落王国 '
+                  '/ 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': '火星救援',
+ 'also_like_10_url': 'https://movie.douban.com/subject/25864085/?from=subject-page',
+ 'also_like_1_name': '侏罗纪世界',
+ 'also_like_1_url': 'https://movie.douban.com/subject/10440138/?from=subject-page',
+ 'also_like_2_name': '头号玩家',
+ 'also_like_2_url': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_3_name': '复仇者联盟3：无限战争',
+ 'also_like_3_url': 'https://movie.douban.com/subject/24773958/?from=subject-page',
+ 'also_like_4_name': '狂暴巨兽',
+ 'also_like_4_url': 'https://movie.douban.com/subject/26430636/?from=subject-page',
+ 'also_like_5_name': '蚁人2：黄蜂女现身',
+ 'also_like_5_url': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_6_name': '游侠索罗：星球大战外传',
+ 'also_like_6_url': 'https://movie.douban.com/subject/25900947/?from=subject-page',
+ 'also_like_7_name': 'X战警：天启',
+ 'also_like_7_url': 'https://movie.douban.com/subject/25786060/?from=subject-page',
+ 'also_like_8_name': '美国队长3',
+ 'also_like_8_url': 'https://movie.douban.com/subject/25820460/?from=subject-page',
+ 'also_like_9_name': '星际迷航3：超越星辰',
+ 'also_like_9_url': 'https://movie.douban.com/subject/22939161/?from=subject-page',
+ 'comparison_1': '58% 科幻片',
+ 'comparison_2': '48% 冒险片',
+ 'country': '美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '6.9',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': '英语',
+ 'movie_name': '侏罗纪世界2 Jurassic World: Fallen Kingdom',
+ 'movie_url': 'https://movie.douban.com/subject/26416062/',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'official_site': 'www.jurassicworld.com',
+ 'rate_num': '125173',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '0.9%',
+ 'star_2': '6.8%',
+ 'star_3': '47.3%',
+ 'star_4': '36.3%',
+ 'star_5': '8.7%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '132906',
+ 'want_to_view_num': '30779',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-30 17:16:14,044 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062//comments?sort=time&status=F> (referer: https://movie.douban.com/subject/26416062/)
+2018-06-30 17:16:14,155 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'hhhbh', 'https://www.douban.com/people/59628051/', '豆瓣：6.9', '0', '2018-06-30')
+2018-06-30 17:16:14,203 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '豆瓣：6.9',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-30',
+ 'movieid': '26416062',
+ 'user_name': 'hhhbh',
+ 'user_url': 'https://www.douban.com/people/59628051/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,206 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '來自小星球', 'https://www.douban.com/people/58150167/', '很久沒看過恐龍電影了，很久了。', '0', '2018-06-30')
+2018-06-30 17:16:14,254 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '很久沒看過恐龍電影了，很久了。',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-30',
+ 'movieid': '26416062',
+ 'user_name': '來自小星球',
+ 'user_url': 'https://www.douban.com/people/58150167/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,255 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '夏冬不再见', 'https://www.douban.com/people/165754799/', '情怀', '0', '2018-06-30')
+2018-06-30 17:16:14,304 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '情怀',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-30',
+ 'movieid': '26416062',
+ 'user_name': '夏冬不再见',
+ 'user_url': 'https://www.douban.com/people/165754799/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,305 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'kyth', 'https://www.douban.com/people/kyth/', '期待', '0', '2018-06-29')
+2018-06-30 17:16:14,354 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '期待',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-29',
+ 'movieid': '26416062',
+ 'user_name': 'kyth',
+ 'user_url': 'https://www.douban.com/people/kyth/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,355 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '待丁大不至', 'https://www.douban.com/people/155653294/', '看过', '0', '2018-06-29')
+2018-06-30 17:16:14,404 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '看过',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-29',
+ 'movieid': '26416062',
+ 'user_name': '待丁大不至',
+ 'user_url': 'https://www.douban.com/people/155653294/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,405 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'jacobkong', 'https://www.douban.com/people/155466181/', '彩蛋太对不起观众了。。。。', '推荐', '2018-06-28')
+2018-06-30 17:16:14,454 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '彩蛋太对不起观众了。。。。',
+ 'comment_rate': '推荐',
+ 'comment_time': '2018-06-28',
+ 'movieid': '26416062',
+ 'user_name': 'jacobkong',
+ 'user_url': 'https://www.douban.com/people/155466181/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,455 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'TangMonk', 'https://www.douban.com/people/173635113/', '想去看电影', '0', '2018-06-28')
+2018-06-30 17:16:14,504 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '想去看电影',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-28',
+ 'movieid': '26416062',
+ 'user_name': 'TangMonk',
+ 'user_url': 'https://www.douban.com/people/173635113/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,505 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '袁沐梓', 'https://www.douban.com/people/157649577/', '好像除了特效还有什么?', '0', '2018-06-28')
+2018-06-30 17:16:14,554 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '好像除了特效还有什么?',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-28',
+ 'movieid': '26416062',
+ 'user_name': '袁沐梓',
+ 'user_url': 'https://www.douban.com/people/157649577/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,555 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '窗边的小豆Q', 'https://www.douban.com/people/50121988/', '看不看都行系列，小女孩的恐怖怪兽梦，可爱的小迅猛龙，彩蛋很坑坑到没看出来啥，6/25', '0', '2018-06-27')
+2018-06-30 17:16:14,604 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '看不看都行系列，小女孩的恐怖怪兽梦，可爱的小迅猛龙，彩蛋很坑坑到没看出来啥，6/25',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-27',
+ 'movieid': '26416062',
+ 'user_name': '窗边的小豆Q',
+ 'user_url': 'https://www.douban.com/people/50121988/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,605 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '簌以', 'https://www.douban.com/people/175954350/', '这个系列都不能错过！！！', '0', '2018-06-26')
+2018-06-30 17:16:14,654 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '这个系列都不能错过！！！',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-26',
+ 'movieid': '26416062',
+ 'user_name': '簌以',
+ 'user_url': 'https://www.douban.com/people/175954350/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,655 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'MSY-w', 'https://www.douban.com/people/65636241/', '想看', '0', '2018-06-25')
+2018-06-30 17:16:14,704 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '想看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-25',
+ 'movieid': '26416062',
+ 'user_name': 'MSY-w',
+ 'user_url': 'https://www.douban.com/people/65636241/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,705 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '鸡腿鸡腿来一个', 'https://www.douban.com/people/149843797/', '爆米花电影', '还行', '2018-06-25')
+2018-06-30 17:16:14,754 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '爆米花电影',
+ 'comment_rate': '还行',
+ 'comment_time': '2018-06-25',
+ 'movieid': '26416062',
+ 'user_name': '鸡腿鸡腿来一个',
+ 'user_url': 'https://www.douban.com/people/149843797/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,756 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '张大人啊张大人', 'https://www.douban.com/people/171989368/', '24JUN18 嗯 不错 挺好看', '0', '2018-06-25')
+2018-06-30 17:16:14,846 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '24JUN18 嗯 不错 挺好看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-25',
+ 'movieid': '26416062',
+ 'user_name': '张大人啊张大人',
+ 'user_url': 'https://www.douban.com/people/171989368/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,847 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '珞闻', 'https://www.douban.com/people/57644512/', '这些残暴的欢愉 ，终将以残暴结局。', '力荐', '2018-06-24')
+2018-06-30 17:16:14,896 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '这些残暴的欢愉 ，终将以残暴结局。',
+ 'comment_rate': '力荐',
+ 'comment_time': '2018-06-24',
+ 'movieid': '26416062',
+ 'user_name': '珞闻',
+ 'user_url': 'https://www.douban.com/people/57644512/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,898 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '小陈', 'https://www.douban.com/people/150671258/', '觉得等我有空去看了也该下架了…', '0', '2018-06-24')
+2018-06-30 17:16:14,946 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '觉得等我有空去看了也该下架了…',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-24',
+ 'movieid': '26416062',
+ 'user_name': '小陈',
+ 'user_url': 'https://www.douban.com/people/150671258/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,949 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '周攀', 'https://www.douban.com/people/144398269/', '好多地方值得深究', '0', '2018-06-24')
+2018-06-30 17:16:14,996 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '好多地方值得深究',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-24',
+ 'movieid': '26416062',
+ 'user_name': '周攀',
+ 'user_url': 'https://www.douban.com/people/144398269/',
+ 'vote_num': '0'}
+2018-06-30 17:16:14,999 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'Bright', 'https://www.douban.com/people/wizardry/', '和一群恐龙在草地上狂奔，还要啥自行车。爽爆了。这是要走猩球崛起的套路吗？', '0', '2018-06-24')
+2018-06-30 17:16:15,046 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '和一群恐龙在草地上狂奔，还要啥自行车。爽爆了。这是要走猩球崛起的套路吗？',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-24',
+ 'movieid': '26416062',
+ 'user_name': 'Bright',
+ 'user_url': 'https://www.douban.com/people/wizardry/',
+ 'vote_num': '0'}
+2018-06-30 17:16:15,049 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'dizzydazzle', 'https://www.douban.com/people/damnhorrorxxx/', '妈的圣母', '0', '2018-06-24')
+2018-06-30 17:16:15,096 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '妈的圣母',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-24',
+ 'movieid': '26416062',
+ 'user_name': 'dizzydazzle',
+ 'user_url': 'https://www.douban.com/people/damnhorrorxxx/',
+ 'vote_num': '0'}
+2018-06-30 17:16:15,098 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '遥远的他', 'https://www.douban.com/people/91329431/', '今天主要是来记录心情的 最近破事太多 想去看场电影都没机会 看1的时候是因为美妆博主一直在推女主穿的那双高跟鞋 2的话 也不想错过啊 错过了对不起我每天吃的苦', '0', '2018-06-24')
+2018-06-30 17:16:15,147 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '今天主要是来记录心情的 最近破事太多 想去看场电影都没机会 看1的时候是因为美妆博主一直在推女主穿的那双高跟鞋 2的话 '
+            '也不想错过啊 错过了对不起我每天吃的苦',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-24',
+ 'movieid': '26416062',
+ 'user_name': '遥远的他',
+ 'user_url': 'https://www.douban.com/people/91329431/',
+ 'vote_num': '0'}
+2018-06-30 17:16:15,148 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '如果爱有天意', 'https://www.douban.com/people/174898863/', '经典的片，还是想再看看', '0', '2018-06-24')
+2018-06-30 17:16:15,197 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?sort=time&status=F>
+{'comment': '经典的片，还是想再看看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-24',
+ 'movieid': '26416062',
+ 'user_name': '如果爱有天意',
+ 'user_url': 'https://www.douban.com/people/174898863/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,304 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=> (referer: https://movie.douban.com/subject/26416062//comments?sort=time&status=F)
+2018-06-30 17:16:18,416 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '温安', 'https://www.douban.com/people/156850218/', '高考毕业看了第一部，纪念一下这三年还是要看的', '0', '2018-06-24')
+2018-06-30 17:16:18,472 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '高考毕业看了第一部，纪念一下这三年还是要看的',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-24',
+ 'movieid': '26416062',
+ 'user_name': '温安',
+ 'user_url': 'https://www.douban.com/people/156850218/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,473 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '七戒', 'https://www.douban.com/people/174849808/', '想看3D的恐龙世界 又有点害怕 纠结', '0', '2018-06-23')
+2018-06-30 17:16:18,522 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '想看3D的恐龙世界 又有点害怕 纠结',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-23',
+ 'movieid': '26416062',
+ 'user_name': '七戒',
+ 'user_url': 'https://www.douban.com/people/174849808/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,523 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '二水兄', 'https://www.douban.com/people/52870951/', '非常白左，非常低智商，特效还不错', '还行', '2018-06-23')
+2018-06-30 17:16:18,572 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '非常白左，非常低智商，特效还不错',
+ 'comment_rate': '还行',
+ 'comment_time': '2018-06-23',
+ 'movieid': '26416062',
+ 'user_name': '二水兄',
+ 'user_url': 'https://www.douban.com/people/52870951/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,574 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'Wdd你是有多棒', 'https://www.douban.com/people/141892166/', '第一部好像又忘了…………尴尬', '0', '2018-06-22')
+2018-06-30 17:16:18,622 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '第一部好像又忘了…………尴尬',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-22',
+ 'movieid': '26416062',
+ 'user_name': 'Wdd你是有多棒',
+ 'user_url': 'https://www.douban.com/people/141892166/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,624 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'iCeKellyoo', 'https://www.douban.com/people/175636912/', '久闻大名，1.2.3...', '0', '2018-06-22')
+2018-06-30 17:16:18,672 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '久闻大名，1.2.3...',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-22',
+ 'movieid': '26416062',
+ 'user_name': 'iCeKellyoo',
+ 'user_url': 'https://www.douban.com/people/175636912/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,674 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '霞子', 'https://www.douban.com/people/157650014/', '辽西群龙中的飞龙没出现，就去看其他恐龙吧！', '0', '2018-06-21')
+2018-06-30 17:16:18,722 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '辽西群龙中的飞龙没出现，就去看其他恐龙吧！',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-21',
+ 'movieid': '26416062',
+ 'user_name': '霞子',
+ 'user_url': 'https://www.douban.com/people/157650014/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,723 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '真岛吾朗', 'https://www.douban.com/people/145666046/', '想看恐龙，有人组队吗？', '0', '2018-06-21')
+2018-06-30 17:16:18,772 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '想看恐龙，有人组队吗？',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-21',
+ 'movieid': '26416062',
+ 'user_name': '真岛吾朗',
+ 'user_url': 'https://www.douban.com/people/145666046/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,774 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '清风划过汝河', 'https://www.douban.com/people/162563719/', '是我弟的菜，整天喊着让我带他去看，希望有人给个意见，这部值不值得看', '0', '2018-06-21')
+2018-06-30 17:16:18,822 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '是我弟的菜，整天喊着让我带他去看，希望有人给个意见，这部值不值得看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-21',
+ 'movieid': '26416062',
+ 'user_name': '清风划过汝河',
+ 'user_url': 'https://www.douban.com/people/162563719/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,824 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'my sunshine', 'https://www.douban.com/people/171752770/', '想看侏罗纪啊啊啊啊 可是没时间 哭唧唧', '0', '2018-06-21')
+2018-06-30 17:16:18,872 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '想看侏罗纪啊啊啊啊 可是没时间 哭唧唧',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-21',
+ 'movieid': '26416062',
+ 'user_name': 'my sunshine',
+ 'user_url': 'https://www.douban.com/people/171752770/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,874 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '薇薇', 'https://www.douban.com/people/178633599/', '听去看过的朋友有的说好看，有的说没有第一部好', '0', '2018-06-21')
+2018-06-30 17:16:18,922 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '听去看过的朋友有的说好看，有的说没有第一部好',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-21',
+ 'movieid': '26416062',
+ 'user_name': '薇薇',
+ 'user_url': 'https://www.douban.com/people/178633599/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,924 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '晨曦', 'https://www.douban.com/people/179356363/', '就是之前看过第一部，然后就想看这个2😂😂😂了。', '0', '2018-06-20')
+2018-06-30 17:16:18,930 - WARNING - cursors.py-_show_warnings[line:355] - /home/feng/software/venv/webscprit/lib/python3.4/site-packages/pymysql/cursors.py:323: Warning: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x82\\xF0\\x9F...' for column 'comment' at row 1")
+  self._do_get_result()
+
+2018-06-30 17:16:18,989 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '就是之前看过第一部，然后就想看这个2😂😂😂了。',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': '晨曦',
+ 'user_url': 'https://www.douban.com/people/179356363/',
+ 'vote_num': '0'}
+2018-06-30 17:16:18,990 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '小白', 'https://www.douban.com/people/158016041/', '养成克隆恐龙做武器，是出口到远古去创汇吗？😂😂😂', '0', '2018-06-20')
+2018-06-30 17:16:19,049 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '养成克隆恐龙做武器，是出口到远古去创汇吗？😂😂😂',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': '小白',
+ 'user_url': 'https://www.douban.com/people/158016041/',
+ 'vote_num': '0'}
+2018-06-30 17:16:19,050 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '已注销', 'https://www.douban.com/people/154265476/', '看了第一部很喜欢，希望第二部也好看', '0', '2018-06-20')
+2018-06-30 17:16:19,051 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062-已注销' for key 'movie_essay_unique_index'")
+2018-06-30 17:16:19,051 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '看了第一部很喜欢，希望第二部也好看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': '已注销',
+ 'user_url': 'https://www.douban.com/people/154265476/',
+ 'vote_num': '0'}
+2018-06-30 17:16:19,052 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'Elsie', 'https://www.douban.com/people/29382908/', '国内居然先上映？？！！', '0', '2018-06-20')
+2018-06-30 17:16:19,099 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '国内居然先上映？？！！',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': 'Elsie',
+ 'user_url': 'https://www.douban.com/people/29382908/',
+ 'vote_num': '0'}
+2018-06-30 17:16:19,101 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '稻草人', 'https://www.douban.com/people/156564471/', '预告片很赞!期待', '0', '2018-06-20')
+2018-06-30 17:16:19,149 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '预告片很赞!期待',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': '稻草人',
+ 'user_url': 'https://www.douban.com/people/156564471/',
+ 'vote_num': '0'}
+2018-06-30 17:16:19,150 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '我是你姥爷', 'https://www.douban.com/people/lotuslau/', '看剧照好像没什么血腥镜头啊。。不过有大恐龙是一定要看的！', '0', '2018-06-20')
+2018-06-30 17:16:19,199 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '看剧照好像没什么血腥镜头啊。。不过有大恐龙是一定要看的！',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': '我是你姥爷',
+ 'user_url': 'https://www.douban.com/people/lotuslau/',
+ 'vote_num': '0'}
+2018-06-30 17:16:19,202 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'wqYu', 'https://www.douban.com/people/wqYu979/', '十分想看然鹅没有脑容量去看了。世界杯已经耗费了我大部分时间和精力。累😞', '0', '2018-06-20')
+2018-06-30 17:16:19,203 - WARNING - cursors.py-_show_warnings[line:355] - /home/feng/software/venv/webscprit/lib/python3.4/site-packages/pymysql/cursors.py:323: Warning: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x9E' for column 'comment' at row 1")
+  self._do_get_result()
+
+2018-06-30 17:16:19,249 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '十分想看然鹅没有脑容量去看了。世界杯已经耗费了我大部分时间和精力。累😞',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': 'wqYu',
+ 'user_url': 'https://www.douban.com/people/wqYu979/',
+ 'vote_num': '0'}
+2018-06-30 17:16:19,252 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '忧伤的🐠', 'https://www.douban.com/people/178089965/', '前面几部都看过', '0', '2018-06-20')
+2018-06-30 17:16:19,253 - WARNING - cursors.py-_show_warnings[line:355] - /home/feng/software/venv/webscprit/lib/python3.4/site-packages/pymysql/cursors.py:323: Warning: (1366, "Incorrect string value: '\\xF0\\x9F\\x90\\xA0' for column 'user_name' at row 1")
+  self._do_get_result()
+
+2018-06-30 17:16:19,299 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '前面几部都看过',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': '忧伤的🐠',
+ 'user_url': 'https://www.douban.com/people/178089965/',
+ 'vote_num': '0'}
+2018-06-30 17:16:19,301 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'zhiyuansk', 'https://www.douban.com/people/62583625/', '剧情流畅，特效没话说，氛围烘托的很棒，对于爆米花电影来说，差不多满分了。特别还有他们离岛时，长脖子龙的注视，哀嚎，镜头渐渐拉远，真的很心酸，让人深思', '0', '2018-06-20')
+2018-06-30 17:16:19,349 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '剧情流畅，特效没话说，氛围烘托的很棒，对于爆米花电影来说，差不多满分了。特别还有他们离岛时，长脖子龙的注视，哀嚎，镜头渐渐拉远，真的很心酸，让人深思',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': 'zhiyuansk',
+ 'user_url': 'https://www.douban.com/people/62583625/',
+ 'vote_num': '0'}
+2018-06-30 17:16:19,352 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '猫', 'https://www.douban.com/people/179483203/', '其实就是朋友想看！她想丢下我一个人去看！友尽😃', '0', '2018-06-20')
+2018-06-30 17:16:19,354 - WARNING - cursors.py-_show_warnings[line:355] - /home/feng/software/venv/webscprit/lib/python3.4/site-packages/pymysql/cursors.py:323: Warning: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x83' for column 'comment' at row 1")
+  self._do_get_result()
+
+2018-06-30 17:16:19,400 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=>
+{'comment': '其实就是朋友想看！她想丢下我一个人去看！友尽😃',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': '猫',
+ 'user_url': 'https://www.douban.com/people/179483203/',
+ 'vote_num': '0'}
+2018-06-30 17:16:22,619 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=> (referer: https://movie.douban.com/subject/26416062//comments?start=20&limit=20&sort=time&status=F&percent_type=)
+2018-06-30 17:16:22,727 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '康斯坦丝', 'https://www.douban.com/people/174752970/', '有一个侏罗纪公园的情结', '0', '2018-06-20')
+2018-06-30 17:16:22,783 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '有一个侏罗纪公园的情结',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-20',
+ 'movieid': '26416062',
+ 'user_name': '康斯坦丝',
+ 'user_url': 'https://www.douban.com/people/174752970/',
+ 'vote_num': '0'}
+2018-06-30 17:16:22,784 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '未来有你', 'https://www.douban.com/people/178540108/', '胆小但是想看😖', '0', '2018-06-19')
+2018-06-30 17:16:22,786 - WARNING - cursors.py-_show_warnings[line:355] - /home/feng/software/venv/webscprit/lib/python3.4/site-packages/pymysql/cursors.py:323: Warning: (1366, "Incorrect string value: '\\xF0\\x9F\\x98\\x96' for column 'comment' at row 1")
+  self._do_get_result()
+
+2018-06-30 17:16:22,833 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '胆小但是想看😖',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-19',
+ 'movieid': '26416062',
+ 'user_name': '未来有你',
+ 'user_url': 'https://www.douban.com/people/178540108/',
+ 'vote_num': '0'}
+2018-06-30 17:16:22,835 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '书痴达芬奇', 'https://www.douban.com/people/67978918/', '本来这周应该和女朋友一起去看的···可是上周末女朋友突然提出了分手，我想这辈子都不会有心情去看了。', '0', '2018-06-19')
+2018-06-30 17:16:22,883 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '本来这周应该和女朋友一起去看的···可是上周末女朋友突然提出了分手，我想这辈子都不会有心情去看了。',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-19',
+ 'movieid': '26416062',
+ 'user_name': '书痴达芬奇',
+ 'user_url': 'https://www.douban.com/people/67978918/',
+ 'vote_num': '0'}
+2018-06-30 17:16:22,886 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '已注销', 'https://www.douban.com/people/130144482/', '找不到人陪我看 难受', '0', '2018-06-19')
+2018-06-30 17:16:22,887 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062-已注销' for key 'movie_essay_unique_index'")
+2018-06-30 17:16:22,887 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '找不到人陪我看 难受',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-19',
+ 'movieid': '26416062',
+ 'user_name': '已注销',
+ 'user_url': 'https://www.douban.com/people/130144482/',
+ 'vote_num': '0'}
+2018-06-30 17:16:22,890 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '致青春永不言败', 'https://www.douban.com/people/174651076/', '一看到星爵就想打他，你们还记得曼联3吗', '0', '2018-06-19')
+2018-06-30 17:16:22,941 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '一看到星爵就想打他，你们还记得曼联3吗',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-19',
+ 'movieid': '26416062',
+ 'user_name': '致青春永不言败',
+ 'user_url': 'https://www.douban.com/people/174651076/',
+ 'vote_num': '0'}
+2018-06-30 17:16:22,944 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '撅臀肥兔', 'https://www.douban.com/people/2453641/', '今晚就去看 哈哈哈', '0', '2018-06-19')
+2018-06-30 17:16:22,992 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '今晚就去看 哈哈哈',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-19',
+ 'movieid': '26416062',
+ 'user_name': '撅臀肥兔',
+ 'user_url': 'https://www.douban.com/people/2453641/',
+ 'vote_num': '0'}
+2018-06-30 17:16:22,993 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '♡心形字条♡', 'https://www.douban.com/people/178683416/', '刺不刺激啊', '0', '2018-06-19')
+2018-06-30 17:16:23,042 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '刺不刺激啊',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-19',
+ 'movieid': '26416062',
+ 'user_name': '♡心形字条♡',
+ 'user_url': 'https://www.douban.com/people/178683416/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,043 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '王镱沩', 'https://www.douban.com/people/171807190/', '哎呀你看那个龙！', '0', '2018-06-18')
+2018-06-30 17:16:23,092 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '哎呀你看那个龙！',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-18',
+ 'movieid': '26416062',
+ 'user_name': '王镱沩',
+ 'user_url': 'https://www.douban.com/people/171807190/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,093 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '塞巴斯丁', 'https://www.douban.com/people/168139869/', '幻想啥时候出门不是遛狗，而是溜恐龙🦕……😄', '0', '2018-06-18')
+2018-06-30 17:16:23,095 - WARNING - cursors.py-_show_warnings[line:355] - /home/feng/software/venv/webscprit/lib/python3.4/site-packages/pymysql/cursors.py:323: Warning: (1366, "Incorrect string value: '\\xF0\\x9F\\xA6\\x95\\xE2\\x80...' for column 'comment' at row 1")
+  self._do_get_result()
+
+2018-06-30 17:16:23,142 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '幻想啥时候出门不是遛狗，而是溜恐龙\U0001f995……😄',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-18',
+ 'movieid': '26416062',
+ 'user_name': '塞巴斯丁',
+ 'user_url': 'https://www.douban.com/people/168139869/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,144 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '活在当下', 'https://www.douban.com/people/141972968/', '特效是亮点', '0', '2018-06-18')
+2018-06-30 17:16:23,192 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '特效是亮点',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-18',
+ 'movieid': '26416062',
+ 'user_name': '活在当下',
+ 'user_url': 'https://www.douban.com/people/141972968/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,193 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '善恶生死', 'https://www.douban.com/people/170721199/', '由于缺觉只看了半小时', '0', '2018-06-18')
+2018-06-30 17:16:23,242 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '由于缺觉只看了半小时',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-18',
+ 'movieid': '26416062',
+ 'user_name': '善恶生死',
+ 'user_url': 'https://www.douban.com/people/170721199/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,243 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'Sin幻想伴侣', 'https://www.douban.com/people/T-onion/', '准备去看了', '0', '2018-06-18')
+2018-06-30 17:16:23,292 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '准备去看了',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-18',
+ 'movieid': '26416062',
+ 'user_name': 'Sin幻想伴侣',
+ 'user_url': 'https://www.douban.com/people/T-onion/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,293 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'luZiyi78384', 'https://www.douban.com/people/164620361/', '超级想看，很期待的一部电影，今天放假要去看', '0', '2018-06-18')
+2018-06-30 17:16:23,342 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '超级想看，很期待的一部电影，今天放假要去看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-18',
+ 'movieid': '26416062',
+ 'user_name': 'luZiyi78384',
+ 'user_url': 'https://www.douban.com/people/164620361/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,344 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '清澈硫酸铜', 'https://www.douban.com/people/170392941/', '讲真，现在的大气环境不适合恐龙生活，现在是冷血巨型生物活不长，温血才是爸爸。', '0', '2018-06-18')
+2018-06-30 17:16:23,392 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '讲真，现在的大气环境不适合恐龙生活，现在是冷血巨型生物活不长，温血才是爸爸。',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-18',
+ 'movieid': '26416062',
+ 'user_name': '清澈硫酸铜',
+ 'user_url': 'https://www.douban.com/people/170392941/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,394 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '車', 'https://www.douban.com/people/162055021/', '看上去不错', '0', '2018-06-17')
+2018-06-30 17:16:23,442 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '看上去不错',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': '車',
+ 'user_url': 'https://www.douban.com/people/162055021/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,443 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'heyboy', 'https://www.douban.com/people/177696696/', '虽然没有了侏罗纪公园是到的新鲜感，但还是十分期待恐龙带给观众的震撼。海陆空三方的恐龙威胁。', '0', '2018-06-17')
+2018-06-30 17:16:23,492 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '虽然没有了侏罗纪公园是到的新鲜感，但还是十分期待恐龙带给观众的震撼。海陆空三方的恐龙威胁。',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': 'heyboy',
+ 'user_url': 'https://www.douban.com/people/177696696/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,494 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '加菲喵呜呜', 'https://www.douban.com/people/140236245/', '想看，抽空去看~', '0', '2018-06-17')
+2018-06-30 17:16:23,542 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '想看，抽空去看~',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': '加菲喵呜呜',
+ 'user_url': 'https://www.douban.com/people/140236245/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,544 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '大暑。条儿🍟', 'https://www.douban.com/people/165506660/', '看了一，二还没去看 有点想看', '0', '2018-06-17')
+2018-06-30 17:16:23,545 - WARNING - cursors.py-_show_warnings[line:355] - /home/feng/software/venv/webscprit/lib/python3.4/site-packages/pymysql/cursors.py:323: Warning: (1366, "Incorrect string value: '\\xF0\\x9F\\x8D\\x9F' for column 'user_name' at row 1")
+  self._do_get_result()
+
+2018-06-30 17:16:23,626 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '看了一，二还没去看 有点想看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': '大暑。条儿🍟',
+ 'user_url': 'https://www.douban.com/people/165506660/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,628 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'Carrefour', 'https://www.douban.com/people/173985200/', '期待啊', '0', '2018-06-17')
+2018-06-30 17:16:23,676 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '期待啊',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': 'Carrefour',
+ 'user_url': 'https://www.douban.com/people/173985200/',
+ 'vote_num': '0'}
+2018-06-30 17:16:23,677 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '广告歌g', 'https://www.douban.com/people/40353629/', '有时间去看看', '0', '2018-06-17')
+2018-06-30 17:16:23,726 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=>
+{'comment': '有时间去看看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': '广告歌g',
+ 'user_url': 'https://www.douban.com/people/40353629/',
+ 'vote_num': '0'}
+2018-06-30 17:16:26,719 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=> (referer: https://movie.douban.com/subject/26416062//comments?start=40&limit=20&sort=time&status=F&percent_type=)
+2018-06-30 17:16:26,830 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '已注销', 'https://www.douban.com/people/172475452/', '想看，但是没时间 哭唧唧😑😑😑', '0', '2018-06-17')
+2018-06-30 17:16:26,831 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062-已注销' for key 'movie_essay_unique_index'")
+2018-06-30 17:16:26,832 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '想看，但是没时间 哭唧唧😑😑😑',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': '已注销',
+ 'user_url': 'https://www.douban.com/people/172475452/',
+ 'vote_num': '0'}
+2018-06-30 17:16:26,834 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '甜甜圈的大叔', 'https://www.douban.com/people/160178895/', '好看吗', '0', '2018-06-17')
+2018-06-30 17:16:26,893 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '好看吗',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': '甜甜圈的大叔',
+ 'user_url': 'https://www.douban.com/people/160178895/',
+ 'vote_num': '0'}
+2018-06-30 17:16:26,895 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '素食主义的猫', 'https://www.douban.com/people/128905555/', '到底是哪位小可爱这么幸运可以和我一起去看呢？', '0', '2018-06-17')
+2018-06-30 17:16:26,951 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '到底是哪位小可爱这么幸运可以和我一起去看呢？',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': '素食主义的猫',
+ 'user_url': 'https://www.douban.com/people/128905555/',
+ 'vote_num': '0'}
+2018-06-30 17:16:26,953 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'king', 'https://www.douban.com/people/3623855/', '太普通', '还行', '2018-06-17')
+2018-06-30 17:16:27,010 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '太普通',
+ 'comment_rate': '还行',
+ 'comment_time': '2018-06-17',
+ 'movieid': '26416062',
+ 'user_name': 'king',
+ 'user_url': 'https://www.douban.com/people/3623855/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,011 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'MJ骨员帕克', 'https://www.douban.com/people/173963329/', '很期待续作', '0', '2018-06-16')
+2018-06-30 17:16:27,068 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '很期待续作',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': 'MJ骨员帕克',
+ 'user_url': 'https://www.douban.com/people/173963329/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,070 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '魏晓波', 'https://www.douban.com/people/1140109/', '想去影院听恐龙叫，看预告片轰隆轰隆的挺带劲。这一集剧情是不是很弱智，又是坏人让大恐龙失控了，好人战胜了坏人，恐龙其实很善良。', '0', '2018-06-16')
+2018-06-30 17:16:27,127 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '想去影院听恐龙叫，看预告片轰隆轰隆的挺带劲。这一集剧情是不是很弱智，又是坏人让大恐龙失控了，好人战胜了坏人，恐龙其实很善良。',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': '魏晓波',
+ 'user_url': 'https://www.douban.com/people/1140109/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,129 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '爱呀呀', 'https://www.douban.com/people/174881382/', '非常想看，没有理由', '0', '2018-06-16')
+2018-06-30 17:16:27,185 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '非常想看，没有理由',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': '爱呀呀',
+ 'user_url': 'https://www.douban.com/people/174881382/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,188 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '王震', 'https://www.douban.com/people/wangzhenname/', '恕我直言，《侏罗纪公园》不是拍到4了吗？', '0', '2018-06-16')
+2018-06-30 17:16:27,243 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '恕我直言，《侏罗纪公园》不是拍到4了吗？',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': '王震',
+ 'user_url': 'https://www.douban.com/people/wangzhenname/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,246 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'Skuggi', 'https://www.douban.com/people/dorothealu/', '易胖体质的男女主角', '0', '2018-06-16')
+2018-06-30 17:16:27,302 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '易胖体质的男女主角',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': 'Skuggi',
+ 'user_url': 'https://www.douban.com/people/dorothealu/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,303 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '万年潜水艇', 'https://www.douban.com/people/46564815/', '想看imax版的！', '0', '2018-06-16')
+2018-06-30 17:16:27,360 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '想看imax版的！',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': '万年潜水艇',
+ 'user_url': 'https://www.douban.com/people/46564815/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,363 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '曾许诺-', 'https://www.douban.com/people/156622288/', '❤', '0', '2018-06-16')
+2018-06-30 17:16:27,419 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '❤',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': '曾许诺-',
+ 'user_url': 'https://www.douban.com/people/156622288/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,421 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '桃子', 'https://www.douban.com/people/55464670/', '看看龙', '0', '2018-06-16')
+2018-06-30 17:16:27,422 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062-桃子' for key 'movie_essay_unique_index'")
+2018-06-30 17:16:27,423 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '看看龙',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': '桃子',
+ 'user_url': 'https://www.douban.com/people/55464670/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,425 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '维克MILK', 'https://www.douban.com/people/wyckstan/', '。。。刚才同学打电话过来说三缺一叫我过去看（秒懂', '0', '2018-06-16')
+2018-06-30 17:16:27,485 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '。。。刚才同学打电话过来说三缺一叫我过去看（秒懂',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': '维克MILK',
+ 'user_url': 'https://www.douban.com/people/wyckstan/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,487 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '掠过清晨的马路', 'https://www.douban.com/people/172868757/', '侏罗纪公园系列一直没让人失望过，人类社会和恐龙沦为同一战线的弱者，非常让人期待会发生反应。', '0', '2018-06-16')
+2018-06-30 17:16:27,544 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '侏罗纪公园系列一直没让人失望过，人类社会和恐龙沦为同一战线的弱者，非常让人期待会发生反应。',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': '掠过清晨的马路',
+ 'user_url': 'https://www.douban.com/people/172868757/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,545 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'ForgottenBlue', 'https://www.douban.com/people/52743692/', '6月底期末季偷闲预定', '0', '2018-06-16')
+2018-06-30 17:16:27,602 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '6月底期末季偷闲预定',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': 'ForgottenBlue',
+ 'user_url': 'https://www.douban.com/people/52743692/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,603 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'Neona', 'https://www.douban.com/people/57722726/', '带爸妈去看啥电影，就你了', '0', '2018-06-16')
+2018-06-30 17:16:27,661 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '带爸妈去看啥电影，就你了',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': 'Neona',
+ 'user_url': 'https://www.douban.com/people/57722726/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,663 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '林下风致', 'https://www.douban.com/people/168248461/', '恐龙题材本身就很吸引人，再加上《侏罗纪公园1》的造势力肯定要看', '0', '2018-06-16')
+2018-06-30 17:16:27,719 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '恐龙题材本身就很吸引人，再加上《侏罗纪公园1》的造势力肯定要看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': '林下风致',
+ 'user_url': 'https://www.douban.com/people/168248461/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,721 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'Sanmonica', 'https://www.douban.com/people/171719669/', '当初看了第一部，真的要吐槽当时女主穿着高跟鞋跑过了恐龙，这一部据说剧情和特效还不错，但是不要再有bug了。', '0', '2018-06-16')
+2018-06-30 17:16:27,769 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '当初看了第一部，真的要吐槽当时女主穿着高跟鞋跑过了恐龙，这一部据说剧情和特效还不错，但是不要再有bug了。',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': 'Sanmonica',
+ 'user_url': 'https://www.douban.com/people/171719669/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,772 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'S', 'https://www.douban.com/people/pinpin1023/', '美国竟然还没上映', '0', '2018-06-16')
+2018-06-30 17:16:27,819 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '美国竟然还没上映',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-16',
+ 'movieid': '26416062',
+ 'user_name': 'S',
+ 'user_url': 'https://www.douban.com/people/pinpin1023/',
+ 'vote_num': '0'}
+2018-06-30 17:16:27,822 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '自由', 'https://www.douban.com/people/162839229/', '非常想看', '0', '2018-06-15')
+2018-06-30 17:16:27,869 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=>
+{'comment': '非常想看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': '自由',
+ 'user_url': 'https://www.douban.com/people/162839229/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,344 - DEBUG - engine.py-_on_success[line:240] - Crawled (200) <GET https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=> (referer: https://movie.douban.com/subject/26416062//comments?start=60&limit=20&sort=time&status=F&percent_type=)
+2018-06-30 17:16:32,456 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '守夜人', 'https://www.douban.com/people/hcsloveljy/', '明天去看', '0', '2018-06-15')
+2018-06-30 17:16:32,511 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '明天去看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': '守夜人',
+ 'user_url': 'https://www.douban.com/people/hcsloveljy/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,513 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'SquareOfSlow', 'https://www.douban.com/people/blueillusion/', '本来想说电影唯一的亮点是小萝莉还比较可爱，没想到最后当了个圣母婊，哎，啥破编剧。。。', '还行', '2018-06-15')
+2018-06-30 17:16:32,561 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '本来想说电影唯一的亮点是小萝莉还比较可爱，没想到最后当了个圣母婊，哎，啥破编剧。。。',
+ 'comment_rate': '还行',
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': 'SquareOfSlow',
+ 'user_url': 'https://www.douban.com/people/blueillusion/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,563 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '妖灵妖酒', 'https://www.douban.com/people/179463807/', '看了1非常非常喜欢。从来没带父母去看过电影，已经买了明天的票，看评论2好像有点令人担忧，希望明天爸妈能够喜欢吧', '0', '2018-06-15')
+2018-06-30 17:16:32,611 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '看了1非常非常喜欢。从来没带父母去看过电影，已经买了明天的票，看评论2好像有点令人担忧，希望明天爸妈能够喜欢吧',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': '妖灵妖酒',
+ 'user_url': 'https://www.douban.com/people/179463807/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,613 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'bamboo', 'https://www.douban.com/people/172397209/', '想看！不知道还不害怕，印象中之前看过的侏罗纪公园吧还蛮有意思的', '0', '2018-06-15')
+2018-06-30 17:16:32,661 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '想看！不知道还不害怕，印象中之前看过的侏罗纪公园吧还蛮有意思的',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': 'bamboo',
+ 'user_url': 'https://www.douban.com/people/172397209/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,663 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'CM丶Funk', 'https://www.douban.com/people/87765734/', '爆米花', '0', '2018-06-15')
+2018-06-30 17:16:32,712 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '爆米花',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': 'CM丶Funk',
+ 'user_url': 'https://www.douban.com/people/87765734/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,713 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '岁月如歌o', 'https://www.douban.com/people/171746350/', '想看', '0', '2018-06-15')
+2018-06-30 17:16:32,762 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '想看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': '岁月如歌o',
+ 'user_url': 'https://www.douban.com/people/171746350/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,763 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'dreched', 'https://www.douban.com/people/78187301/', '以前你是和谁一起看的', '0', '2018-06-15')
+2018-06-30 17:16:32,812 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '以前你是和谁一起看的',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': 'dreched',
+ 'user_url': 'https://www.douban.com/people/78187301/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,813 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '董大冰', 'https://www.douban.com/people/128238584/', '还记的当时看侏罗纪公园的时候帅炸的男主', '0', '2018-06-15')
+2018-06-30 17:16:32,862 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '还记的当时看侏罗纪公园的时候帅炸的男主',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': '董大冰',
+ 'user_url': 'https://www.douban.com/people/128238584/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,863 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '*^_^*', 'https://www.douban.com/people/xiaokeaixixi/', '哇⊙∀⊙！我要看', '0', '2018-06-15')
+2018-06-30 17:16:32,912 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '哇⊙∀⊙！我要看',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': '*^_^*',
+ 'user_url': 'https://www.douban.com/people/xiaokeaixixi/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,913 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '好色之徒又如何', 'https://www.douban.com/people/51245601/', '值得一看？', '0', '2018-06-15')
+2018-06-30 17:16:32,962 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '值得一看？',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': '好色之徒又如何',
+ 'user_url': 'https://www.douban.com/people/51245601/',
+ 'vote_num': '0'}
+2018-06-30 17:16:32,963 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '拉链', 'https://www.douban.com/people/152363803/', '7.0 没有上集震撼 特效牛逼！', '还行', '2018-06-15')
+2018-06-30 17:16:33,012 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '7.0 没有上集震撼 特效牛逼！',
+ 'comment_rate': '还行',
+ 'comment_time': '2018-06-15',
+ 'movieid': '26416062',
+ 'user_name': '拉链',
+ 'user_url': 'https://www.douban.com/people/152363803/',
+ 'vote_num': '0'}
+2018-06-30 17:16:33,013 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '眉目成书', 'https://www.douban.com/people/155342208/', '期待', '0', '2018-06-14')
+2018-06-30 17:16:33,062 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '期待',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-14',
+ 'movieid': '26416062',
+ 'user_name': '眉目成书',
+ 'user_url': 'https://www.douban.com/people/155342208/',
+ 'vote_num': '0'}
+2018-06-30 17:16:33,063 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '朗月清风', 'https://www.douban.com/people/96344737/', '？', '0', '2018-06-14')
+2018-06-30 17:16:33,112 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '？',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-14',
+ 'movieid': '26416062',
+ 'user_name': '朗月清风',
+ 'user_url': 'https://www.douban.com/people/96344737/',
+ 'vote_num': '0'}
+2018-06-30 17:16:33,113 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '屿离', 'https://www.douban.com/people/163823064/', '恐龙', '0', '2018-06-14')
+2018-06-30 17:16:33,162 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '恐龙',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-14',
+ 'movieid': '26416062',
+ 'user_name': '屿离',
+ 'user_url': 'https://www.douban.com/people/163823064/',
+ 'vote_num': '0'}
+2018-06-30 17:16:33,164 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '泡面君', 'https://www.douban.com/people/75517746/', '应该会去电影院刷一遍！', '0', '2018-06-14')
+2018-06-30 17:16:33,212 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '应该会去电影院刷一遍！',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-14',
+ 'movieid': '26416062',
+ 'user_name': '泡面君',
+ 'user_url': 'https://www.douban.com/people/75517746/',
+ 'vote_num': '0'}
+2018-06-30 17:16:33,213 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'Cop 663', 'https://www.douban.com/people/77013688/', '虽然星爵是个没有脑袋的傻子，但我还是想看恐龙...', '0', '2018-06-14')
+2018-06-30 17:16:33,262 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '虽然星爵是个没有脑袋的傻子，但我还是想看恐龙...',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-14',
+ 'movieid': '26416062',
+ 'user_name': 'Cop 663',
+ 'user_url': 'https://www.douban.com/people/77013688/',
+ 'vote_num': '0'}
+2018-06-30 17:16:33,264 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '孤冷', 'https://www.douban.com/people/174222448/', '你们天天骂星爵，可我要站星爵。难道你最爱的人死了，凶手就在面前，你不想杀？再者，奇异博士算到了，要想赢星爵必须捣乱，灭霸必须清人口，所以从某种意义上来说星爵是胜利的促成者', '0', '2018-06-14')
+2018-06-30 17:16:33,312 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '你们天天骂星爵，可我要站星爵。难道你最爱的人死了，凶手就在面前，你不想杀？再者，奇异博士算到了，要想赢星爵必须捣乱，灭霸必须清人口，所以从某种意义上来说星爵是胜利的促成者',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-14',
+ 'movieid': '26416062',
+ 'user_name': '孤冷',
+ 'user_url': 'https://www.douban.com/people/174222448/',
+ 'vote_num': '0'}
+2018-06-30 17:16:33,314 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '欢乐儿童', 'https://www.douban.com/people/175126073/', '作死队日记2：绝境逢生', '0', '2018-06-14')
+2018-06-30 17:16:33,363 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '作死队日记2：绝境逢生',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-14',
+ 'movieid': '26416062',
+ 'user_name': '欢乐儿童',
+ 'user_url': 'https://www.douban.com/people/175126073/',
+ 'vote_num': '0'}
+2018-06-30 17:16:33,364 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', 'April Queen🍏', 'https://www.douban.com/people/125032043/', '女主的尖叫声', '0', '2018-06-14')
+2018-06-30 17:16:33,365 - WARNING - cursors.py-_show_warnings[line:355] - /home/feng/software/venv/webscprit/lib/python3.4/site-packages/pymysql/cursors.py:323: Warning: (1366, "Incorrect string value: '\\xF0\\x9F\\x8D\\x8F' for column 'user_name' at row 1")
+  self._do_get_result()
+
+2018-06-30 17:16:33,413 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '女主的尖叫声',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-14',
+ 'movieid': '26416062',
+ 'user_name': 'April Queen🍏',
+ 'user_url': 'https://www.douban.com/people/125032043/',
+ 'vote_num': '0'}
+2018-06-30 17:16:33,414 - INFO - pipelines.py-process_item[line:124] - INSERT INTO movie_essay (movieid,user_name, user_url,
+                                    comment,comment_rate,comment_time)
+                                VALUES ('26416062', '干枯玫瑰色', 'https://www.douban.com/people/154900839/', '口碑不好', '0', '2018-06-14')
+2018-06-30 17:16:33,463 - DEBUG - scraper.py-_itemproc_finished[line:237] - Scraped from <200 https://movie.douban.com/subject/26416062//comments?start=80&limit=20&sort=time&status=F&percent_type=>
+{'comment': '口碑不好',
+ 'comment_rate': 0,
+ 'comment_time': '2018-06-14',
+ 'movieid': '26416062',
+ 'user_name': '干枯玫瑰色',
+ 'user_url': 'https://www.douban.com/people/154900839/',
+ 'vote_num': '1'}
+2018-06-30 17:16:33,468 - INFO - engine.py-close_spider[line:297] - Closing spider (finished)
+2018-06-30 17:16:33,470 - INFO - statscollectors.py-close_spider[line:47] - Dumping Scrapy stats:
+{'downloader/request_bytes': 6972,
+ 'downloader/request_count': 6,
+ 'downloader/request_method_count/GET': 6,
+ 'downloader/response_bytes': 82477,
+ 'downloader/response_count': 6,
+ 'downloader/response_status_count/200': 6,
+ 'file_count': 1,
+ 'file_status_count/uptodate': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 30, 9, 16, 33, 469474),
+ 'item_scraped_count': 101,
+ 'log_count/DEBUG': 109,
+ 'log_count/ERROR': 5,
+ 'log_count/INFO': 110,
+ 'log_count/WARNING': 8,
+ 'request_depth_max': 5,
+ 'response_received_count': 6,
+ 'scheduler/dequeued': 6,
+ 'scheduler/dequeued/memory': 6,
+ 'scheduler/enqueued': 6,
+ 'scheduler/enqueued/memory': 6,
+ 'start_time': datetime.datetime(2018, 6, 30, 9, 16, 8, 581456)}
+2018-06-30 17:16:33,471 - INFO - engine.py-<lambda>[line:328] - Spider closed (finished)

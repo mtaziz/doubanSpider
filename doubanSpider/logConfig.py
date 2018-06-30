@@ -2,18 +2,17 @@ import logging
 
 
 class MyLogger(object):
-    logger = ''
 
     def __init__(self):
         # # 设置日志打印格式
         # formatter = logging.Formatter(
         #     '%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s')
         # 配置日志信息
-        logging.basicConfig(level=logging.DEBUG,
-                            format='%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s',
-                            datefmt='%m-%d %H:%M',
-                            filename='spider.log',
-                            filemode='a')
+        # logging.basicConfig(level=logging.DEBUG,
+        #                     format='%(asctime)s - %(levelname)s - %(filename)s-%(funcName)s[line:%(lineno)d] - %(message)s',
+        #                     datefmt='%m-%d %H:%M',
+        #                     filename='spider.log',
+        #                     filemode='a')
         # 定义一个Handler打印INFO及以上级别的日志到sys.stderr
         console = logging.StreamHandler()
         console.setLevel(logging.INFO)
@@ -34,10 +33,4 @@ class MyLogger(object):
         debuglog.setFormatter(formatter)
         logging.getLogger('').addHandler(debuglog)
 
-        MyLogger.logger = logging.getLogger('errorlog')
-        logging.debug("==============debug=====================")
-        logging.info("==============info=====================")
-        logging.error("===============error==================")
-
-    def getlog(self):
-        return MyLogger.logger
+logger = MyLogger()

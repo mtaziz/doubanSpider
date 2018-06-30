@@ -1,0 +1,827 @@
+doubanLog   : ERROR    errorerrorerrorerrorerrorerror.
+2018-06-21 00:10:07,522 - ERROR - doubanLog[line:20] - errorerrorerrorerrorerrorerror.
+2018-06-21 00:12:00,468 - ERROR - doubanLog[line:35] - errorerrorerrorerrorerrorerror.
+2018-06-21 00:14:29,519 - ERROR - /media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py-start_requests[line:35] - errorerrorerrorerrorerrorerror.
+2018-06-21 00:15:29,720 - ERROR - doubanSpider.py-start_requests[line:35] - errorerrorerrorerrorerrorerror.
+2018-06-21 00:18:50,481 - CRITICAL - _legacy.py-publishToNewObserver[line:154] - Unhandled error in Deferred:
+2018-06-21 00:18:50,481 - CRITICAL - _legacy.py-publishToNewObserver[line:154] - 
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/twisted/internet/defer.py", line 1301, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/crawler.py", line 71, in crawl
+    self.spider = self._create_spider(*args, **kwargs)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/crawler.py", line 94, in _create_spider
+    return self.spidercls.from_crawler(self, *args, **kwargs)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spiders/__init__.py", line 50, in from_crawler
+    spider = cls(*args, **kwargs)
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 31, in __init__
+    self.logger = MyLogger().getlog()
+AttributeError: can't set attribute
+2018-06-21 00:20:43,502 - ERROR - engine.py-_next_request[line:133] - Error while obtaining start requests
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/core/engine.py", line 127, in _next_request
+    request = next(slot.start_requests)
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 34, in start_requests
+    self.logger = MyLogger().getlog()
+AttributeError: can't set attribute
+2018-06-21 00:24:16,374 - ERROR - doubanSpider.py-start_requests[line:26] - start_requests https://movie.douban.com/subject/26416062/ 
+2018-06-21 22:18:43,605 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 91, in parseMovieDetial
+    movieItem['image_url'] = response.xpath('//img[(@rel = "v:image")]/@src').extract_first()
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/item.py", line 66, in __setitem__
+    (self.__class__.__name__, key))
+KeyError: 'MovieDetialItem does not support field: image_url'
+2018-06-21 22:18:43,605 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 91, in parseMovieDetial
+    movieItem['image_url'] = response.xpath('//img[(@rel = "v:image")]/@src').extract_first()
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/item.py", line 66, in __setitem__
+    (self.__class__.__name__, key))
+KeyError: 'MovieDetialItem does not support field: image_url'
+2018-06-21 22:23:02,868 - ERROR - pipelines.py-item_completed[line:182] - ===============================================================================
+2018-06-21 22:23:02,868 - ERROR - pipelines.py-item_completed[line:182] - ===============================================================================
+2018-06-21 22:25:27,738 - ERROR - pipelines.py-get_media_requests[line:178] - item['image_url'] https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg : 
+2018-06-21 22:25:27,738 - ERROR - pipelines.py-get_media_requests[line:178] - item['image_url'] https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg : 
+2018-06-21 22:25:27,899 - ERROR - pipelines.py-item_completed[line:183] - ===============================================================================
+2018-06-21 22:25:27,899 - ERROR - pipelines.py-item_completed[line:183] - ===============================================================================
+2018-06-21 22:32:37,098 - ERROR - pipelines.py-get_media_requests[line:178] - item['image_url'] https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg : 
+2018-06-21 22:32:37,098 - ERROR - pipelines.py-get_media_requests[line:178] - item['image_url'] https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg : 
+2018-06-21 22:32:37,267 - ERROR - pipelines.py-item_completed[line:183] - ===============================================================================
+2018-06-21 22:32:37,267 - ERROR - pipelines.py-item_completed[line:183] - ===============================================================================
+2018-06-21 22:32:37,268 - ERROR - scraper.py-_itemproc_finished[line:234] - Error processing {'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': ' 侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / '
+                  '侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': 'https://movie.douban.com/subject/26213252/?from=subject-page',
+ 'also_like_10_url': '惊奇队长',
+ 'also_like_1_name': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_1_url': '蚁人2：黄蜂女现身',
+ 'also_like_2_name': 'https://movie.douban.com/subject/26336252/?from=subject-page',
+ 'also_like_2_url': '碟中谍6：全面瓦解',
+ 'also_like_3_name': 'https://movie.douban.com/subject/26667010/?from=subject-page',
+ 'also_like_3_url': 'X战警：黑凤凰',
+ 'also_like_4_name': 'https://movie.douban.com/subject/26931786/?from=subject-page',
+ 'also_like_4_url': '蜘蛛侠：英雄归来2',
+ 'also_like_5_name': 'https://movie.douban.com/subject/3168101/?from=subject-page',
+ 'also_like_5_url': '毒液：致命守护者',
+ 'also_like_6_name': 'https://movie.douban.com/subject/4221462/?from=subject-page',
+ 'also_like_6_url': '牵引城市',
+ 'also_like_7_name': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_7_url': '头号玩家',
+ 'also_like_8_name': 'https://movie.douban.com/subject/26873582/?from=subject-page',
+ 'also_like_8_url': '侏罗纪世界3',
+ 'also_like_9_name': 'https://movie.douban.com/subject/26266893/?from=subject-page',
+ 'also_like_9_url': '流浪地球',
+ 'comparison_1': '61% 科幻片',
+ 'comparison_2': '51% 冒险片',
+ 'country': ' 美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '7.0',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments ',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews ',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': ' 英语',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'rate_num': '88946',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '1.0%',
+ 'star_2': '6.3%',
+ 'star_3': '44.6%',
+ 'star_4': '38.1%',
+ 'star_5': '10.1%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '94233人看过',
+ 'want_to_view_num': '30824人想看',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/pipelines.py", line 184, in item_completed
+    logger.error('results: '+results)
+TypeError: Can't convert 'list' object to str implicitly
+2018-06-21 22:32:37,268 - ERROR - scraper.py-_itemproc_finished[line:234] - Error processing {'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': ' 侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / '
+                  '侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': 'https://movie.douban.com/subject/26213252/?from=subject-page',
+ 'also_like_10_url': '惊奇队长',
+ 'also_like_1_name': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_1_url': '蚁人2：黄蜂女现身',
+ 'also_like_2_name': 'https://movie.douban.com/subject/26336252/?from=subject-page',
+ 'also_like_2_url': '碟中谍6：全面瓦解',
+ 'also_like_3_name': 'https://movie.douban.com/subject/26667010/?from=subject-page',
+ 'also_like_3_url': 'X战警：黑凤凰',
+ 'also_like_4_name': 'https://movie.douban.com/subject/26931786/?from=subject-page',
+ 'also_like_4_url': '蜘蛛侠：英雄归来2',
+ 'also_like_5_name': 'https://movie.douban.com/subject/3168101/?from=subject-page',
+ 'also_like_5_url': '毒液：致命守护者',
+ 'also_like_6_name': 'https://movie.douban.com/subject/4221462/?from=subject-page',
+ 'also_like_6_url': '牵引城市',
+ 'also_like_7_name': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_7_url': '头号玩家',
+ 'also_like_8_name': 'https://movie.douban.com/subject/26873582/?from=subject-page',
+ 'also_like_8_url': '侏罗纪世界3',
+ 'also_like_9_name': 'https://movie.douban.com/subject/26266893/?from=subject-page',
+ 'also_like_9_url': '流浪地球',
+ 'comparison_1': '61% 科幻片',
+ 'comparison_2': '51% 冒险片',
+ 'country': ' 美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '7.0',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments ',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews ',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': ' 英语',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'rate_num': '88946',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '1.0%',
+ 'star_2': '6.3%',
+ 'star_3': '44.6%',
+ 'star_4': '38.1%',
+ 'star_5': '10.1%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '94233人看过',
+ 'want_to_view_num': '30824人想看',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/pipelines.py", line 184, in item_completed
+    logger.error('results: '+results)
+TypeError: Can't convert 'list' object to str implicitly
+2018-06-21 22:35:41,191 - ERROR - pipelines.py-get_media_requests[line:178] - item['image_url'] https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg : 
+2018-06-21 22:35:41,191 - ERROR - pipelines.py-get_media_requests[line:178] - item['image_url'] https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg : 
+2018-06-21 22:35:41,353 - ERROR - pipelines.py-item_completed[line:183] - ===============================================================================
+2018-06-21 22:35:41,353 - ERROR - pipelines.py-item_completed[line:183] - ===============================================================================
+2018-06-21 22:35:41,354 - ERROR - pipelines.py-item_completed[line:184] - results: [(False, <twisted.python.failure.Failure scrapy.pipelines.files.FileException: >)]
+2018-06-21 22:35:41,354 - ERROR - pipelines.py-item_completed[line:184] - results: [(False, <twisted.python.failure.Failure scrapy.pipelines.files.FileException: >)]
+2018-06-21 22:35:41,355 - ERROR - scraper.py-_itemproc_finished[line:234] - Error processing {'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': ' 侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / '
+                  '侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': 'https://movie.douban.com/subject/26213252/?from=subject-page',
+ 'also_like_10_url': '惊奇队长',
+ 'also_like_1_name': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_1_url': '蚁人2：黄蜂女现身',
+ 'also_like_2_name': 'https://movie.douban.com/subject/26336252/?from=subject-page',
+ 'also_like_2_url': '碟中谍6：全面瓦解',
+ 'also_like_3_name': 'https://movie.douban.com/subject/26667010/?from=subject-page',
+ 'also_like_3_url': 'X战警：黑凤凰',
+ 'also_like_4_name': 'https://movie.douban.com/subject/26931786/?from=subject-page',
+ 'also_like_4_url': '蜘蛛侠：英雄归来2',
+ 'also_like_5_name': 'https://movie.douban.com/subject/3168101/?from=subject-page',
+ 'also_like_5_url': '毒液：致命守护者',
+ 'also_like_6_name': 'https://movie.douban.com/subject/4221462/?from=subject-page',
+ 'also_like_6_url': '牵引城市',
+ 'also_like_7_name': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_7_url': '头号玩家',
+ 'also_like_8_name': 'https://movie.douban.com/subject/26873582/?from=subject-page',
+ 'also_like_8_url': '侏罗纪世界3',
+ 'also_like_9_name': 'https://movie.douban.com/subject/26266893/?from=subject-page',
+ 'also_like_9_url': '流浪地球',
+ 'comparison_1': '61% 科幻片',
+ 'comparison_2': '51% 冒险片',
+ 'country': ' 美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '7.0',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments ',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews ',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': ' 英语',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'rate_num': '88966',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '1.0%',
+ 'star_2': '6.3%',
+ 'star_3': '44.6%',
+ 'star_4': '38.1%',
+ 'star_5': '10.1%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '94253人看过',
+ 'want_to_view_num': '30828人想看',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/pipelines.py", line 185, in item_completed
+    logger.error('item: '+item)
+TypeError: Can't convert 'MovieDetialItem' object to str implicitly
+2018-06-21 22:35:41,355 - ERROR - scraper.py-_itemproc_finished[line:234] - Error processing {'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': ' 侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / '
+                  '侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': 'https://movie.douban.com/subject/26213252/?from=subject-page',
+ 'also_like_10_url': '惊奇队长',
+ 'also_like_1_name': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_1_url': '蚁人2：黄蜂女现身',
+ 'also_like_2_name': 'https://movie.douban.com/subject/26336252/?from=subject-page',
+ 'also_like_2_url': '碟中谍6：全面瓦解',
+ 'also_like_3_name': 'https://movie.douban.com/subject/26667010/?from=subject-page',
+ 'also_like_3_url': 'X战警：黑凤凰',
+ 'also_like_4_name': 'https://movie.douban.com/subject/26931786/?from=subject-page',
+ 'also_like_4_url': '蜘蛛侠：英雄归来2',
+ 'also_like_5_name': 'https://movie.douban.com/subject/3168101/?from=subject-page',
+ 'also_like_5_url': '毒液：致命守护者',
+ 'also_like_6_name': 'https://movie.douban.com/subject/4221462/?from=subject-page',
+ 'also_like_6_url': '牵引城市',
+ 'also_like_7_name': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_7_url': '头号玩家',
+ 'also_like_8_name': 'https://movie.douban.com/subject/26873582/?from=subject-page',
+ 'also_like_8_url': '侏罗纪世界3',
+ 'also_like_9_name': 'https://movie.douban.com/subject/26266893/?from=subject-page',
+ 'also_like_9_url': '流浪地球',
+ 'comparison_1': '61% 科幻片',
+ 'comparison_2': '51% 冒险片',
+ 'country': ' 美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '7.0',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments ',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews ',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': ' 英语',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'rate_num': '88966',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '1.0%',
+ 'star_2': '6.3%',
+ 'star_3': '44.6%',
+ 'star_4': '38.1%',
+ 'star_5': '10.1%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '94253人看过',
+ 'want_to_view_num': '30828人想看',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/pipelines.py", line 185, in item_completed
+    logger.error('item: '+item)
+TypeError: Can't convert 'MovieDetialItem' object to str implicitly
+2018-06-21 22:36:13,664 - ERROR - pipelines.py-get_media_requests[line:178] - item['image_url'] https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg : 
+2018-06-21 22:36:13,664 - ERROR - pipelines.py-get_media_requests[line:178] - item['image_url'] https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg : 
+2018-06-21 22:36:13,820 - ERROR - pipelines.py-item_completed[line:183] - ===============================================================================
+2018-06-21 22:36:13,820 - ERROR - pipelines.py-item_completed[line:183] - ===============================================================================
+2018-06-21 22:36:13,821 - ERROR - pipelines.py-item_completed[line:184] - results: [(False, <twisted.python.failure.Failure scrapy.pipelines.files.FileException: >)]
+2018-06-21 22:36:13,821 - ERROR - pipelines.py-item_completed[line:184] - results: [(False, <twisted.python.failure.Failure scrapy.pipelines.files.FileException: >)]
+2018-06-21 22:36:13,826 - ERROR - pipelines.py-item_completed[line:185] - item: {'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': ' 侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / '
+                  '侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': 'https://movie.douban.com/subject/26213252/?from=subject-page',
+ 'also_like_10_url': '惊奇队长',
+ 'also_like_1_name': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_1_url': '蚁人2：黄蜂女现身',
+ 'also_like_2_name': 'https://movie.douban.com/subject/26336252/?from=subject-page',
+ 'also_like_2_url': '碟中谍6：全面瓦解',
+ 'also_like_3_name': 'https://movie.douban.com/subject/26667010/?from=subject-page',
+ 'also_like_3_url': 'X战警：黑凤凰',
+ 'also_like_4_name': 'https://movie.douban.com/subject/26931786/?from=subject-page',
+ 'also_like_4_url': '蜘蛛侠：英雄归来2',
+ 'also_like_5_name': 'https://movie.douban.com/subject/3168101/?from=subject-page',
+ 'also_like_5_url': '毒液：致命守护者',
+ 'also_like_6_name': 'https://movie.douban.com/subject/4221462/?from=subject-page',
+ 'also_like_6_url': '牵引城市',
+ 'also_like_7_name': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_7_url': '头号玩家',
+ 'also_like_8_name': 'https://movie.douban.com/subject/26873582/?from=subject-page',
+ 'also_like_8_url': '侏罗纪世界3',
+ 'also_like_9_name': 'https://movie.douban.com/subject/26266893/?from=subject-page',
+ 'also_like_9_url': '流浪地球',
+ 'comparison_1': '61% 科幻片',
+ 'comparison_2': '51% 冒险片',
+ 'country': ' 美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '7.0',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments ',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews ',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': ' 英语',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'rate_num': '88972',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '1.0%',
+ 'star_2': '6.3%',
+ 'star_3': '44.6%',
+ 'star_4': '38.1%',
+ 'star_5': '10.1%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '94261人看过',
+ 'want_to_view_num': '30829人想看',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-21 22:36:13,826 - ERROR - pipelines.py-item_completed[line:185] - item: {'IMDb_url': 'http://www.imdb.com/title/tt4881806',
+ 'also_known_as': ' 侏罗纪世界：殒落国度(台) / 侏罗纪世界：迷失国度(港) / 侏罗纪世界2：失落王国 / '
+                  '侏罗纪世界2：堕落王国 / 侏罗纪公园5 / Jurassic Park 5 / Jurassic World 2',
+ 'also_like_10_name': 'https://movie.douban.com/subject/26213252/?from=subject-page',
+ 'also_like_10_url': '惊奇队长',
+ 'also_like_1_name': 'https://movie.douban.com/subject/26636712/?from=subject-page',
+ 'also_like_1_url': '蚁人2：黄蜂女现身',
+ 'also_like_2_name': 'https://movie.douban.com/subject/26336252/?from=subject-page',
+ 'also_like_2_url': '碟中谍6：全面瓦解',
+ 'also_like_3_name': 'https://movie.douban.com/subject/26667010/?from=subject-page',
+ 'also_like_3_url': 'X战警：黑凤凰',
+ 'also_like_4_name': 'https://movie.douban.com/subject/26931786/?from=subject-page',
+ 'also_like_4_url': '蜘蛛侠：英雄归来2',
+ 'also_like_5_name': 'https://movie.douban.com/subject/3168101/?from=subject-page',
+ 'also_like_5_url': '毒液：致命守护者',
+ 'also_like_6_name': 'https://movie.douban.com/subject/4221462/?from=subject-page',
+ 'also_like_6_url': '牵引城市',
+ 'also_like_7_name': 'https://movie.douban.com/subject/4920389/?from=subject-page',
+ 'also_like_7_url': '头号玩家',
+ 'also_like_8_name': 'https://movie.douban.com/subject/26873582/?from=subject-page',
+ 'also_like_8_url': '侏罗纪世界3',
+ 'also_like_9_name': 'https://movie.douban.com/subject/26266893/?from=subject-page',
+ 'also_like_9_url': '流浪地球',
+ 'comparison_1': '61% 科幻片',
+ 'comparison_2': '51% 冒险片',
+ 'country': ' 美国 / 西班牙',
+ 'director': '胡安·安东尼奥·巴亚纳',
+ 'douban_rate': '7.0',
+ 'doulists_url': 'https://movie.douban.com/subject/26416062//doulists',
+ 'essay_collect_url': 'https://movie.douban.com/subject/26416062//comments ',
+ 'film_critics_url': 'https://movie.douban.com/subject/26416062//reviews ',
+ 'genres': '动作/科幻/冒险',
+ 'image_url': 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg',
+ 'language': ' 英语',
+ 'movieid': '26416062',
+ 'my_rate': '3',
+ 'my_tags': '标签:恐龙',
+ 'rate_num': '88972',
+ 'release_date': '2018-06-15(中国大陆)/2018-06-22(美国)',
+ 'runtime': '128分钟',
+ 'star_1': '1.0%',
+ 'star_2': '6.3%',
+ 'star_3': '44.6%',
+ 'star_4': '38.1%',
+ 'star_5': '10.1%',
+ 'stars': '克里斯·帕拉特/布莱丝·达拉斯·霍华德/贾斯蒂斯·史密斯/伊莎贝拉·瑟蒙/拉菲·斯波/托比·琼斯/泰德·拉文/詹姆斯·克伦威尔/黄荣亮/丹妮艾拉·皮内达/杰拉丁·卓别林/杰夫·高布伦/卡米尔·雷米泽斯基/丹尼尔·斯蒂森/皮特·杰森/迈克尔·帕帕约翰/罗伯特·埃姆斯/罗南·萨莫尔斯/麦克斯·贝克/丹尼尔·厄根/戴维·奥拉瓦莱·阿印德',
+ 'storyline': '侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有三年。如今，纳布拉尔岛已经被人类遗弃，岛上幸存的恐龙们在丛林中自给自足。',
+ 'tags': '恐龙/科幻/侏罗纪/美国/冒险/2018/惊悚/动作',
+ 'view_date': '2018-06-16',
+ 'viewed_num': '94261人看过',
+ 'want_to_view_num': '30829人想看',
+ 'writers': '科林·特雷沃罗/德里克·康纳利/迈克尔·克莱顿'}
+2018-06-21 22:36:13,827 - ERROR - pipelines.py-item_completed[line:186] - info: <scrapy.pipelines.media.MediaPipeline.SpiderInfo object at 0x7f3631f5e9b0>
+2018-06-21 22:36:13,827 - ERROR - pipelines.py-item_completed[line:186] - info: <scrapy.pipelines.media.MediaPipeline.SpiderInfo object at 0x7f3631f5e9b0>
+2018-06-28 23:07:24,877 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 120, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:07:24,877 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 120, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:07:24,877 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 120, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:07:24,979 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:07:24,979 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:07:24,979 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:22:36,597 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:22:36,597 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:22:36,597 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:22:36,699 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:22:36,699 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:22:36,699 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:24:42,393 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:24:42,393 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:24:42,393 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise Exception('SDFASDFA')
+Exception: SDFASDFA
+2018-06-28 23:24:42,495 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:24:42,495 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:24:42,495 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:26:06,307 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:26:06,307 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:26:06,307 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:27:56,022 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:27:56,022 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:27:56,022 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:28:09,099 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:28:09,099 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:28:09,099 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:28:44,251 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:28:44,251 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:28:44,251 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:29:26,984 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:29:26,984 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:29:26,984 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:29:57,521 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:29:57,521 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:29:57,521 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:30:57,916 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:30:57,916 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:30:57,916 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:33:14,444 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:33:14,444 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:33:14,444 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:42:36,835 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:42:36,835 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:42:36,835 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:45:51,603 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:45:51,603 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:45:51,603 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:59:28,326 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:59:28,326 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-28 23:59:28,326 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:01:05,679 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:01:05,679 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:01:05,679 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:04:57,497 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:04:57,497 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:04:57,497 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:09:22,468 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:09:22,468 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:09:22,468 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:14:24,738 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:14:24,738 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:14:24,738 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:16:06,283 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:16:06,283 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:16:06,283 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:26:59,954 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:26:59,954 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:26:59,954 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:33:12,035 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:33:12,035 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:33:12,035 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:33:12,137 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:33:12,137 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:33:12,137 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:40:03,359 - ERROR - logConfig.py-__init__[line:34] - ===============error==================
+2018-06-29 00:40:03,379 - ERROR - logConfig.py-__init__[line:34] - ===============error==================
+2018-06-29 00:40:03,379 - ERROR - logConfig.py-__init__[line:34] - ===============error==================
+2018-06-29 00:40:03,398 - ERROR - logConfig.py-__init__[line:34] - ===============error==================
+2018-06-29 00:40:03,398 - ERROR - logConfig.py-__init__[line:34] - ===============error==================
+2018-06-29 00:40:03,398 - ERROR - logConfig.py-__init__[line:34] - ===============error==================
+2018-06-29 00:40:04,212 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:40:04,212 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:40:04,212 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:40:04,314 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:40:04,314 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:40:04,314 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:43:00,139 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,162 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,162 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,181 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,181 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:00,181 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:43:01,060 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:43:01,060 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:43:01,060 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:43:01,164 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:43:01,164 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:43:01,164 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-29 00:50:09,050 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-29 00:50:09,878 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-29 00:50:09,980 - ERROR - pipelines.py-process_item[line:132] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-30 17:07:16,953 - ERROR - logConfig.py-__init__[line:40] - ===============error==================
+2018-06-30 17:07:18,721 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-30 17:07:18,823 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-30 17:08:51,874 - ERROR - scraper.py-handle_spider_error[line:158] - Spider error processing <GET https://movie.douban.com/subject/26416062/> (referer: None)
+Traceback (most recent call last):
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/referer.py", line 22, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/feng/software/venv/webscprit/lib/python3.4/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders/doubanSpider.py", line 121, in parseMovieDetial
+    raise exception('SDFASDFA')
+TypeError: 'module' object is not callable
+2018-06-30 17:08:51,976 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-30 17:16:09,513 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062' for key 'movieid'")
+2018-06-30 17:16:19,051 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062-已注销' for key 'movie_essay_unique_index'")
+2018-06-30 17:16:22,887 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062-已注销' for key 'movie_essay_unique_index'")
+2018-06-30 17:16:26,831 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062-已注销' for key 'movie_essay_unique_index'")
+2018-06-30 17:16:27,422 - ERROR - pipelines.py-process_item[line:128] - (1062, "Duplicate entry '26416062-桃子' for key 'movie_essay_unique_index'")

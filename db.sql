@@ -126,7 +126,6 @@ CREATE TABLE `movie_detail` (
   `also_like_9_url` varchar(128) DEFAULT NULL COMMENT '同类电影推荐',
   `also_like_10_name` varchar(64) DEFAULT NULL COMMENT '同类电影推荐',
   `also_like_10_url` varchar(128) DEFAULT NULL COMMENT '同类电影推荐',
-  `prize` text COMMENT '获奖情况',
   `essay_collect_url` varchar(128) DEFAULT NULL COMMENT '短评',
   `film_critics_url` varchar(128) DEFAULT NULL COMMENT '影评',
   `doulists_url` varchar(128) DEFAULT NULL COMMENT '影评',
