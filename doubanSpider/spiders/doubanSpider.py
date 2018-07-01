@@ -18,30 +18,32 @@ import re
 class DoubanMoviesSpider(scrapy.Spider):
     name = "doubanmovies"
     allowed_domains = ['douban.com']
-    cookie = transCookie("ue=1430657824@qq.com; ll=118282; bid=2ZAH2S2KiAo; ps=y; dbcl2=99678180:dGbcwkkQWHo; push_noty_num=0; push_doumail_num=0; ap=1; _pk_id.100001.4cf6=6dca2b2485769e55.1528894519.1.1528894519.1528894519.; __utma=30149280.2077450901.1528894521.1528894521.1528894521.1; __utmz=30149280.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=223695111.468546197.1528894521.1528894521.1528894521.1; __utmz=223695111.1528894521.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _vwo_uuid_v2=D0ABF7CE98FAAEFC16F17EB5D02FA904C|40d80dd9cb7725af334383e36649c6ae; ck=pGhf").stringToDict()
-
-    global aa
-    aa = 1
 
     def start_requests(self):
+        # url = 'http://www.xicidaili.com/nn/'
         url = 'https://movie.douban.com/people/99678180/collect'
-        # url = 'https://movie.douban.com/subject/26925317/comments?status=P'
+        # # url = 'https://movie.douban.com/subject/26925317/comments?status=P'
         logging.info('start_requests %s ', url)
-        # meta={'cookiejar':1}表示开启cookie记录，首次请求时写在Request()里
-        yield scrapy.Request(url, callback=self.getCollectMovies, cookies=self.cookie)
+        # # meta={'cookiejar':1}表示开启cookie记录，首次请求时写在Request()里
+        yield scrapy.Request(url, callback=self.getCollectMovies)
         # yield scrapy.Request(url, callback=self.parseComments)
+        # yield scrapy.Request(url, callback=self.aaa)
+
+    # def aaa(self, response):
+    #      inspect_response(response, self)
 
     def getCollectMovies(self, response):
+        # inspect_response(response, self)
         links = response.xpath('//li[@class="title"]/a/@href').extract()
         template = 'https://movie.douban.com/subject/'
         for url in links:
             if template in url:
-                yield scrapy.Request(url, callback=self.parseMovieDetial, cookies=self.cookie)
+                yield scrapy.Request(url, callback=self.parseMovieDetial)
 
         nextPage = response.xpath('//link[@rel="next"]/@href').extract_first()
         if nextPage:
             logging.info('getCollectMovies %s ', response.urljoin(nextPage))
-            yield scrapy.Request(response.urljoin(nextPage), callback=self.getCollectMovies,cookies=self.cookie,
+            yield scrapy.Request(response.urljoin(nextPage), callback=self.getCollectMovies,
                                                errback=self.errback)
 
     def parseMovieDetial(self, response):
@@ -141,7 +143,7 @@ class DoubanMoviesSpider(scrapy.Spider):
 
         # 不是从豆列中过来的,就说明是"我看"中的电影,只爬取 我看-豆列-电影这几层
         if 'fromDoulist' not in response.meta:
-            doulistsRequest = scrapy.Request(movieItem['doulists_url'],  cookies=self.cookie, callback=self.parseDoulists,
+            doulistsRequest = scrapy.Request(movieItem['doulists_url'],  callback=self.parseDoulists,
                                              errback=self.errback)
             doulistsRequest.meta['movieid'] = movieItem['movieid']
             yield doulistsRequest
@@ -239,7 +241,7 @@ class DoubanMoviesSpider(scrapy.Spider):
 
         # 只找当前页的豆列就好了
         for url in douListUrls:
-            requestDoulistDetail = scrapy.Request(url, cookies=self.cookie, callback=self.parseDoulistDetail,
+            requestDoulistDetail = scrapy.Request(url, callback=self.parseDoulistDetail,
                                                   errback=self.errback)
             requestDoulistDetail.meta['movieid'] = movieid
             yield requestDoulistDetail
@@ -294,7 +296,7 @@ class DoubanMoviesSpider(scrapy.Spider):
 
         # 进详情页
         for url in movie_urls:
-            doulistMovieRequest = scrapy.Request(url,  cookies=self.cookie, callback=self.parseMovieDetial,
+            doulistMovieRequest = scrapy.Request(url,  callback=self.parseMovieDetial,
                                                  errback=self.errback)
             doulistMovieRequest.meta['fromDoulist'] = '1'
             yield doulistMovieRequest

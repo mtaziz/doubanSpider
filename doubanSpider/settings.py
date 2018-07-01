@@ -57,9 +57,9 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'doubanSpider.middlewares.ProcessAllExceptionMiddleware': 543,
+   # 'doubanSpider.middlewares.ProcessAllExceptionMiddleware': 543,
    'doubanSpider.middlewares.UseragentMiddleware': 200,
-    # 'doubanSpider.middlewares.ProxyMiddleware': 210,
+    'doubanSpider.middlewares.HttpProxyMiddleware': 210,
 }
 
 # Enable or disable extensions
@@ -122,4 +122,4 @@ PROXY = [
     {"ip_port":"https://14.118.255.81:6666"},
     {"ip_port":"https://14.118.252.79:6666"}
 ]
-DOWNLOAD_TIMEOUT = 5
+DOWNLOAD_TIMEOUT = 8
