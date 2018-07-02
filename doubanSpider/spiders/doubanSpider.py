@@ -123,12 +123,7 @@ class DoubanMoviesSpider(scrapy.Spider):
         movieItem['doulists_url'] = response.url + '/doulists'  # 豆列
 
         # if response.xpath('//span[contains(@class, "collection_date")]').extract_first():
-        movieItem['view_date'] = response.xpath(
-            '//span[contains(@class, "collection_date")]/text()').extract_first()
-        movieItem['my_rate'] = response.xpath(
-            '//input[contains(@id, "n_rating")]/@value').extract_first()
-        my_tags = response.xpath('//input[contains(@id, "n_rating")]/following::text()[4]').extract_first()
-        movieItem['my_tags']  = my_tags[my_tags.find('标签')+3:len(my_tags)] if my_tags.find('标签') >=0 else None
+        movieItem['isViewed'] = '0' if 'fromDoulist' in response.meta else '1'
         yield movieItem
 
         essayCollectRequest = scrapy.Request(movieItem['essay_collect_url'], callback=self.parseComments,

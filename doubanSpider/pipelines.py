@@ -51,7 +51,13 @@ class reviewtToFilePipeline(object):
 
 class MySQLStorePipeline(object):
 
-    insertFilmMovieDetailSql =  """INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,view_date,my_rate,my_tags,tags,storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) VALUES  ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s')"""      
+    insertFilmMovieDetailSql =  """INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, 
+        release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,isViewed,tags,
+        storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,
+        also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,
+        also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) 
+        VALUES  ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', 
+        '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s')"""  
 
     insertDoulistSql = '''INSERT INTO doulist (movieid,doulist_url,doulist_name,doulist_intr,user_name,
                             user_url,collect_num,recommend_num,viewed_num,not_viewed_num,doulist_cratedDate,
@@ -91,8 +97,8 @@ class MySQLStorePipeline(object):
             values = (item["movieid"],item["movie_url"],item["movie_name"],item["director"],item["writers"],item["stars"],
                 item["genres"],item["country"],item["official_site"],item["language"],item["release_date"],item["also_known_as"],
                 item["runtime"],item["IMDb_url"],item["douban_rate"],item["rate_num"],item["star_5"],item["star_4"],
-                item["star_3"],item["star_2"],item["star_1"],item["comparison_1"],item["comparison_2"],item["view_date"],
-                item["my_rate"],item["my_tags"],item["tags"],item["storyline"],item["also_like_1_name"],item["also_like_1_url"],
+                item["star_3"],item["star_2"],item["star_1"],item["comparison_1"],item["comparison_2"],item["isViewed"],
+                item["tags"],item["storyline"],item["also_like_1_name"],item["also_like_1_url"],
                 item["also_like_2_name"],item["also_like_2_url"],item["also_like_3_name"],item["also_like_3_url"],item["also_like_4_name"],item["also_like_4_url"],
                 item["also_like_5_name"],item["also_like_5_url"],item["also_like_6_name"],item["also_like_6_url"],item["also_like_7_name"],item["also_like_7_url"],
                 item["also_like_8_name"],item["also_like_8_url"],item["also_like_9_name"],item["also_like_9_url"],item["also_like_10_name"],item["also_like_10_url"],

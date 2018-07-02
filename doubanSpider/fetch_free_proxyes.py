@@ -6,15 +6,17 @@ import socket
 from bs4 import BeautifulSoup
 import pdb
 from fake_useragent import UserAgent
+from doubanSpider.logConfig import *
+# import logging
 
-timeout = 4
+timeout = 5
 socket.setdefaulttimeout(timeout)
 userAgent = UserAgent()
 testUrl = "https://movie.douban.com/"
 
 class proxyObject(object):
     protocol = 'http'
-    def  __init__(self,ip,port,protocol,speed ,latency):
+    def  __init__(self,ip,port,protocol,speed ,latency="None"):
         self.ip = ip
         self.port = port
         if 'HTTPS' == protocol:
@@ -38,20 +40,21 @@ def check(proxyObject):
     urllib.request.install_opener(opener) 
     try:
         data = urllib.request.urlopen(testUrl)
-        # print(data.read().decode("utf8"))
+        # logging.info(data.read().decode("utf8"))
         return data.code == 200
     except Exception as e:
-        print(e)
+        logging.error(str(e)+proxyObject.getFullInfo())
         return False
 
 
 def get_html(url):
     req = urllib.request.Request(url)
-    req.add_header('User-Agent', 'Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25')
+    req.add_header('User-Agent', userAgent.random)
     response = urllib.request.urlopen(req)
     return response.read()
 
 def get_soup(url):
+    logging.info("start to get %s ",url)
     soup = BeautifulSoup(get_html(url), "lxml")
     return soup
 
@@ -77,19 +80,77 @@ def fetch_xici():
             if float(speed) < 2.6 and float(latency) < 0.5:
                 proxyes.append(proxyObject(ip,port,protocol,speed,latency))
     except Exception as e:
-        print("fail to fetch from xici")
-        print(e)
+        logging.error("fail to fetch from xici")
+        logging.error(e)
+    logging.info(" fetch_xici get %s proxys",str(len(proxyes)))
+    return proxyes
+
+def fet_ip3366():
+    '''
+    http://www.ip3366.net/free/?stype=1&page=
+    '''
+    proxyes = []
+    try:
+        url = "http://www.ip3366.net/free/?stype=1&page="
+        soup = get_soup(url)
+        # pdb.set_trace()
+        trs = soup.find("div", attrs={"id": "list"}).table.tbody.find_all("tr")
+        for i, tr in enumerate(trs):
+            # if 0 == i:
+            #     continue
+            tds = tr.find_all("td")
+            ip = tds[0].string.strip()
+            port = tds[1].string.strip()
+            protocol = tds[3].string.strip()
+            speed = tds[5].string.strip()[:-1]
+            if float(speed) < 5:
+                proxyes.append(proxyObject(ip,port,protocol,speed))
+    except Exception as e:
+        logging.error("fail to fetch from fet_ip3366")
+        logging.error(e)
+    logging.info(" fet_ip3366 get %s proxys",str(len(proxyes)))
+    return proxyes
+
+def fet_kuaidaili():
+    '''
+    https://www.kuaidaili.com/free/inha/
+    '''
+    proxyes = []
+    try:
+        url = "https://www.kuaidaili.com/free/inha/"
+        soup = get_soup(url)
+        # pdb.set_trace()
+        trs = soup.find("div", attrs={"id": "list"}).table.tbody.find_all("tr")
+        for i, tr in enumerate(trs):
+            # if 0 == i:
+            #     continue
+            tds = tr.find_all("td")
+            ip = tds[0].string.strip()
+            port = tds[1].string.strip()
+            protocol = tds[3].string.strip()
+            speed = tds[5].string.strip()[:-1]
+            if float(speed) < 5:
+                proxyes.append(proxyObject(ip,port,protocol,speed))
+    except Exception as e:
+        logging.error("fail to fetch from fet_kuaidaili")
+        logging.error(e)
+    logging.info(" fet_kuaidaili get %s proxys",str(len(proxyes)))
     return proxyes
 
 def fetch_all():
     proxyes = []
-    proxyes = fetch_xici()
+    # proxyes = fetch_xici()
+    proxyes = fet_ip3366()
+    proxyes += fet_kuaidaili()
+    logging.info("get proxyes : %s",len(proxyes))
     valid_proxyes = []
     for p in proxyes:
         if check(p):
             valid_proxyes.append(p.getProxy())
-            print(p.getFullInfo()) 
+            logging.info("good proxy:"+p.getFullInfo()) 
+    logging.info("get total proxy:"+str(len(valid_proxyes)))
     return valid_proxyes
 
 if __name__ == '__main__':
     fetch_all()
+

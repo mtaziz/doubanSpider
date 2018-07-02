@@ -1,9 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Define here the models for your spider middleware
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 from scrapy.shell import inspect_response
 import os
 from scrapy import signals
@@ -11,7 +8,6 @@ from twisted.internet import defer
 from twisted.internet.error import *
 from twisted.web.client import ResponseFailed
 from doubanSpider.logConfig import *
-# import scrapy.exceptions as exception
 from fake_useragent import UserAgent
 import random
 from scrapy.conf import settings
@@ -19,93 +15,8 @@ from scrapy.exceptions import CloseSpider
 from datetime import datetime, timedelta
 from twisted.web._newclient import ResponseNeverReceived
 from twisted.internet.error import TimeoutError, ConnectionRefusedError, ConnectError
-import doubanSpider.fetch_free_proxyes 
-
-
-class DoubanspiderSpiderMiddleware(object):
-    # Not all methods need to be defined. If a method is not defined,
-    # scrapy acts as if the spider middleware does not modify the
-    # passed objects.
-
-    @classmethod
-    def from_crawler(cls, crawler):
-        # This method is used by Scrapy to create your spiders.
-        s = cls()
-        crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
-        return s
-
-    def process_spider_input(self, response, spider):
-        # Called for each response that goes through the spider
-        # middleware and into the spider.
-
-        # Should return None or raise an exception.
-        return None
-
-    def process_spider_output(self, response, result, spider):
-        # Called with the results returned from the Spider, after
-        # it has processed the response.
-
-        # Must return an iterable of Request, dict or Item objects.
-        for i in result:
-            yield i
-
-    def process_spider_exception(self, response, exception, spider):
-        # Called when a spider or process_spider_input() method
-        # (from other spider middleware) raises an exception.
-
-        # Should return either None or an iterable of Response, dict
-        # or Item objects.
-        logging.error(
-            "--------------------------------------------------------------------------------------------------------")
-        logging.error('not contained exception: %s ' % exception)
-        raise CloseSpider('exception :  %s ', exception)
-        # pass
-
-    def process_start_requests(self, start_requests, spider):
-        # Called with the start requests of the spider, and works
-        # similarly to the process_spider_output() method, except
-        # that it doesn’t have a response associated.
-
-        # Must return only requests (not items).
-        for r in start_requests:
-            yield r
-
-    def spider_opened(self, spider):
-        spider.logging.info('Spider opened: %s' % spider.name)
-
-# todo not finish
-
-
-class ProcessAllExceptionMiddleware(object):
-    ALL_EXCEPTIONS = (defer.TimeoutError, TimeoutError, DNSLookupError,
-                      ConnectionRefusedError, ConnectionDone, ConnectError,
-                      ConnectionLost, TCPTimedOutError, ResponseFailed,
-                      IOError)
-
-    def process_response(self, request, response, spider):
-
-        # 捕获状态码为40x/50x的response
-        if str(response.status).startswith('4') or str(response.status).startswith('5'):
-            # 随意封装，直接返回response，spider代码中根据url==''来处理response
-            # response = HtmlResponse(url='')
-            logging.error("response.status error %s , url : %s :",
-                          (response.status, response.url))
-            # raise CloseSpider('response.status error %s', response.status)
-        # 其他状态码不处理
-        return response
-
-    # def process_exception(self, request, exception, spider):
-        # 捕获几乎所有的异常
-        # if isinstance(exception, self.ALL_EXCEPTIONS):
-        #     # 在日志中打印异常类型
-        #     logging.error('Got exception: %s' % (exception))
-        #     # 随意封装一个response，返回给spider
-        #     response = HtmlResponse(url='exception')
-        # return response
-        # 打印出未捕获到的异常
-        # logging.error('exception: %s ' % exception)
-        # raise CloseSpider('exception : %s ',str(exception))
-
+from . import  fetch_free_proxyes
+import threading
 
 class UseragentMiddleware(object):
     # 该函数必须返回一个数据-None/request，如果返回的是None,表示处理完成，交给后续的中间件继续操作
@@ -119,26 +30,6 @@ class UseragentMiddleware(object):
         request.headers.setdefault('User-agent', self.ua.random)
         # logging.error ('request.headers %s ',str(request.headers))
 
-
-class ProxyMiddleware(object):
-
-    def process_request(self, request, spider):
-        # 短评和影评页,豆列除第一页外,不用cookie，换IP
-        # if "comments" in request.url or "reviews" in request.url  or
-        # ("doulist" in request.url  and "start=" in request.url ):
-        proxy = random.choice(settings['PROXY'])
-
-        request.meta["dont_redirect"] = True
-        request.meta['proxy'] = proxy.get('ip_port')
-        logging.error('request.meta %s ', str(request.meta))
-        logging.error('request.url %s ', str(request.url))
-
-     # def process_exception(self,request,exception,spider):
-     #    logging.info("ProxyMiddleware exception : %s",exception)
-     #    # 出异常时重新加上代理,重新请求
-     #    proxy = random.choice(PROXY)
-     #    request.meta['proxy'] = proxy.get('ip_port')
-     #    return request
 
 
 class HttpProxyMiddleware(object):
@@ -174,6 +65,10 @@ class HttpProxyMiddleware(object):
         self.fetch_proxy_interval = 120
         # 一个将被设为invalid的代理如果已经成功爬取大于这个参数的页面， 将不会被invalid
         self.invalid_proxy_threshold = 200
+        # 在开始执行爬虫时,先另起线程去抓代理ip
+        self.threadLock = threading.Lock()
+        self.proxysStatus = 0  # 0:未爬取代理,1:正在爬取代理,2:已经抓完代理ip
+
         # 从文件读取初始代理
         if os.path.exists(self.proxy_file):
             with open(self.proxy_file, "r") as fd:
@@ -183,8 +78,8 @@ class HttpProxyMiddleware(object):
                     if not line or self.url_in_proxyes(line):
                         continue
                     self.proxyes.append({"proxy": line,
-                                     "valid": True,
-                                     "count": 0})
+                                         "valid": True,
+                                         "count": 0})
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -244,6 +139,10 @@ class HttpProxyMiddleware(object):
         如果还发现已经距离上次抓代理过了指定时间, 则抓取新的代理
         """
         assert self.proxyes[0]["valid"]
+        # 代理数量太少,先抓取代理
+        if len(self.proxyes) < 3:
+            self.fetch_new_proxyes()
+
         while True:
             self.proxy_index = (self.proxy_index + 1) % len(self.proxyes)
             if self.proxyes[self.proxy_index]["valid"]:
@@ -259,11 +158,11 @@ class HttpProxyMiddleware(object):
 
         if self.len_valid_proxy() < self.extend_proxy_threshold:  # 代理数量仍然不足, 抓取新的代理
             logging.info("valid proxy < threshold: %d/%d" %
-                        (self.len_valid_proxy(), self.extend_proxy_threshold))
+                         (self.len_valid_proxy(), self.extend_proxy_threshold))
             self.fetch_new_proxyes()
 
         logging.info("now using new proxy: %s" %
-                    self.proxyes[self.proxy_index]["proxy"])
+                     self.proxyes[self.proxy_index]["proxy"])
 
         # 一定时间没更新后可能出现了在目前的代理不断循环不断验证码错误的情况, 强制抓取新代理
         # if datetime.now() > self.last_fetch_proxy_time + timedelta(minutes=self.fetch_proxy_interval):
@@ -282,12 +181,9 @@ class HttpProxyMiddleware(object):
         if self.proxy_index == 0:  # 每次不用代理直接下载时更新self.last_no_proxy_time
             self.last_no_proxy_time = datetime.now()
 
-        if len(self.proxyes)<3:
-            self.inc_proxy_index() #xian fatch dump
-
         if proxy["proxy"]:
             request.meta["proxy"] = proxy["proxy"]
-            logging.info("change proxy: %s ",proxy["proxy"])
+            logging.info("change proxy: %s ", proxy["proxy"])
         elif "proxy" in request.meta.keys():
             del request.meta["proxy"]
         request.meta["proxy_index"] = self.proxy_index
@@ -324,21 +220,49 @@ class HttpProxyMiddleware(object):
                 if p["valid"] or p["count"] >= self.dump_count_threshold:
                     fd.write(p["proxy"][7:] + "\n")  # 只保存有效的代理
 
+    # 刚开始启动时起线程异步爬取代理ip
+    # proxysStatus: 0:未爬取代理,1:正在爬取代理,2:已经抓完代理ip
+    def initProxys(self):
+        class ProxysThread (threading.Thread):
+
+            def __init__(self,parent):
+                threading.Thread.__init__(self)
+                self.parent = parent
+
+            def run(self):
+                # 获取锁，用于线程同步
+                self.parent.threadLock.acquire()
+                if self.parent.proxysStatus == 0:
+                    self.parent.proxysStatus = 1
+                    self.parent.fetch_new_proxyes()
+                    self.parent.proxysStatus = 2
+                self.parent.threadLock.release()
+
+        if self.proxysStatus == 0:
+            ProxysThread(self).start()
+        return self.proxysStatus == 2
+
     def process_request(self, request, spider):
         """
         将request设置为使用代理
         """
+        # 等到代理初始化完成
+        if not self.initProxys():
+            return None
+
         if self.proxy_index > 0 and datetime.now() > (self.last_no_proxy_time + timedelta(minutes=self.recover_interval)):
             logging.info("After %d minutes later, recover from using proxy" %
-                        self.recover_interval)
+                         self.recover_interval)
             self.last_no_proxy_time = datetime.now()
             self.proxy_index = 0
+        elif random.randint(1, 5) == 1:  # 1/5的概率切换ip
+            request.meta["change_proxy"] = True
         request.meta["dont_redirect"] = True  # 有些代理会把请求重定向到一个莫名其妙的地址
 
-        # spider发现parse error, 要求更换代理
+        # 更换代理, 在第一次请求时没有proxy_index,所以初次请求不会更换代理
         if "change_proxy" in request.meta.keys() and request.meta["change_proxy"]:
             logging.info("change proxy request get by spider: %s" % request)
-            self.invalid_proxy(request.meta["proxy_index"])
+            self.inc_proxy_index()  # 改为只是更换代理,而不是设置代理无效
             request.meta["change_proxy"] = False
         self.set_proxy(request)
 
@@ -348,23 +272,17 @@ class HttpProxyMiddleware(object):
         """
         if "proxy" in request.meta.keys():
             logging.debug("%s %s %s" %
-                         (request.meta["proxy"], response.status, request.url))
+                          (request.meta["proxy"], response.status, request.url))
         else:
             logging.debug("None %s %s" % (response.status, request.url))
 
-        # status不是正常的200而且不在spider声明的正常爬取过程中可能出现的
-        # status列表中, 则认为代理无效, 切换代理
-        if response.status != 200 :
-            logging.info(
-                "response status not in spider.website_possible_httpstatus_list")
+        if response.status != 200 or "douban" not in response.url or "豆瓣" not in response.text:
+            logging.error(
+                "invaild proxy, response status:%s url:%s", (response.status, response.url))
             self.invalid_proxy(request.meta["proxy_index"])
             new_request = request.copy()
             new_request.dont_filter = True
             return new_request
-        elif "douban" not in response.url or "豆瓣" not in response.text:
-            request.meta["change_proxy"] = True
-            request.dont_filter = True
-            return request
         else:
             return response
 
@@ -372,8 +290,8 @@ class HttpProxyMiddleware(object):
         """
         处理由于使用代理导致的连接异常
         """
-        logging.debug("%s exception: %s" % (
-            self.proxyes[request.meta["proxy_index"]]["proxy"], exception))
+        logging.error("%s , url: %s, exception: %s" % (
+            self.proxyes[request.meta["proxy_index"]]["proxy"], request.url, exception))
         request_proxy_index = request.meta["proxy_index"]
 
         # 只有当proxy_index>fixed_proxy-1时才进行比较, 这样能保证至少本地直连是存在的.
