@@ -12,7 +12,7 @@ from doubanSpider.logConfig import *
 timeout = 5
 socket.setdefaulttimeout(timeout)
 userAgent = UserAgent()
-testUrl = "https://movie.douban.com/"
+testUrl = "https://movie.douban.com/subject/25849049/"
 
 class proxyObject(object):
     protocol = 'http'
@@ -40,8 +40,8 @@ def check(proxyObject):
     urllib.request.install_opener(opener) 
     try:
         data = urllib.request.urlopen(testUrl)
-        # logging.info(data.read().decode("utf8"))
-        return data.code == 200
+        # pdb.set_trace()
+        return data.code == 200 and "超人总动员2" in data.read().decode("utf-8")
     except Exception as e:
         logging.error(str(e)+proxyObject.getFullInfo())
         return False
@@ -139,7 +139,7 @@ def fet_kuaidaili():
 
 def fetch_all():
     proxyes = []
-    # proxyes = fetch_xici()
+    proxyes = fetch_xici()
     proxyes = fet_ip3366()
     proxyes += fet_kuaidaili()
     logging.info("get proxyes : %s",len(proxyes))

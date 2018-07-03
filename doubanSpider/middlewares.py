@@ -70,16 +70,16 @@ class HttpProxyMiddleware(object):
         self.proxysStatus = 0  # 0:未爬取代理,1:正在爬取代理,2:已经抓完代理ip
 
         # 从文件读取初始代理
-        if os.path.exists(self.proxy_file):
-            with open(self.proxy_file, "r") as fd:
-                lines = fd.readlines()
-                for line in lines:
-                    line = line.strip()
-                    if not line or self.url_in_proxyes(line):
-                        continue
-                    self.proxyes.append({"proxy": line,
-                                         "valid": True,
-                                         "count": 0})
+        # if os.path.exists(self.proxy_file):
+        #     with open(self.proxy_file, "r") as fd:
+        #         lines = fd.readlines()
+        #         for line in lines:
+        #             line = line.strip()
+        #             if not line or self.url_in_proxyes(line):
+        #                 continue
+        #             self.proxyes.append({"proxy": line,
+        #                                  "valid": True,
+        #                                  "count": 0})
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -267,6 +267,9 @@ class HttpProxyMiddleware(object):
         self.set_proxy(request)
 
     def process_response(self, request, response, spider):
+        # download picture
+        if '.jpg' in response.url:
+            return response
         """
         检查response.status, 根据status是否在允许的状态码中决定是否切换到下一个proxy, 或者禁用proxy
         """
@@ -306,4 +309,4 @@ class HttpProxyMiddleware(object):
                     self.inc_proxy_index()
             new_request = request.copy()
             new_request.dont_filter = True
-        return new_request
+            return new_request

@@ -60,9 +60,9 @@ class MySQLStorePipeline(object):
         '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s')"""  
 
     insertDoulistSql = '''INSERT INTO doulist (movieid,doulist_url,doulist_name,doulist_intr,user_name,
-                            user_url,collect_num,recommend_num,viewed_num,not_viewed_num,doulist_cratedDate,
+                            user_url,collect_num,recommend_num,movie_num,doulist_cratedDate,
                             doulist_updatedDate)
-                        VALUES ('%s', '%s', '%s', '%s', '%s','%s' ,'%s', '%s', '%s', '%s', '%s', '%s')'''
+                        VALUES ('%s', '%s', '%s', '%s', '%s','%s' ,'%s', '%s', '%s', '%s', '%s')'''
 
     insertDoulistMovieDetailSql = """INSERT INTO doulist_movie_detail (movieid,
                                         doulist_url)
@@ -112,7 +112,7 @@ class MySQLStorePipeline(object):
             values = (item['movieid'], 
                     item['doulist_url'],item['doulist_name'],item['doulist_intr'],item['user_name'],
                     item['user_url'],item['collect_num'],item['recommend_num'],
-                    item['viewed_num'],item['not_viewed_num'],item['doulist_cratedDate'],
+                    item['movie_num'],item['doulist_cratedDate'],
                     item['doulist_updatedDate'])      
         elif isinstance(item, DoulistMovieDetailItem):
             sql = MySQLStorePipeline.insertDoulistMovieDetailSql

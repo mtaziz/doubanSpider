@@ -5,6 +5,7 @@ import scrapy
 class MovieBase(scrapy.Item):
     movieid = scrapy.Field()  # 这是豆瓣的movieid
 
+
 class MovieDetialItem(MovieBase):
     movie_url = scrapy.Field()
     movie_name = scrapy.Field()
@@ -59,10 +60,9 @@ class MovieDetialItem(MovieBase):
     image_url = scrapy.Field()
     official_site = scrapy.Field()
 
-# 短评
-
 
 class MovieEssayItem(MovieBase):
+    ''' 短评'''
     user_name = scrapy.Field()
     user_url = scrapy.Field()
     vote_num = scrapy.Field()
@@ -70,11 +70,14 @@ class MovieEssayItem(MovieBase):
     comment_time = scrapy.Field()
     comment = scrapy.Field()
 
-# 影评,默认将影评内容存储在文件中
-# 以film_critics_url:::内容的形式储存
+
 
 
 class FilmCriticsItem(MovieBase):
+    ''' 
+    影评,默认将影评内容存储在文件中
+    以film_critics_url:::内容的形式储存
+     '''
     film_critics_url = scrapy.Field()
     title = scrapy.Field()
     user_name = scrapy.Field()
@@ -88,10 +91,10 @@ class FilmCriticsItem(MovieBase):
     review = scrapy.Field()
     recommend_num = scrapy.Field()
 
-# 豆列
-
-
 class DoulistItem(MovieBase):
+    '''
+    豆列
+    '''
     doulist_url = scrapy.Field()  # 当前豆列url
     doulist_name = scrapy.Field()
     doulist_intr = scrapy.Field()  # 简介
@@ -101,11 +104,11 @@ class DoulistItem(MovieBase):
     recommend_num = scrapy.Field()  # 推荐数
     doulist_cratedDate = scrapy.Field()
     doulist_updatedDate = scrapy.Field()
-    viewed_num = scrapy.Field()
-    not_viewed_num = scrapy.Field()
-
-# 豆列单项
+    movie_num = scrapy.Field()
 
 
 class DoulistMovieDetailItem(MovieBase):
+    '''
+    豆列单项
+    '''
     doulist_url = scrapy.Field()

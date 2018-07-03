@@ -106,3 +106,4 @@ venv.bak/
 file/
 *.pyc
 *~
+.fuse_hidden*
