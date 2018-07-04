@@ -33,9 +33,6 @@ class UseragentMiddleware(object):
 
 
 class HttpProxyMiddleware(object):
-    # 遇到这些类型的错误直接当做代理不可用处理掉, 不再传给retrymiddleware
-    DONT_RETRY_ERRORS = (TimeoutError, ConnectionRefusedError,
-                         ResponseNeverReceived, ConnectError, ValueError)
 
     def __init__(self, settings):
         # 保存上次不用代理直接连接的时间点
@@ -68,18 +65,9 @@ class HttpProxyMiddleware(object):
         # 在开始执行爬虫时,先另起线程去抓代理ip
         self.threadLock = threading.Lock()
         self.proxysStatus = 0  # 0:未爬取代理,1:正在爬取代理,2:已经抓完代理ip
-
-        # 从文件读取初始代理
-        # if os.path.exists(self.proxy_file):
-        #     with open(self.proxy_file, "r") as fd:
-        #         lines = fd.readlines()
-        #         for line in lines:
-        #             line = line.strip()
-        #             if not line or self.url_in_proxyes(line):
-        #                 continue
-        #             self.proxyes.append({"proxy": line,
-        #                                  "valid": True,
-        #                                  "count": 0})
+        self.max_retry_times = settings.getint('RETRY_TIMES')
+        # 有fail_count_threadhold次爬取失败就移除该代理
+        self.fail_count_threadhold = 5
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -116,9 +104,11 @@ class HttpProxyMiddleware(object):
             if self.url_in_proxyes(np):
                 continue
             else:
+                # count: success count, failCount: fail count
                 self.proxyes.append({"proxy": np,
                                      "valid": True,
-                                     "count": 0})
+                                     "count": 0, 
+                                     "failCount": 0})
         if self.len_valid_proxy() < self.extend_proxy_threshold:  # 如果发现抓不到什么新的代理了, 缩小threshold以避免白费功夫
             self.extend_proxy_threshold -= 1
 
@@ -139,9 +129,9 @@ class HttpProxyMiddleware(object):
         如果还发现已经距离上次抓代理过了指定时间, 则抓取新的代理
         """
         assert self.proxyes[0]["valid"]
-        # 代理数量太少,先抓取代理
-        if len(self.proxyes) < 3:
-            self.fetch_new_proxyes()
+        # # 代理数量太少,先抓取代理
+        # if len(self.proxyes) < 3:
+        #     self.fetch_new_proxyes()
 
         while True:
             self.proxy_index = (self.proxy_index + 1) % len(self.proxyes)
@@ -199,26 +189,15 @@ class HttpProxyMiddleware(object):
             return
 
         if self.proxyes[index]["valid"]:
-            logging.info("invalidate %s" % self.proxyes[index])
+            self.proxyes[index]["failCount"] += 1
             self.proxyes[index]["valid"] = False
-            if index == self.proxy_index:
-                self.inc_proxy_index()
-
-            if self.proxyes[index]["count"] < self.dump_count_threshold:
-                self.dump_valid_proxy()
-
-    def dump_valid_proxy(self):
-        """
-        保存代理列表中有效的代理到文件
-        """
-        if self.dump_count_threshold <= 0:
-            return
-        logging.info("dumping proxyes to file")
-        with open(self.proxy_file, "w") as fd:
-            for i in range(self.fixed_proxy, len(self.proxyes)):
-                p = self.proxyes[i]
-                if p["valid"] or p["count"] >= self.dump_count_threshold:
-                    fd.write(p["proxy"][7:] + "\n")  # 只保存有效的代理
+            logging.info("proxyes %s ,fail count %d" % (self.proxyes[index],self.proxyes[index]["failCount"]))
+            logging.info("invalidate %s" % self.proxyes[index])
+            if  self.proxyes[index]["failCount"] >=  self.fail_count_threadhold: 
+                del self.proxyes[index] #delect
+                
+        if index == self.proxy_index:
+            self.inc_proxy_index()
 
     # 刚开始启动时起线程异步爬取代理ip
     # proxysStatus: 0:未爬取代理,1:正在爬取代理,2:已经抓完代理ip
@@ -240,6 +219,7 @@ class HttpProxyMiddleware(object):
 
         if self.proxysStatus == 0:
             ProxysThread(self).start()
+            # ProxysThread(self).run()
         return self.proxysStatus == 2
 
     def process_request(self, request, spider):
@@ -250,10 +230,17 @@ class HttpProxyMiddleware(object):
         if not self.initProxys():
             return None
 
-        if self.proxy_index > 0 and datetime.now() > (self.last_no_proxy_time + timedelta(minutes=self.recover_interval)):
-            logging.info("After %d minutes later, recover from using proxy" %
-                         self.recover_interval)
-            self.last_no_proxy_time = datetime.now()
+        if "retry_times" in request.meta:
+            # last retry use no proxy
+            if self.max_retry_times-1 <= request.meta['retry_times']  :
+                self.proxy_index = 0
+                logging.info("last retry use no proxy :retry_times: "+str(request.meta['retry_times'])+"max_retry_times:"+str(self.max_retry_times))
+            else:
+                self.inc_proxy_index()
+                logging.info("retry_times: "+str(request.meta['retry_times'])+"max_retry_times:"+str(self.max_retry_times))
+        # use no proxy every a period of time
+        elif self.proxy_index > 0 and datetime.now() > (self.last_no_proxy_time + timedelta(minutes=self.recover_interval)):
+            logging.info("recover from using proxy")
             self.proxy_index = 0
         elif random.randint(1, 5) == 1:  # 1/5的概率切换ip
             request.meta["change_proxy"] = True
@@ -273,6 +260,7 @@ class HttpProxyMiddleware(object):
         """
         检查response.status, 根据status是否在允许的状态码中决定是否切换到下一个proxy, 或者禁用proxy
         """
+        logging.error("process_response:request.meta.keys(): %s",str(request.meta.keys()))
         if "proxy" in request.meta.keys():
             logging.debug("%s %s %s" %
                           (request.meta["proxy"], response.status, request.url))
@@ -295,18 +283,15 @@ class HttpProxyMiddleware(object):
         """
         logging.error("%s , url: %s, exception: %s" % (
             self.proxyes[request.meta["proxy_index"]]["proxy"], request.url, exception))
-        request_proxy_index = request.meta["proxy_index"]
-
-        # 只有当proxy_index>fixed_proxy-1时才进行比较, 这样能保证至少本地直连是存在的.
-        if isinstance(exception, self.DONT_RETRY_ERRORS):
-            if request_proxy_index > self.fixed_proxy - 1 and self.invalid_proxy_flag:  # WARNING 直连时超时的话换个代理还是重试? 这是策略问题
-                if self.proxyes[request_proxy_index]["count"] < self.invalid_proxy_threshold:
-                    self.invalid_proxy(request_proxy_index)
-                elif request_proxy_index == self.proxy_index:  # 虽然超时，但是如果之前一直很好用，也不设为invalid
-                    self.inc_proxy_index()
-            else:               # 简单的切换而不禁用
-                if request.meta["proxy_index"] == self.proxy_index:
-                    self.inc_proxy_index()
-            new_request = request.copy()
-            new_request.dont_filter = True
-            return new_request
+        if request_proxy_index > self.fixed_proxy - 1 and self.invalid_proxy_flag:  # WARNING 直连时超时的话换个代理还是重试? 这是策略问题
+            if self.proxyes[request_proxy_index]["count"] < self.invalid_proxy_threshold:
+                self.invalid_proxy(request_proxy_index)
+            #     elif request_proxy_index == self.proxy_index:  # 虽然超时，但是如果之前一直很好用，也不设为invalid
+            #         self.inc_proxy_index()
+            # else:               # 简单的切换而不禁用
+            #     if request.meta["proxy_index"] == self.proxy_index:
+            #         self.inc_proxy_index()
+            # new_request = request.copy()
+            # # new_request.meta.get('retry_times', 0) + 1
+            # new_request.dont_filter = True
+            # return new_request

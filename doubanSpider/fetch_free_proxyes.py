@@ -140,7 +140,7 @@ def fet_kuaidaili():
 def fetch_all():
     proxyes = []
     proxyes = fetch_xici()
-    proxyes = fet_ip3366()
+    proxyes += fet_ip3366()
     proxyes += fet_kuaidaili()
     logging.info("get proxyes : %s",len(proxyes))
     valid_proxyes = []

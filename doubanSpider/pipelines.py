@@ -22,7 +22,7 @@ class DoubanspiderPipeline(object):
         return item
 
 
-class cleanItemPipeline(object):
+class CleanItemPipeline(object):
 
     def process_item(self, item, spider):
         for (key, value) in item.items():
@@ -34,7 +34,7 @@ class cleanItemPipeline(object):
         return item
 
 
-class reviewtToFilePipeline(object):
+class ReviewtToFilePipeline(object):
 
     def __init__(self):
         self.separateLine = '---==---'
@@ -42,7 +42,8 @@ class reviewtToFilePipeline(object):
     def process_item(self, item, spider):
         if isinstance(item, FilmCriticsItem):
             base_dir = os.getcwd()
-            filePath = '../../file/reviews/' + item['movieid']
+            filePath = '/media/feng/资源/bigdata/doubanSpider/file/reviews/' + item['movieid']
+            logging.error("FilmCriticsItem: moive:%s",item['movieid'])
             with open(filePath, 'a') as f:
                 f.write(item['film_critics_url'] +
                         ':::' + item['review'] + '\n')
@@ -52,12 +53,12 @@ class reviewtToFilePipeline(object):
 class MySQLStorePipeline(object):
 
     insertFilmMovieDetailSql =  """INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, 
-        release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,isViewed,tags,
+        release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,tags,
         storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,
         also_like_5_name,also_like_5_url,also_like_6_name,also_like_6_url,also_like_7_name,also_like_7_url,also_like_8_name,also_like_8_url,
         also_like_9_name,also_like_9_url,also_like_10_name,also_like_10_url,essay_collect_url,film_critics_url,doulists_url,viewed_num,want_to_view_num,image_url) 
         VALUES  ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', 
-        '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s')"""  
+        '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s','%s')"""  
 
     insertDoulistSql = '''INSERT INTO doulist (movieid,doulist_url,doulist_name,doulist_intr,user_name,
                             user_url,collect_num,recommend_num,movie_num,doulist_cratedDate,
@@ -73,10 +74,13 @@ class MySQLStorePipeline(object):
                                     useful_num,recommend_num)
                                 VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s')'''   
 
-
     insertMovieEssaySql = '''INSERT INTO movie_essay (movieid,user_name, user_url,
                                     comment,comment_rate,comment_time)
-                                VALUES ('%s', '%s', '%s', '%s', '%s', '%s')'''                                   
+                                VALUES ('%s', '%s', '%s', '%s', '%s', '%s')'''             
+
+    insertMovieBaseInfoSql = """INSERT INTO movie_base_info (movieid,view_date,personal_rate,
+                                            personal_tags,intro,isViewed)
+                                        VALUES ('%s', '%s', '%s','%s', '%s', '%s')"""                    
 
 
     def __init__(self):
@@ -97,12 +101,16 @@ class MySQLStorePipeline(object):
             values = (item["movieid"],item["movie_url"],item["movie_name"],item["director"],item["writers"],item["stars"],
                 item["genres"],item["country"],item["official_site"],item["language"],item["release_date"],item["also_known_as"],
                 item["runtime"],item["IMDb_url"],item["douban_rate"],item["rate_num"],item["star_5"],item["star_4"],
-                item["star_3"],item["star_2"],item["star_1"],item["comparison_1"],item["comparison_2"],item["isViewed"],
+                item["star_3"],item["star_2"],item["star_1"],item["comparison_1"],item["comparison_2"],
                 item["tags"],item["storyline"],item["also_like_1_name"],item["also_like_1_url"],
                 item["also_like_2_name"],item["also_like_2_url"],item["also_like_3_name"],item["also_like_3_url"],item["also_like_4_name"],item["also_like_4_url"],
                 item["also_like_5_name"],item["also_like_5_url"],item["also_like_6_name"],item["also_like_6_url"],item["also_like_7_name"],item["also_like_7_url"],
                 item["also_like_8_name"],item["also_like_8_url"],item["also_like_9_name"],item["also_like_9_url"],item["also_like_10_name"],item["also_like_10_url"],
                 item["essay_collect_url"],item["film_critics_url"],item["doulists_url"],item["viewed_num"],item["want_to_view_num"],item["image_url"])
+        elif isinstance(item, MovieBaseInfoItem):
+            sql = MySQLStorePipeline.insertMovieBaseInfoSql
+            values = (item['movieid'],item['view_date'],item['personal_rate'],
+                                item['personal_tags'],item['intro'],item['isViewed'])
         elif isinstance(item, MovieEssayItem):
             sql = MySQLStorePipeline.insertMovieEssaySql 
             values = (item['movieid'],item['user_name'],

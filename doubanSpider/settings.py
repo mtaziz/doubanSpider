@@ -70,9 +70,9 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'doubanSpider.pipelines.cleanItemPipeline': 100,
+   'doubanSpider.pipelines.CleanItemPipeline': 100,
    'doubanSpider.pipelines.MovieImagePipeline': 310,
-   'doubanSpider.pipelines.reviewtToFilePipeline': 350,
+   'doubanSpider.pipelines.ReviewtToFilePipeline': 311,
    'doubanSpider.pipelines.MySQLStorePipeline':400,
 }
 
@@ -121,4 +121,5 @@ PROXY = [
     {"ip_port":"https://14.118.255.81:6666"},
     {"ip_port":"https://14.118.252.79:6666"}
 ]
-DOWNLOAD_TIMEOUT = 8
+DOWNLOAD_TIMEOUT = 2
+RETRY_TIMES=3

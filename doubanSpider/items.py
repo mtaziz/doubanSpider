@@ -5,6 +5,12 @@ import scrapy
 class MovieBase(scrapy.Item):
     movieid = scrapy.Field()  # 这是豆瓣的movieid
 
+class MovieBaseInfoItem(MovieBase):
+    view_date = scrapy.Field()
+    personal_rate = scrapy.Field()
+    personal_tags = scrapy.Field()
+    intro = scrapy.Field()
+    isViewed = scrapy.Field()
 
 class MovieDetialItem(MovieBase):
     movie_url = scrapy.Field()
@@ -55,7 +61,6 @@ class MovieDetialItem(MovieBase):
     doulists_url = scrapy.Field()
     viewed_num = scrapy.Field()
     want_to_view_num = scrapy.Field()
-    isViewed = scrapy.Field()
     tags = scrapy.Field()
     image_url = scrapy.Field()
     official_site = scrapy.Field()
