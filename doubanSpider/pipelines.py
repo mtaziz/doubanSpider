@@ -136,7 +136,7 @@ class MySQLStorePipeline(object):
             return 
         try:        
             logging.info(sql % values)
-            self.cursor.execute(sql % values)
+            self.cursor.execute(sql % self.conn.escape(values))
             self.conn.commit()
         except Exception as e:
             logging.error(e)

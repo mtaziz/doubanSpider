@@ -7,14 +7,6 @@ from doubanSpider.logConfig import *
 import scrapy.exceptions as exception
 import re
 
-# Scrapy定向爬虫教程(五)——保持登陆状态 : https://blog.csdn.net/qq_30242609/article/details/52822190
-# https://juejin.im/post/5a41a76b6fb9a04512393101
-# https://www.xncoding.com/2016/04/12/scrapy-11.html
-# 文件图片储存 https://www.xncoding.com/2016/03/20/scrapy-08.html
-
-# 登录https://blog.csdn.net/qq_41020281/article/details/79437455
-
-
 class DoubanMoviesSpider(scrapy.Spider):
     name = "doubanmovies"
     allowed_domains = ['douban.com']
@@ -26,17 +18,9 @@ class DoubanMoviesSpider(scrapy.Spider):
         # 标识是从我个人电影中过来的
         request.meta['fromMyCollect']  = 1
         yield request
+        # url = "https://movie.douban.com/subject/10766459/"
+        # yield scrapy.Request(url, callback=self.parseMovieDetial,errback=self.errback)
 
-        # url = "https://movie.douban.com/subject/26815162/comments"
-        #  # 短评
-        # essayCollectRequest = scrapy.Request(url, callback=self.parseComments,
-        #                                      errback=self.errback)
-        # essayCollectRequest.meta['movieid'] = "sdfgsa"
-        # yield essayCollectRequest
-
-
-# bookstore/book    选取属于 bookstore 的子元素的所有 book 元素。
-# bookstore//book   选择属于 bookstore 元素的后代的所有 book 元素，而不管它们位于 bookstore 之下的什么位置。
     def getCollectMovies(self, response):
         '''
         个人看过的所有电影列表页
@@ -138,9 +122,8 @@ class DoubanMoviesSpider(scrapy.Spider):
             '//div[contains(@class, "rating_betterthan")]/a[2]/text()').extract_first()
         movieItem['tags'] = '/'.join(response.xpath(
             '//div[contains(@class, "tags-body")]/a/text()').extract())
-        movieItem['storyline']  = response.xpath(
-            '//span[contains(@property, "v:summary")]/text()').extract_first()
 
+        movieItem['storyline']  = "".join(response.xpath('//span[@property="v:summary"]/text()').extract())
         # also_like_urls = response.xpath(
         #     '(//div[contains(@class, "recommendations-bd")]/dl/dt/a)/@href').extract()
         also_like_names = response.xpath(

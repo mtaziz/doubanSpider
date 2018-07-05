@@ -27,13 +27,13 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 4
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -105,11 +105,11 @@ IMAGES_EXPIRES = 90                                   # 过期天数
 
 # 日志默认开启,有默认设置
 LOG_ENABLED = True
-# LOG_ENCODING = 'utf-8'
-# LOG_LEVEL = 'DEBUG'
-# # 用于设置日志配置文件，将程序运行的信息，保存在指定的文件中
-# LOG_STDOUT = True
-# LOG_FILE = 'doubanspider.log'
+LOG_ENCODING = 'utf-8'
+LOG_LEVEL = 'DEBUG'
+# 用于设置日志配置文件，将程序运行的信息，保存在指定的文件中
+LOG_STDOUT = True
+LOG_FILE = 'doubanspider.log'
 
 MYSQL_HOST = 'localhost'
 MYSQL_PORT = 3306
@@ -117,9 +117,5 @@ MYSQL_USER = 'root'
 MYSQL_PASSWD = 'feng'
 MYSQL_DBNAME = 'bigdata'
 
-PROXY = [
-    {"ip_port":"https://14.118.255.81:6666"},
-    {"ip_port":"https://14.118.252.79:6666"}
-]
-DOWNLOAD_TIMEOUT = 2
+DOWNLOAD_TIMEOUT = 5
 RETRY_TIMES=3

@@ -67,7 +67,7 @@ class HttpProxyMiddleware(object):
         self.proxysStatus = 0  # 0:未爬取代理,1:正在爬取代理,2:已经抓完代理ip
         self.max_retry_times = settings.getint('RETRY_TIMES')
         # 有fail_count_threadhold次爬取失败就移除该代理
-        self.fail_count_threadhold = 5
+        self.fail_count_threadhold = 3
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -190,11 +190,12 @@ class HttpProxyMiddleware(object):
 
         if self.proxyes[index]["valid"]:
             self.proxyes[index]["failCount"] += 1
-            self.proxyes[index]["valid"] = False
-            logging.info("proxyes %s ,fail count %d" % (self.proxyes[index],self.proxyes[index]["failCount"]))
-            logging.info("invalidate %s" % self.proxyes[index])
+            # when proxyes is not enough,reset_proxyes()will set some invalid proxyes  to valid
+            self.proxyes[index]["valid"] = False 
+            logging.info("invalidate proxy: %s ,fail count %d" % (self.proxyes[index],self.proxyes[index]["failCount"]))
             if  self.proxyes[index]["failCount"] >=  self.fail_count_threadhold: 
-                del self.proxyes[index] #delect
+                logging.info("remove proxy: %s ,fail count %d" % (self.proxyes[index],self.proxyes[index]["failCount"]))
+                del self.proxyes[index] #delete
                 
         if index == self.proxy_index:
             self.inc_proxy_index()
@@ -219,7 +220,6 @@ class HttpProxyMiddleware(object):
 
         if self.proxysStatus == 0:
             ProxysThread(self).start()
-            # ProxysThread(self).run()
         return self.proxysStatus == 2
 
     def process_request(self, request, spider):
@@ -260,7 +260,6 @@ class HttpProxyMiddleware(object):
         """
         检查response.status, 根据status是否在允许的状态码中决定是否切换到下一个proxy, 或者禁用proxy
         """
-        logging.error("process_response:request.meta.keys(): %s",str(request.meta.keys()))
         if "proxy" in request.meta.keys():
             logging.debug("%s %s %s" %
                           (request.meta["proxy"], response.status, request.url))

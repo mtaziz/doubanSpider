@@ -9,7 +9,7 @@ from fake_useragent import UserAgent
 from doubanSpider.logConfig import *
 # import logging
 
-timeout = 5
+timeout = 3
 socket.setdefaulttimeout(timeout)
 userAgent = UserAgent()
 testUrl = "https://movie.douban.com/subject/25849049/"
@@ -139,7 +139,7 @@ def fet_kuaidaili():
 
 def fetch_all():
     proxyes = []
-    proxyes = fetch_xici()
+    proxyes += fetch_xici()
     proxyes += fet_ip3366()
     proxyes += fet_kuaidaili()
     logging.info("get proxyes : %s",len(proxyes))
