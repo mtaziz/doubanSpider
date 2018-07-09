@@ -1,5 +1,5 @@
 import scrapy
-from doubanSpider.transCookie import *
+# from doubanSpider.transCookie import *
 from doubanSpider.items import *
 from scrapy.conf import settings
 from scrapy.shell import inspect_response
@@ -29,6 +29,7 @@ class DoubanMoviesSpider(scrapy.Spider):
         template = 'https://movie.douban.com/subject/'
         itemNodes = response.xpath('//div[@class="item"]/div[@class="info"]/ul')
         for node in itemNodes:
+            movie_name = node.xpath('./li[@class="title"]/a/em/text()').extract_first()
             url = node.xpath('./li[@class="title"]/a/@href').extract_first()
             intro = node.xpath('./li[@class="intro"]/text()').extract_first()
             view_date = node.xpath('./li/span[@class="date"]/text()').extract_first()
@@ -39,6 +40,7 @@ class DoubanMoviesSpider(scrapy.Spider):
                 movieBaseItem = MovieBaseInfoItem()
                 movieBaseItem['isViewed'] = '0'
                 movieBaseItem['movieid'] = self.getMovieid(url)  # 从url中取出movieid
+                movieBaseItem['movie_name'] = movie_name
                 movieBaseItem['intro'] = intro
                 movieBaseItem['view_date'] = view_date
                 movieBaseItem['personal_rate'] = personal_rate[6] if personal_rate else None

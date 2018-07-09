@@ -17,15 +17,21 @@ from twisted.web._newclient import ResponseNeverReceived
 from twisted.internet.error import TimeoutError, ConnectionRefusedError, ConnectError
 from . import  fetch_free_proxyes
 import threading
+from multiprocessing import Process
+from twisted.internet import task
+from scrapy.exceptions import NotConfigured
+from scrapy import signals
+import signal
+import sys
 
 class UseragentMiddleware(object):
     # 该函数必须返回一个数据-None/request，如果返回的是None,表示处理完成，交给后续的中间件继续操作
     # 如果返回的是request,此时返回的request会被重新交给引擎添加到请求队列中，重新发起
-    ua = None
+    def __init__(self):
+        # self.ua = UserAgent(use_cache_server=False)
+        self.ua = UserAgent(verify_ssl=False)
 
     def process_request(self, request, spider):
-        if not self.ua:
-            self.ua = UserAgent()
         # 给request请求头中添加user-agent配置
         request.headers.setdefault('User-agent', self.ua.random)
         # logging.error ('request.headers %s ',str(request.headers))
@@ -294,3 +300,76 @@ class HttpProxyMiddleware(object):
             # # new_request.meta.get('retry_times', 0) + 1
             # new_request.dont_filter = True
             # return new_request
+
+# from twisted.internet import task
+# from scrapy.exceptions import NotConfigured
+# from scrapy import signals
+# import time, os, sched
+# import threading
+
+# #see scrapy/scrapy/contrib/logstats.py
+class SpiderSmartCloseRestartExensions(object):
+    """每interval秒检查一次页面爬取统计情况,若爬取<=pageIntervalMin,则暂停爬虫"""
+
+    def __init__(self, crawler,stats, interval=5.0,pageIntervalMin=5):
+        self.crawler = crawler
+        self.stats = stats
+        self.interval = interval
+        self.pageIntervalMin = pageIntervalMin
+        self.startCount = 0
+        self.isRestarted = False
+        # self.restartFile = "spiderRestart.txt"
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        # settings CHECK_IDLE_INTERVAL=120.0
+        # CHECK_IDLE_INTERVAL_PAGES = 1
+        # interval = crawler.settings.getfloat('CHECK_IDLE_INTERVAL')
+        # pageIntervalMin = crawler.settings.getfloat('CHECK_IDLE_INTERVAL_PAGES')
+        # if not interval:
+        #     raise NotConfigured
+        # o = cls(crawler,crawler.stats, interval,pageIntervalMin)
+        o = cls(crawler,crawler.stats)
+        crawler.signals.connect(o.spider_opened, signal=signals.spider_opened)
+        crawler.signals.connect(o.spider_closed, signal=signals.spider_closed)
+        return o
+
+    def spider_opened(self, spider):
+        self.pagesprev = 0
+        self.itemsprev = 0
+        self.task = task.LoopingCall(self.check, spider)
+        self.task.start(self.interval)
+
+    def check(self, spider):
+        items = self.stats.get_value('item_scraped_count', 0)
+        pages = self.stats.get_value('response_received_count', 0)
+        itemsPeriod = items - self.itemsprev
+        pagePeriod = pages - self.pagesprev
+        self.pagesprev, self.itemsprev = pages, items
+        msg = "Crawled %d pages AND %d items in %d secs" \
+            % (pagePeriod, itemsPeriod, self.interval,)
+        logging.error(msg)
+        logging.error("startCount: %d:" % self.startCount  )
+        self.startCount  += 1
+        localValue = self.startCount
+        # if pagePeriod<=self.pageIntervalMin and self.startCount >1:
+        #     logging.error("stop spider:closespider_pagecount")
+            # 另起线程,在一定时间后重启spider
+        if  not self.isRestarted:
+            self.isRestarted = True
+            self.restartSpiderInDelayTime()
+            # 执行关闭爬虫操作
+        self.crawler.engine.close_spider(spider, 'closespider_errorcount')
+
+
+    def restartSpiderInDelayTime(self):
+        p = RestarProcess()
+        p.start()
+
+    def spider_closed(self, spider, reason):
+        if self.task.running:
+            self.task.stop()
+
+class RestarProcess(Process):
+    def run(self):
+        os.system("gnome-terminal -e 'bash -c \"date;sleep 7;source /home/feng/software/venv/webscprit/bin/activate && cd /media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders && scrapy crawl doubanmovies; exec bash\"'")

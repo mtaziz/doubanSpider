@@ -16,12 +16,6 @@ from scrapy.http import Request
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-class DoubanspiderPipeline(object):
-
-    def process_item(self, item, spider):
-        return item
-
-
 class CleanItemPipeline(object):
 
     def process_item(self, item, spider):
@@ -31,6 +25,8 @@ class CleanItemPipeline(object):
                     logging.error('item value is none!  %s ', item)
                 else :
                     item[key] = value.strip()
+                    item[key] = pymysql.escape_string(value.strip())
+                    
         return item
 
 
@@ -65,8 +61,7 @@ class MySQLStorePipeline(object):
                             doulist_updatedDate)
                         VALUES ('%s', '%s', '%s', '%s', '%s','%s' ,'%s', '%s', '%s', '%s', '%s')'''
 
-    insertDoulistMovieDetailSql = """INSERT INTO doulist_movie_detail (movieid,
-                                        doulist_url)
+    insertDoulistMovieDetailSql = """INSERT INTO doulist_movie_detail (movieid,doulist_url)
                                     VALUES ('%s', '%s')"""
 
     insertFilmCriticsSql = '''INSERT INTO film_critics (movieid,film_critics_url, title,
@@ -78,9 +73,9 @@ class MySQLStorePipeline(object):
                                     comment,comment_rate,comment_time)
                                 VALUES ('%s', '%s', '%s', '%s', '%s', '%s')'''             
 
-    insertMovieBaseInfoSql = """INSERT INTO movie_base_info (movieid,view_date,personal_rate,
+    insertMovieBaseInfoSql = '''INSERT INTO movie_base_info (movieid,movie_name,view_date,personal_rate,
                                             personal_tags,intro,isViewed)
-                                        VALUES ('%s', '%s', '%s','%s', '%s', '%s')"""                    
+                                        VALUES ('%s', '%s', '%s','%s', '%s', '%s', '%s')'''             
 
 
     def __init__(self):
@@ -109,8 +104,8 @@ class MySQLStorePipeline(object):
                 item["essay_collect_url"],item["film_critics_url"],item["doulists_url"],item["viewed_num"],item["want_to_view_num"],item["image_url"])
         elif isinstance(item, MovieBaseInfoItem):
             sql = MySQLStorePipeline.insertMovieBaseInfoSql
-            values = (item['movieid'],item['view_date'],item['personal_rate'],
-                                item['personal_tags'],item['intro'],item['isViewed'])
+            values = (item['movieid'],item['movie_name'],item['view_date'],item['personal_rate'],
+                                        item['personal_tags'],item['intro'],item['isViewed'])
         elif isinstance(item, MovieEssayItem):
             sql = MySQLStorePipeline.insertMovieEssaySql 
             values = (item['movieid'],item['user_name'],
@@ -136,7 +131,9 @@ class MySQLStorePipeline(object):
             return 
         try:        
             logging.info(sql % values)
-            self.cursor.execute(sql % self.conn.escape(values))
+            # insertsql = sql % self.conn.escape(values)
+            self.cursor.execute(sql % values)
+            # self.cursor.execute(sql % values)
             self.conn.commit()
         except Exception as e:
             logging.error(e)
@@ -144,21 +141,6 @@ class MySQLStorePipeline(object):
 
     def close_spider(self, spider):
         self.conn.close()
-
-# from scrapy.exceptions import DropItem
-# # 最早执行 越小越早执行
-# class DuplicatesPipeline(object):
-
-#     def __init__(self):
-#         self.ids_seen = set()
-
-#     def process_item(self, item, spider):
-#         if item['id'] in self.ids_seen:
-#             raise DropItem("Duplicate item found: %s" % item)
-#         else:
-#             self.ids_seen.add(item['id'])
-#             return item
-
 
 from scrapy.pipelines.images import ImagesPipeline
 # download image

@@ -6,6 +6,7 @@ class MovieBase(scrapy.Item):
     movieid = scrapy.Field()  # 这是豆瓣的movieid
 
 class MovieBaseInfoItem(MovieBase):
+    movie_name = scrapy.Field()
     view_date = scrapy.Field()
     personal_rate = scrapy.Field()
     personal_tags = scrapy.Field()
