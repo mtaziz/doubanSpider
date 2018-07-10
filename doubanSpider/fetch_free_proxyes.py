@@ -11,7 +11,6 @@ from doubanSpider.logConfig import *
 
 timeout = 3
 socket.setdefaulttimeout(timeout)
-# userAgent = UserAgent(use_cache_server=False)
 userAgent = UserAgent(verify_ssl=False)
 testUrl = "https://movie.douban.com/subject/25849049/"
 

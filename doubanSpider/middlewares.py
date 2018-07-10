@@ -39,7 +39,9 @@ class UseragentMiddleware(object):
 
 
 class HttpProxyMiddleware(object):
-
+    '''
+    see https://github.com/kohn/HttpProxyMiddleware/blob/master/HttpProxyMiddlewareTest/HttpProxyMiddlewareTest/fetch_free_proxyes.py
+    '''
     def __init__(self, settings):
         # 保存上次不用代理直接连接的时间点
         self.last_no_proxy_time = datetime.now()
@@ -47,8 +49,6 @@ class HttpProxyMiddleware(object):
         self.recover_interval = 20
         # 一个proxy如果没用到这个数字就被发现老是超时, 则永久移除该proxy. 设为0则不会修改代理文件.
         self.dump_count_threshold = 20
-        # 存放代理列表的文件, 每行一个代理, 格式为ip:port, 注意没有http://, 而且这个文件会被修改, 注意备份
-        self.proxy_file = "proxyes.dat"
         # 是否在超时的情况下禁用代理
         self.invalid_proxy_flag = True
         # 当有效代理小于这个数时(包括直连), 从网上抓取新的代理, 可以将这个数设为为了满足每个ip被要求输入验证码后得到足够休息时间所需要的代理数
@@ -206,9 +206,11 @@ class HttpProxyMiddleware(object):
         if index == self.proxy_index:
             self.inc_proxy_index()
 
-    # 刚开始启动时起线程异步爬取代理ip
-    # proxysStatus: 0:未爬取代理,1:正在爬取代理,2:已经抓完代理ip
     def initProxys(self):
+        '''
+        刚开始启动时起线程异步爬取代理ip
+        proxysStatus: 0:未爬取代理,1:正在爬取代理,2:已经抓完代理ip
+        '''
         class ProxysThread (threading.Thread):
 
             def __init__(self,parent):
@@ -274,7 +276,7 @@ class HttpProxyMiddleware(object):
 
         if response.status != 200 or "douban" not in response.url or "豆瓣" not in response.text:
             logging.error(
-                "invaild proxy, response status:%s url:%s", (response.status, response.url))
+                "invaild proxy, response status:%s url:%s"%(response.status, response.url))
             self.invalid_proxy(request.meta["proxy_index"])
             new_request = request.copy()
             new_request.dont_filter = True
@@ -301,34 +303,22 @@ class HttpProxyMiddleware(object):
             # new_request.dont_filter = True
             # return new_request
 
-# from twisted.internet import task
-# from scrapy.exceptions import NotConfigured
-# from scrapy import signals
-# import time, os, sched
-# import threading
-
 # #see scrapy/scrapy/contrib/logstats.py
 class SpiderSmartCloseRestartExensions(object):
-    """每interval秒检查一次页面爬取统计情况,若爬取<=pageIntervalMin,则暂停爬虫"""
-
-    def __init__(self, crawler,stats, interval=5.0,pageIntervalMin=5):
+    """
+    每interval秒检查一次页面爬取统计情况,若爬取<=pageIntervalMin,则暂停爬虫
+    faild to start process , found ImportError: No module named 'doubanSpider'
+    """
+    def __init__(self, crawler,stats, interval=120.0,pageIntervalMin=0):
         self.crawler = crawler
         self.stats = stats
         self.interval = interval
         self.pageIntervalMin = pageIntervalMin
         self.startCount = 0
         self.isRestarted = False
-        # self.restartFile = "spiderRestart.txt"
 
     @classmethod
     def from_crawler(cls, crawler):
-        # settings CHECK_IDLE_INTERVAL=120.0
-        # CHECK_IDLE_INTERVAL_PAGES = 1
-        # interval = crawler.settings.getfloat('CHECK_IDLE_INTERVAL')
-        # pageIntervalMin = crawler.settings.getfloat('CHECK_IDLE_INTERVAL_PAGES')
-        # if not interval:
-        #     raise NotConfigured
-        # o = cls(crawler,crawler.stats, interval,pageIntervalMin)
         o = cls(crawler,crawler.stats)
         crawler.signals.connect(o.spider_opened, signal=signals.spider_opened)
         crawler.signals.connect(o.spider_closed, signal=signals.spider_closed)
@@ -348,18 +338,18 @@ class SpiderSmartCloseRestartExensions(object):
         self.pagesprev, self.itemsprev = pages, items
         msg = "Crawled %d pages AND %d items in %d secs" \
             % (pagePeriod, itemsPeriod, self.interval,)
-        logging.error(msg)
-        logging.error("startCount: %d:" % self.startCount  )
+        logging.info(msg)
+        logging.info("startCount: %d:" % self.startCount  )
         self.startCount  += 1
         localValue = self.startCount
-        # if pagePeriod<=self.pageIntervalMin and self.startCount >1:
-        #     logging.error("stop spider:closespider_pagecount")
+        if pagePeriod<=self.pageIntervalMin and self.startCount >1:
+            logging.error("stop spider:closespider_pagecount")
             # 另起线程,在一定时间后重启spider
-        if  not self.isRestarted:
-            self.isRestarted = True
-            self.restartSpiderInDelayTime()
+            if  not self.isRestarted :
+                self.isRestarted = True
+                self.restartSpiderInDelayTime()
             # 执行关闭爬虫操作
-        self.crawler.engine.close_spider(spider, 'closespider_errorcount')
+            self.crawler.engine.close_spider(spider, 'closespider_errorcount')
 
 
     def restartSpiderInDelayTime(self):
@@ -372,4 +362,5 @@ class SpiderSmartCloseRestartExensions(object):
 
 class RestarProcess(Process):
     def run(self):
-        os.system("gnome-terminal -e 'bash -c \"date;sleep 7;source /home/feng/software/venv/webscprit/bin/activate && cd /media/feng/资源/bigdata/doubanSpider/doubanSpider/spiders && scrapy crawl doubanmovies; exec bash\"'")
+        # ImportError: No module named 'doubanSpider'
+        os.system("gnome-terminal -e 'bash -c \"date;sleep 7;source /home/feng/software/venv/webscprit/bin/activate && cd /media/feng/资源/bigdata/doubanSpider/doubanSpider/ && scrapy crawl doubanmovies; exec bash\"'")

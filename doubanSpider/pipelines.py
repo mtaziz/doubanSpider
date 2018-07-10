@@ -12,12 +12,11 @@ import hashlib
 from scrapy.exceptions import DropItem
 from scrapy.http import Request
 
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-class CleanItemPipeline(object):
 
+class CleanItemPipeline(object):
+    '''
+    strip item value
+    '''
     def process_item(self, item, spider):
         for (key, value) in item.items():
             if isinstance(value,str) : 
@@ -31,7 +30,9 @@ class CleanItemPipeline(object):
 
 
 class ReviewtToFilePipeline(object):
-
+    '''
+   write Film Critics content to file
+    '''
     def __init__(self):
         self.separateLine = '---==---'
 
@@ -39,15 +40,18 @@ class ReviewtToFilePipeline(object):
         if isinstance(item, FilmCriticsItem):
             base_dir = os.getcwd()
             filePath = '/media/feng/资源/bigdata/doubanSpider/file/reviews/' + item['movieid']
-            logging.error("FilmCriticsItem: moive:%s",item['movieid'])
+            logging.info("FilmCriticsItem: moive:%s",item['movieid'])
             with open(filePath, 'a') as f:
                 f.write(item['film_critics_url'] +
                         ':::' + item['review'] + '\n')
                 f.write(self.separateLine + '\n')
         return item
 
-class MySQLStorePipeline(object):
 
+class MySQLStorePipeline(object):
+    '''
+    store item to mysql
+    '''
     insertFilmMovieDetailSql =  """INSERT INTO movie_detail (movieid,movie_url,movie_name,director,writers,stars,genres,country,official_site,language, 
         release_date,also_known_as,runtime,IMDb_url,douban_rate,rate_num,star_5,star_4,star_3,star_2,star_1,comparison_1,comparison_2,tags,
         storyline,also_like_1_name,also_like_1_url,also_like_2_name,also_like_2_url,also_like_3_name,also_like_3_url,also_like_4_name,also_like_4_url,
