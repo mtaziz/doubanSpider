@@ -18,6 +18,7 @@ class CleanItemPipeline(object):
     strip item value
     '''
     def process_item(self, item, spider):
+        logging.info(item)
         for (key, value) in item.items():
             if isinstance(value,str) : 
                 if not value.strip():

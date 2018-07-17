@@ -18,8 +18,6 @@ class DoubanMoviesSpider(scrapy.Spider):
         # 标识是从我个人电影中过来的
         request.meta['fromMyCollect']  = 1
         yield request
-        # url = "https://movie.douban.com/subject/10766459/"
-        # yield scrapy.Request(url, callback=self.parseMovieDetial,errback=self.errback)
 
     def getCollectMovies(self, response):
         '''
@@ -51,7 +49,6 @@ class DoubanMoviesSpider(scrapy.Spider):
                     yield scrapy.Request(url, callback=self.parseMovieDetial,errback=self.errback)
                 else:
                     movieBaseItem['isViewed'] = '0'
-
                 yield movieBaseItem
                 
 
@@ -178,7 +175,7 @@ class DoubanMoviesSpider(scrapy.Spider):
             comment['user_name'] = ci.xpath('./h3/span[@class="comment-info"]/a/text()').extract_first()
             comment['user_url'] = ci.xpath('./h3/span[@class="comment-info"]/a/@href').extract_first()
             comment['comment_time'] = ci.xpath('.//span[contains(@class, "comment-time ")]/text()').extract_first()
-            comment['comment'] = ci.xpath('./p/text()').extract_first()
+            comment['comment'] = ci.xpath('./p/span/text()').extract_first()
             comment['comment_rate'] = ci.xpath('.//span[contains(@class, allstar)]/@title').extract_first()
             yield comment
 
@@ -238,6 +235,11 @@ class DoubanMoviesSpider(scrapy.Spider):
         filmCriticsItem['useful_num'] = self.getNum(useful_num, " ")
         filmCriticsItem['recommend_num'] = self.getNum(recommend_num, " ")
         yield filmCriticsItem
+
+        if "people" in filmCriticsItem['user_url']:
+            peopleUrl = "https://movie.douban.com/people/"+self.getUserURLName(filmCriticsItem['user_url'])+"/collect"
+            logging.info("get to people: %s" % peopleUrl)
+            yield scrapy.Request(peopleUrl, callback=self.getCollectMovies)
 
     def parseDoulists(self, response):
         '''
@@ -316,6 +318,9 @@ class DoubanMoviesSpider(scrapy.Spider):
     def getMovieid(self, url):
         logging.info("getMovieid: %s ",url)
         return re.findall(r"(?<=/subject/)\d+(?=/)", url).pop()
+
+    def getUserURLName(self, url):
+        return re.findall(r"(?<=/people/)\S+(?=/)", url).pop()
 
     def getNum(self, strv, seperate):
         num  = 0
