@@ -18,7 +18,7 @@ class CleanItemPipeline(object):
     strip item value
     '''
     def process_item(self, item, spider):
-        logging.info(item)
+        # logging.info(item)
         for (key, value) in item.items():
             if isinstance(value,str) : 
                 if not value.strip():
@@ -44,8 +44,8 @@ class ReviewtToFilePipeline(object):
             logging.info("FilmCriticsItem: moive:%s",item['movieid'])
             with open(filePath, 'a') as f:
                 f.write(item['film_critics_url'] +
-                        ':::' + item['review'] + '\n')
-                f.write(self.separateLine + '\n')
+                        ':::' + item['review'] + '\n'+self.separateLine + '\n')
+                # f.write(self.separateLine + '\n')
         return item
 
 
@@ -141,6 +141,7 @@ class MySQLStorePipeline(object):
             # self.cursor.execute(sql % values)
             self.conn.commit()
         except Exception as e:
+            logging.error(sql % values)
             logging.error(e)
         return item
 

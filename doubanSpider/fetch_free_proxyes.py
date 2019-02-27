@@ -5,14 +5,20 @@ import urllib.request
 import socket
 from bs4 import BeautifulSoup
 import pdb
+import random
 from fake_useragent import UserAgent
+from scrapy.conf import settings
 from doubanSpider.logConfig import *
 # import logging
 
 timeout = 3
 socket.setdefaulttimeout(timeout)
-userAgent = UserAgent(verify_ssl=False)
+# userAgent = UserAgent(verify_ssl=False)
+# userAgent = UserAgent(cache=False) 
+# userAgent.update()
+userAgent = settings['USER_AGEN']
 testUrl = "https://movie.douban.com/subject/25849049/"
+# testUrl="http://www.mmjpg.com/hot/"
 
 class proxyObject(object):
     protocol = 'http'
@@ -36,20 +42,24 @@ def check(proxyObject):
     proxy = {proxyObject.protocol : proxyObject.ip+":"+proxyObject.port}
     proxies = urllib.request.ProxyHandler(proxy) # 创建代理处理器
     opener = urllib.request.build_opener(proxies,urllib.request.HTTPHandler) # 创建特定的opener对象
-    opener.addheaders = [("Host","movie.douban.com"),("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),("Accept-Language","en-US,en;q=0.5"),("Connection","keep-alive"),('User-agent',userAgent.random)]
+    opener.addheaders = [("Host","movie.douban.com"),("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),("Accept-Language","en-US,en;q=0.5"),("Connection","keep-alive"),('User-agent', random.choice(userAgent))]
+    # print("random.choice(userAgent): %s "% random.choice(userAgent))
+    # opener.addheaders = [("Host","www.mmjpg.com"),("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),("Accept-Language","en-US,en;q=0.5"),("Connection","keep-alive"),('User-agent',userAgent.random)]
     urllib.request.install_opener(opener) 
+    isgoodIp = False
     try:
         data = urllib.request.urlopen(testUrl)
         # pdb.set_trace()
-        return data.code == 200 and "超人总动员2" in data.read().decode("utf-8")
+        isgoodIp = data.code == 200 and "超人总动员2" in data.read().decode("utf-8")
+        # return data.code == 200 and "浏览排行榜" in data.read().decode("utf-8")
     except Exception as e:
         logging.error(str(e)+proxyObject.getFullInfo())
-        return False
+    return isgoodIp
 
 
 def get_html(url):
     req = urllib.request.Request(url)
-    req.add_header('User-Agent', userAgent.random)
+    req.add_header('User-Agent', random.choice(userAgent))
     response = urllib.request.urlopen(req)
     return response.read()
 
@@ -105,6 +115,8 @@ def fet_ip3366():
             speed = tds[5].string.strip()[:-1]
             if float(speed) < 5:
                 proxyes.append(proxyObject(ip,port,protocol,speed))
+            # if i == 20:
+            #     break  #-----------------------------------------
     except Exception as e:
         logging.error("fail to fetch from fet_ip3366")
         logging.error(e)
@@ -139,8 +151,8 @@ def fet_kuaidaili():
 
 def fetch_all():
     proxyes = []
-    proxyes += fetch_xici()
-    proxyes += fet_ip3366()
+    # proxyes += fetch_xici()
+    # proxyes += fet_ip3366()
     proxyes += fet_kuaidaili()
     logging.info("get proxyes : %s",len(proxyes))
     valid_proxyes = []

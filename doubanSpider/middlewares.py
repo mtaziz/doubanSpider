@@ -12,6 +12,7 @@ from fake_useragent import UserAgent
 import random
 from scrapy.conf import settings
 from scrapy.exceptions import CloseSpider
+from scrapy.exceptions import IgnoreRequest
 from datetime import datetime, timedelta
 from twisted.web._newclient import ResponseNeverReceived
 from twisted.internet.error import TimeoutError, ConnectionRefusedError, ConnectError
@@ -22,18 +23,25 @@ from twisted.internet import task
 from scrapy.exceptions import NotConfigured
 from scrapy import signals
 import signal
+import pdb
 import sys
+from  doubanSpider.util_mysql import MySQLUtil
 
 class UseragentMiddleware(object):
     # 该函数必须返回一个数据-None/request，如果返回的是None,表示处理完成，交给后续的中间件继续操作
     # 如果返回的是request,此时返回的request会被重新交给引擎添加到请求队列中，重新发起
+    # @see https://media.readthedocs.org/pdf/fake-useragent/latest/fake-useragent.pdf
     def __init__(self):
-        # self.ua = UserAgent(use_cache_server=False)
-        self.ua = UserAgent(verify_ssl=False)
+        # self.ua = UserAgent(cache=False) # 不希望缓存数据库或不需要可写文件系统
+        # self.ua = UserAgent(use_cache_server=False) #不想使用宿主缓存服务器，可以禁用服务器缓存
+        # self.ua = UserAgent(verify_ssl=False)
+        # self.ua.update()
+        self.ua = settings['USER_AGEN']
 
     def process_request(self, request, spider):
         # 给request请求头中添加user-agent配置
-        request.headers.setdefault('User-agent', self.ua.random)
+        request.headers.setdefault('User-agent', random.choice(self.ua))
+        # print("UseragentMiddleware:"+random.choice(self.ua))
         # logging.error ('request.headers %s ',str(request.headers))
 
 
@@ -43,6 +51,7 @@ class HttpProxyMiddleware(object):
     see https://github.com/kohn/HttpProxyMiddleware/blob/master/HttpProxyMiddlewareTest/HttpProxyMiddlewareTest/fetch_free_proxyes.py
     '''
     def __init__(self, settings):
+        self.i= 1
         # 保存上次不用代理直接连接的时间点
         self.last_no_proxy_time = datetime.now()
         # 一定分钟数后切换回不用代理, 因为用代理影响到速度
@@ -55,7 +64,7 @@ class HttpProxyMiddleware(object):
         # 例如爬虫在十个可用代理之间切换时, 每个ip经过数分钟才再一次轮到自己, 这样就能get一些请求而不用输入验证码.
         # 如果这个数过小, 例如两个, 爬虫用A ip爬了没几个就被ban, 换了一个又爬了没几次就被ban,
         # 这样整个爬虫就会处于一种忙等待的状态, 影响效率
-        self.extend_proxy_threshold = 5
+        self.extend_proxy_threshold = 3
         # 初始化代理列表
         self.proxyes = [{"proxy": None, "valid": True, "count": 0}]
         # 初始时使用0号代理(即无代理)
@@ -74,6 +83,10 @@ class HttpProxyMiddleware(object):
         self.max_retry_times = settings.getint('RETRY_TIMES')
         # 有fail_count_threadhold次爬取失败就移除该代理
         self.fail_count_threadhold = 3
+
+        self.mysqlUtil = MySQLUtil()
+        #先加载豆瓣陷阱url
+        self.trickUrlDict = self.mysqlUtil.queryAllUrls()
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -103,7 +116,7 @@ class HttpProxyMiddleware(object):
         """
         logging.info("extending proxyes using fetch_free_proxyes.py")
         new_proxyes = fetch_free_proxyes.fetch_all()
-        logging.info("new proxyes: %s" % new_proxyes)
+        logging.info("fetch new proxyes: %s" % new_proxyes)
         self.last_fetch_proxy_time = datetime.now()
 
         for np in new_proxyes:
@@ -115,6 +128,7 @@ class HttpProxyMiddleware(object):
                                      "valid": True,
                                      "count": 0, 
                                      "failCount": 0})
+        logging.info("proxy info :%s" % self.proxyes)
         if self.len_valid_proxy() < self.extend_proxy_threshold:  # 如果发现抓不到什么新的代理了, 缩小threshold以避免白费功夫
             self.extend_proxy_threshold -= 1
 
@@ -157,8 +171,8 @@ class HttpProxyMiddleware(object):
                          (self.len_valid_proxy(), self.extend_proxy_threshold))
             self.fetch_new_proxyes()
 
-        logging.info("now using new proxy: %s" %
-                     self.proxyes[self.proxy_index]["proxy"])
+        # logging.info("now using new proxy: %s" %
+        #              self.proxyes[self.proxy_index]["proxy"])
 
         # 一定时间没更新后可能出现了在目前的代理不断循环不断验证码错误的情况, 强制抓取新代理
         # if datetime.now() > self.last_fetch_proxy_time + timedelta(minutes=self.fetch_proxy_interval):
@@ -177,11 +191,11 @@ class HttpProxyMiddleware(object):
         if self.proxy_index == 0:  # 每次不用代理直接下载时更新self.last_no_proxy_time
             self.last_no_proxy_time = datetime.now()
 
-        if proxy["proxy"]:
-            request.meta["proxy"] = proxy["proxy"]
-            logging.info("change proxy: %s ", proxy["proxy"])
-        elif "proxy" in request.meta.keys():
-            del request.meta["proxy"]
+        # if proxy["proxy"]:
+        #     request.meta["proxy"] = proxy["proxy"]
+        # elif "proxy" in request.meta.keys():
+        #     del request.meta["proxy"]
+        request.meta["proxy"] = proxy["proxy"]
         request.meta["proxy_index"] = self.proxy_index
         proxy["count"] += 1
 
@@ -227,41 +241,64 @@ class HttpProxyMiddleware(object):
                 self.parent.threadLock.release()
 
         if self.proxysStatus == 0:
-            ProxysThread(self).start()
+            # ProxysThread(self).start()
+            ProxysThread(self).run()
         return self.proxysStatus == 2
 
+
     def process_request(self, request, spider):
-        """
-        将request设置为使用代理
-        """
-        # 等到代理初始化完成
-        if not self.initProxys():
+        if request.url in self.trickUrlDict and self.trickUrlDict[request.url]>=5:
+            self.updateTrickUrlDict(request.url)
+            # 如果其raise一个 IgnoreRequest 异常，则安装的下载中间件的 process_exception() 方法会被调用
+            logging.info("trick url,do not crawl:%s ,count:%s" % (request.url,self.trickUrlDict[request.url]))
+            raise IgnoreRequest("trick url %s" % request.url)
+        # """
+        # 将request设置为使用代理
+        # """
+        # # 等到代理初始化完成
+        # if not self.initProxys():
+        #     return None
+
+        # if "retry_times" in request.meta:
+        #      self.invalid_proxy(request.meta["proxy_index"])
+            # request.meta["change_proxy"] = True
+        #     # last retry use no proxy
+        #     if self.max_retry_times-1 <= request.meta['retry_times']  :
+        #         self.proxy_index = 0
+        #         logging.info("last retry use no proxy :retry_times: "+str(request.meta['retry_times'])+"max_retry_times:"+str(self.max_retry_times))
+        #     else:
+        #         logging.info("retry_times: "+str(request.meta['retry_times'])+"max_retry_times:"+str(self.max_retry_times))
+        # # use no proxy every a period of time
+        # elif self.proxy_index > 0 and datetime.now() > (self.last_no_proxy_time + timedelta(minutes=self.recover_interval)):
+        #     logging.info("recover from using proxy")
+            # request.meta["change_proxy"] = True
+        #     self.proxy_index = 0
+        # elif random.randint(1, 5) == 1:  # 1/5的概率切换ip
+        #     request.meta["change_proxy"] = True
+        # 
+
+        # # 更换代理, 在第一次请求时没有proxy_index,所以初次请求不会更换代理
+        # if "change_proxy" in request.meta.keys() and request.meta["change_proxy"]:
+        #     logging.info("change proxy request get by spider: %s" % request)
+            # self.set_proxy(request)
+
+        self.initProxys()
+        if self.i<3:
+            self.i = self.i+1
             return None
-
         if "retry_times" in request.meta:
-            # last retry use no proxy
-            if self.max_retry_times-1 <= request.meta['retry_times']  :
-                self.proxy_index = 0
-                logging.info("last retry use no proxy :retry_times: "+str(request.meta['retry_times'])+"max_retry_times:"+str(self.max_retry_times))
-            else:
-                self.inc_proxy_index()
-                logging.info("retry_times: "+str(request.meta['retry_times'])+"max_retry_times:"+str(self.max_retry_times))
-        # use no proxy every a period of time
-        elif self.proxy_index > 0 and datetime.now() > (self.last_no_proxy_time + timedelta(minutes=self.recover_interval)):
-            logging.info("recover from using proxy")
-            self.proxy_index = 0
-        elif random.randint(1, 5) == 1:  # 1/5的概率切换ip
-            request.meta["change_proxy"] = True
-        request.meta["dont_redirect"] = True  # 有些代理会把请求重定向到一个莫名其妙的地址
-
-        # 更换代理, 在第一次请求时没有proxy_index,所以初次请求不会更换代理
-        if "change_proxy" in request.meta.keys() and request.meta["change_proxy"]:
-            logging.info("change proxy request get by spider: %s" % request)
-            self.inc_proxy_index()  # 改为只是更换代理,而不是设置代理无效
-            request.meta["change_proxy"] = False
+            logging.info("retry_times: "+str(request.meta['retry_times'])+"max_retry_times:"+str(self.max_retry_times)+" url:"+request.url)
+            self.invalid_proxy(request.meta["proxy_index"])
+        self.inc_proxy_index()
         self.set_proxy(request)
+        logging.info("ip: %s ,start to crawl: %s" %(request.meta["proxy"],request.url))
+        logging.info("request.headers: %s" % request.headers)
+        
+        return None
+
 
     def process_response(self, request, response, spider):
+        logging.info('request.meta:%s' % request.meta)
         # download picture
         if '.jpg' in response.url:
             return response
@@ -275,24 +312,40 @@ class HttpProxyMiddleware(object):
             logging.debug("None %s %s" % (response.status, request.url))
 
         if response.status != 200 or "douban" not in response.url or "豆瓣" not in response.text:
-            logging.error(
-                "invaild proxy, response status:%s url:%s"%(response.status, response.url))
+            if "proxy" in request.meta.keys():
+                logging.error("crawl failed : ip:%s ,  response status:%s, url:%s" % (request.meta["proxy"],response.status, response.url))
+            else:
+                logging.error("crawl failed : ip:%s ,  response status:%s, url:%s" % ("localhost",response.status, response.url))
+            self.updateTrickUrlDict(request.url)
+            # 如果是豆瓣的陷阱url
+            if request.url in self.trickUrlDict and self.trickUrlDict[request.url]>=5:
+                logging.info("trick url in process_response url:%s ,count:%s" % (request.url,self.trickUrlDict[request.url]))
+                raise IgnoreRequest("trick url %s" % request.url)
             self.invalid_proxy(request.meta["proxy_index"])
-            new_request = request.copy()
+            # new_request = request.copy()
             new_request.dont_filter = True
             return new_request
         else:
+            if "proxy" in request.meta.keys():
+                logging.info("crawl success : ip:%s ,  response status:%s, url:%s" % (request.meta["proxy"],response.status, response.url))
+            else:
+                logging.info("crawl success : ip:%s ,  response status:%s, url:%s" % ("localhost",response.status, response.url))
             return response
 
     def process_exception(self, request, exception, spider):
+        if isinstance(exception, IgnoreRequest):
+            logging.error("IgnoreRequest url: %s, exception: %s" % (request.url, exception))
+            return
         """
         处理由于使用代理导致的连接异常
         """
-        logging.error("%s , url: %s, exception: %s" % (
-            self.proxyes[request.meta["proxy_index"]]["proxy"], request.url, exception))
-        if request_proxy_index > self.fixed_proxy - 1 and self.invalid_proxy_flag:  # WARNING 直连时超时的话换个代理还是重试? 这是策略问题
-            if self.proxyes[request_proxy_index]["count"] < self.invalid_proxy_threshold:
-                self.invalid_proxy(request_proxy_index)
+        if "proxy" in request.meta.keys():
+            logging.error("process_exception : ip:%s , url:%s exception:%s" % (request.meta["proxy"],request.url,exception))
+            self.invalid_proxy(request.meta["proxy_index"])
+        else:
+            logging.error("process_exception : ip:%s, url:%s exception:%s" % ("localhost", request.url,exception))
+
+        
             #     elif request_proxy_index == self.proxy_index:  # 虽然超时，但是如果之前一直很好用，也不设为invalid
             #         self.inc_proxy_index()
             # else:               # 简单的切换而不禁用
@@ -302,6 +355,18 @@ class HttpProxyMiddleware(object):
             # # new_request.meta.get('retry_times', 0) + 1
             # new_request.dont_filter = True
             # return new_request
+
+    def updateTrickUrlDict(self,url):
+        '''
+        同一个出现问题的url出现次数>=5次,认为这个url就是陷阱url
+        '''
+        if url in self.trickUrlDict:
+            self.trickUrlDict[url] = self.trickUrlDict[url]+1
+            if self.trickUrlDict[url] == 4:
+                self.mysqlUtil.updateInsertTrickUrl(self.trickUrlDict)
+        else:
+            self.trickUrlDict[url] = 1
+
 
 # #see scrapy/scrapy/contrib/logstats.py
 class SpiderSmartCloseRestartExensions(object):

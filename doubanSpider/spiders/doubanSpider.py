@@ -12,12 +12,19 @@ class DoubanMoviesSpider(scrapy.Spider):
     allowed_domains = ['douban.com']
 # inspect_response(response, self)
     def start_requests(self):
-        url = 'https://movie.douban.com/people/99678180/collect'
+        # url = 'https://movie.douban.com/people/99678180/collect'
+        url = 'https://movie.douban.com/people/99678180/collect?start=180&sort=time&rating=all&filter=all&mode=grid'
         logging.info('start_requests %s ', url)
         request = scrapy.Request(url, callback=self.getCollectMovies)
         # 标识是从我个人电影中过来的
         request.meta['fromMyCollect']  = 1
         yield request
+
+        # url = 'https://movie.douban.com/subject/6722888/comments?start=40&limit=20&sort=new_score&status=P'
+        # request = scrapy.Request(url, callback=self.parseComments)
+        # request.meta['movieid'] = "44444444"
+        # yield request
+
 
     def getCollectMovies(self, response):
         '''
@@ -169,6 +176,7 @@ class DoubanMoviesSpider(scrapy.Spider):
         '''
         movieid = response.meta['movieid']
         commentItems =  response.xpath('//div[@class="comment"]')
+        
         for ci in commentItems:
             comment = MovieEssayItem()
             comment['movieid'] = movieid
@@ -177,8 +185,9 @@ class DoubanMoviesSpider(scrapy.Spider):
             comment['comment_time'] = ci.xpath('.//span[contains(@class, "comment-time ")]/text()').extract_first()
             comment['comment'] = ci.xpath('./p/span/text()').extract_first()
             comment['comment_rate'] = ci.xpath('.//span[contains(@class, allstar)]/@title').extract_first()
+            # inspect_response(response, self)
             yield comment
-
+        # inspect_response(response, self)
         nextPageURL = response.xpath(
             '//a[@class="next"]/@href').extract_first()
         if nextPageURL:
@@ -221,13 +230,17 @@ class DoubanMoviesSpider(scrapy.Spider):
             '//span[@property="v:summary"]/text()').extract_first()
         filmCriticsItem['review'] = ''.join(response.xpath(
             '//div[@property="v:description"]//text()').extract())
-        filmCriticsItem['user_name'] = response.xpath(
-            '//span[@property="v:reviewer"]/text()').extract_first()
+        # filmCriticsItem['user_name'] = response.xpath('//span[@property="v:reviewer"]/text()').extract_first()
+        filmCriticsItem['user_name'] = response.xpath('//header[@class="main-hd"]/a/span/text()').extract_first()
         filmCriticsItem['user_url'] = response.xpath(
             '//header[@class="main-hd"]/a/@href').extract_first()
-        filmCriticsItem['comment_rate'] = response.xpath('//span[@property="v:rating"]/text()').extract_first()
-        filmCriticsItem['comment_time'] = response.xpath(
-            '//span[@property="v:dtreviewed"]/text()').extract_first()
+
+       # filmCriticsItem['comment_rate'] = response.xpath('//span[@property="v:rating"]/text()').extract_first()
+        filmCriticsItem['comment_rate'] = response.xpath('//span[@class="main-title-hide"]/text()').extract_first()
+        
+        #filmCriticsItem['comment_time'] = response.xpath('//span[@property="v:dtreviewed"]/text()').extract_first()
+        filmCriticsItem['comment_time'] = response.xpath('//span[@class="main-meta"]/text()').extract_first()
+
         useless_num = response.xpath('//button[contains(@class, useless_count)]/text()').extract()[1].strip()
         useful_num = response.xpath('//button[contains(@class, useful_count)]/text()').extract_first().strip()
         recommend_num = response.xpath('//span[@class="rec"]/a/text()').extract_first().strip()
